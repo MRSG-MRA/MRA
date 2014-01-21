@@ -1,0 +1,37 @@
+<?xml version='1.0'?>
+<!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid.dtd">
+<platform version="3">
+	<process host="Host 0" function="master"/>
+	<process host="Host 1" function="worker"/>
+	<process host="Host 2" function="worker"/>
+	<process host="Host 3" function="worker"/>
+	<process host="Host 4" function="worker"/>
+	<process host="Host 5" function="worker"/>
+	<process host="Host 6" function="worker"/>
+	<process host="Host 7" function="worker"/>
+	<process host="Host 8" function="worker"/>
+	<process host="Host 9" function="worker"/>
+	<process host="Host 10" function="worker"/>
+	<process host="Host 11" function="worker"/>
+	<process host="Host 12" function="worker"/>
+	<process host="Host 13" function="worker"/>
+	<process host="Host 14" function="worker"/>
+	<process host="Host 15" function="worker"/>
+	<process host="Host 16" function="worker"/>
+	<process host="Host 17" function="worker"/>
+	<process host="Host 18" function="worker"/>
+	<process host="Host 19" function="worker"/>
+	<process host="Host 20" function="worker"/>
+	<process host="Host 21" function="worker"/>
+	<process host="Host 22" function="worker"/>
+	<process host="Host 23" function="worker"/>
+	<process host="Host 24" function="worker"/>
+	<process host="Host 25" function="worker"/>
+	<process host="Host 26" function="worker"/>
+	<process host="Host 27" function="worker"/>
+	<process host="Host 28" function="worker"/>
+	<process host="Host 29" function="worker"/>
+	<process host="Host 30" function="worker"/>
+	<process host="Host 31" function="worker"/>
+	<process host="Host 32" function="worker"/>
+</platform>

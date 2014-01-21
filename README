@@ -1,0 +1,24 @@
+To run the example, follow these steps:
+
+1) Make sure you have installed SimGrid (3.6.2 recommended).
+   (http://simgrid.gforge.inria.fr/)
+
+2) Inside MRA's root and examples directories, edit the Makefiles and change
+   the INSTALL_PATH variable to match your SimGrid installation path
+   (e.g. /usr).
+
+3) Compile MRA++ with 'make' in the command line, and then do the same for the
+   example.
+
+4) Execute
+
+./run.sh examples/plat32-10M.xml examples/d-plat32.xml examples/mrsg32.conf 
+
+
+5) To create your platform_file use:
+
+create-plat.py
+create-deploy.py
+
+It is necessary python installed in your system.
+
