@@ -10,6 +10,5 @@ var files =
     [ "src/master-mra.c", "master-mra_8c.html", "master-mra_8c" ],
     [ "src/simcore-mra.c", "simcore-mra_8c.html", "simcore-mra_8c" ],
     [ "src/user-mra.c", "user-mra_8c.html", "user-mra_8c" ],
-    [ "src/user.c", "user_8c.html", "user_8c" ],
     [ "src/worker-mra.c", "worker-mra_8c.html", "worker-mra_8c" ]
 ];
