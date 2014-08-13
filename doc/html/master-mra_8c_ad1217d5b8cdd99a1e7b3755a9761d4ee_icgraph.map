@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$master-mra_8c.html#a54a5360a29540b0302528bf7c22af577" title="Choose a map task, and send it to a worker." alt="" coords="176,5,357,35"/>
+<area shape="rect" id="node13" href="$master-mra_8c.html#a11c1ba3e81b04f147dddbfcc637ffd1f" title="Choose a reduce task, and send it to a worker." alt="" coords="168,58,365,89"/>
+<area shape="rect" id="node5" href="$simcore-mra_8c.html#afc38789b94eade9a7b1c6ae97a784af1" title="Main master function." alt="" coords="413,31,507,62"/>
+<area shape="rect" id="node7" href="$simcore-mra_8c.html#a35d3431ac28f0898e832ac8683358a02" title="run_mra_simulation" alt="" coords="556,31,692,62"/>
+<area shape="rect" id="node9" href="$mra_8h.html#a002d713ab68756c7102fdf5d914a30da" title="MRA_main" alt="" coords="743,31,828,62"/>
+<area shape="rect" id="node11" href="$hello_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="877,31,928,62"/>
+</map>

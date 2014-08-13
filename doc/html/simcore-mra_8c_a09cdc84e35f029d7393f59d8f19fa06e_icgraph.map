@@ -1,0 +1,6 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$simcore-mra_8c.html#a266ca80d5d7ee9e58dab08f8d7044bf6" title="Initialize the MapReduce configuration." alt="" coords="157,5,291,35"/>
+<area shape="rect" id="node5" href="$simcore-mra_8c.html#a35d3431ac28f0898e832ac8683358a02" title="run_mra_simulation" alt="" coords="340,5,476,35"/>
+<area shape="rect" id="node7" href="$mra_8h.html#a002d713ab68756c7102fdf5d914a30da" title="MRA_main" alt="" coords="527,5,612,35"/>
+<area shape="rect" id="node9" href="$hello_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="661,5,712,35"/>
+</map>
