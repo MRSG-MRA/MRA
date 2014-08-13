@@ -1,0 +1,17 @@
+digraph G
+{
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="get_chunk_mra",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="get_mra_worker_id",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$worker_8c.html#a5c30e22e7fb9c6f78fca445efe8277f6",tooltip="Get the ID of a worker."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="send_sms",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$common_8c.html#aca485a177839dea76ff61fd7c34de12d",tooltip="Send a short message, of size zero."];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="send",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$common_8c.html#a385b12669d8faf7b5cdb54c1ae597e1c",tooltip="Send a message/task."];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="message_is",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$common_8c.html#ad37a02c988c597622a346cb5293243fb",tooltip="Compare the message from a task with a string."];
+  Node1 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="receive",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$common_8c.html#a6fc60933b9eabe64a880f68eba3131cc",tooltip="Receive a message/task from a mailbox."];
+}

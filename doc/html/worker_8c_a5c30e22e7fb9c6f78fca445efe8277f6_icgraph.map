@@ -1,0 +1,19 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$simcore_8c.html#afc38789b94eade9a7b1c6ae97a784af1" title="Main master function." alt="" coords="653,106,747,137"/>
+<area shape="rect" id="node11" href="$master_8c.html#a31c4fbd19a29ede1d95f2b70901f0670" title="Checks if a worker is a straggler." alt="" coords="215,27,337,58"/>
+<area shape="rect" id="node14" href="$master_8c.html#a769bac1cdfdfc862a1c9dc5444a47c95" title="Mark the tasks of a straggler as possible speculative tasks." alt="" coords="415,79,599,110"/>
+<area shape="rect" id="node18" href="$master_8c.html#a54a5360a29540b0302528bf7c22af577" title="Choose a map task, and send it to a worker." alt="" coords="416,133,597,163"/>
+<area shape="rect" id="node21" href="$master_8c.html#ad1217d5b8cdd99a1e7b3755a9761d4ee" title="Send a task to a worker." alt="" coords="219,182,333,213"/>
+<area shape="rect" id="node27" href="$mradfs_8h.html#a86d9bef64a7e145c3e00de4e74e8d1c6" title="DataNode main function." alt="" coords="448,286,565,317"/>
+<area shape="rect" id="node29" href="$worker_8c.html#a3f18ef8503f272839fc15596ace82344" title="Main worker function." alt="" coords="795,313,888,343"/>
+<area shape="rect" id="node32" href="$mradfs_8c.html#ada0444d4646937f1f59da2d5bd5cfad2" title="Process that responds to data requests." alt="" coords="219,286,333,317"/>
+<area shape="rect" id="node36" href="$worker_8c.html#a2a98086dee3b0dee1f4702f31ecd3edd" title="Process that listens for tasks." alt="" coords="659,390,741,421"/>
+<area shape="rect" id="node39" href="$worker_8c.html#a7c436b0eb3bc2ed66f582c0532e32681" title="Update the amount of data produced by a mapper." alt="" coords="192,441,360,471"/>
+<area shape="rect" id="node44" href="$worker_8c.html#a82898cfb89456ca18ca2fbcc9082e2e9" title="Get the chunk associated to a map task." alt="" coords="220,494,332,525"/>
+<area shape="rect" id="node47" href="$worker_8c.html#a5d35c6448a32348151eb87c00b3b36bb" title="Copy the itermediary pairs for a reduce task." alt="" coords="203,547,349,578"/>
+<area shape="rect" id="node5" href="$simcore_8c.html#a38e6fe30126d50477eab07c8337e4d7c" title="run_simulation" alt="" coords="936,249,1043,279"/>
+<area shape="rect" id="node7" href="$mra_8h.html#a002d713ab68756c7102fdf5d914a30da" title="MRA_main" alt="" coords="1092,249,1177,279"/>
+<area shape="rect" id="node9" href="$hello_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="main" alt="" coords="1227,249,1277,279"/>
+<area shape="rect" id="node24" href="$master_8c.html#a11c1ba3e81b04f147dddbfcc637ffd1f" title="Choose a reduce task, and send it to a worker." alt="" coords="408,186,605,217"/>
+<area shape="rect" id="node41" href="$worker_8c.html#a423d34a846a9eaf36a1a66c67f5f4c5a" title="Process that computes a task." alt="" coords="456,467,557,498"/>
+</map>

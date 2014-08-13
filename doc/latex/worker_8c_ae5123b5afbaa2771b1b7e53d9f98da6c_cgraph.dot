@@ -1,0 +1,35 @@
+digraph G
+{
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="listen",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="get_mra_worker_id",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$worker_8c.html#a5c30e22e7fb9c6f78fca445efe8277f6",tooltip="Get the ID of a worker."];
+  Node1 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="receive",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$common_8c.html#a6fc60933b9eabe64a880f68eba3131cc",tooltip="Receive a message/task from a mailbox."];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="message_is",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$common_8c.html#ad37a02c988c597622a346cb5293243fb",tooltip="Compare the message from a task with a string."];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="compute_mra",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$worker_8c.html#a423d34a846a9eaf36a1a66c67f5f4c5a",tooltip="Process that computes a task."];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="get_mra_chunk",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$worker_8c.html#a82898cfb89456ca18ca2fbcc9082e2e9",tooltip="Get the chunk associated to a map task."];
+  Node6 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="send_sms",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$common_8c.html#aca485a177839dea76ff61fd7c34de12d",tooltip="Send a short message, of size zero."];
+  Node7 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="send",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$common_8c.html#a385b12669d8faf7b5cdb54c1ae597e1c",tooltip="Send a message/task."];
+  Node8 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="get_mra_map_output",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$worker_8c.html#a5d35c6448a32348151eb87c00b3b36bb",tooltip="Copy the itermediary pairs for a reduce task."];
+  Node9 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 -> Node10 [color="midnightblue",fontsize="10",style="solid"];
+  Node10 [label="reduce_input_size",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$common_8c.html#a151110f4fee88df0190c99f7637b2b2e",tooltip="Return the input size of a reduce task."];
+  Node9 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 -> Node11 [color="midnightblue",fontsize="10",style="solid"];
+  Node11 [label="update_map_output",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$worker_8c.html#a8cc0e207ecf495a684ef77c97712e080",tooltip="Update the amount of data produced by a mapper."];
+  Node11 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+}

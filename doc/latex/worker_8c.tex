@@ -1,0 +1,335 @@
+\hypertarget{worker_8c}{\section{src/worker.c \-File \-Reference}
+\label{worker_8c}\index{src/worker.\-c@{src/worker.\-c}}
+}
+{\ttfamily \#include \char`\"{}common.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}mradfs.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}worker.\-h\char`\"{}}\*
+\-Include dependency graph for worker.\-c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{worker_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{worker_8c_a32bd1bae277b9aa336336310547bb693}{\-X\-B\-T\-\_\-\-L\-O\-G\-\_\-\-E\-X\-T\-E\-R\-N\-A\-L\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-A\-T\-E\-G\-O\-R\-Y} (msg\-\_\-test)
+\item 
+static void \hyperlink{worker_8c_a4d9e463f6550447d1fc574ff261b9473}{mra\-\_\-heartbeat} (void)
+\begin{DoxyCompactList}\small\item\em \-The mra\-\_\-heartbeat loop. \end{DoxyCompactList}\item 
+static int \hyperlink{worker_8c_a2a98086dee3b0dee1f4702f31ecd3edd}{listen\-\_\-mra} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em \-Process that listens for tasks. \end{DoxyCompactList}\item 
+static int \hyperlink{worker_8c_a423d34a846a9eaf36a1a66c67f5f4c5a}{compute\-\_\-mra} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em \-Process that computes a task. \end{DoxyCompactList}\item 
+static void \hyperlink{worker_8c_a7c436b0eb3bc2ed66f582c0532e32681}{update\-\_\-mra\-\_\-map\-\_\-output} (msg\-\_\-host\-\_\-t worker, size\-\_\-t mid)
+\begin{DoxyCompactList}\small\item\em \-Update the amount of data produced by a mapper. \end{DoxyCompactList}\item 
+static void \hyperlink{worker_8c_a82898cfb89456ca18ca2fbcc9082e2e9}{get\-\_\-mra\-\_\-chunk} (\hyperlink{common_8h_a10004c20d4d3435aa374d41e7b5bc7ba}{task\-\_\-info\-\_\-t} ti)
+\begin{DoxyCompactList}\small\item\em \-Get the chunk associated to a map task. \end{DoxyCompactList}\item 
+static void \hyperlink{worker_8c_a5d35c6448a32348151eb87c00b3b36bb}{get\-\_\-mra\-\_\-map\-\_\-output} (\hyperlink{common_8h_a10004c20d4d3435aa374d41e7b5bc7ba}{task\-\_\-info\-\_\-t} ti)
+\begin{DoxyCompactList}\small\item\em \-Copy the itermediary pairs for a reduce task. \end{DoxyCompactList}\item 
+size\-\_\-t \hyperlink{worker_8c_a5c30e22e7fb9c6f78fca445efe8277f6}{get\-\_\-mra\-\_\-worker\-\_\-id} (msg\-\_\-host\-\_\-t worker)
+\begin{DoxyCompactList}\small\item\em \-Get the \-I\-D of a worker. \end{DoxyCompactList}\item 
+int \hyperlink{worker_8c_a3f18ef8503f272839fc15596ace82344}{worker\-\_\-mra} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em \-Main worker function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{worker_8c_a423d34a846a9eaf36a1a66c67f5f4c5a}{\index{worker.\-c@{worker.\-c}!compute\-\_\-mra@{compute\-\_\-mra}}
+\index{compute\-\_\-mra@{compute\-\_\-mra}!worker.c@{worker.\-c}}
+\subsubsection[{compute\-\_\-mra}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf compute\-\_\-mra} (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{worker_8c_a423d34a846a9eaf36a1a66c67f5f4c5a}
+
+
+\-Process that computes a task. 
+
+
+
+\-Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{worker_8c_a423d34a846a9eaf36a1a66c67f5f4c5a_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{worker_8c_a423d34a846a9eaf36a1a66c67f5f4c5a_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{worker_8c_a82898cfb89456ca18ca2fbcc9082e2e9}{\index{worker.\-c@{worker.\-c}!get\-\_\-mra\-\_\-chunk@{get\-\_\-mra\-\_\-chunk}}
+\index{get\-\_\-mra\-\_\-chunk@{get\-\_\-mra\-\_\-chunk}!worker.c@{worker.\-c}}
+\subsubsection[{get\-\_\-mra\-\_\-chunk}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf get\-\_\-mra\-\_\-chunk} (
+\begin{DoxyParamCaption}
+\item[{{\bf task\-\_\-info\-\_\-t}}]{ti}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{worker_8c_a82898cfb89456ca18ca2fbcc9082e2e9}
+
+
+\-Get the chunk associated to a map task. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em ti} & \-The task information. \\
+\hline
+\end{DoxyParams}
+
+
+\-Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{worker_8c_a82898cfb89456ca18ca2fbcc9082e2e9_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{worker_8c_a82898cfb89456ca18ca2fbcc9082e2e9_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{worker_8c_a5d35c6448a32348151eb87c00b3b36bb}{\index{worker.\-c@{worker.\-c}!get\-\_\-mra\-\_\-map\-\_\-output@{get\-\_\-mra\-\_\-map\-\_\-output}}
+\index{get\-\_\-mra\-\_\-map\-\_\-output@{get\-\_\-mra\-\_\-map\-\_\-output}!worker.c@{worker.\-c}}
+\subsubsection[{get\-\_\-mra\-\_\-map\-\_\-output}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf get\-\_\-mra\-\_\-map\-\_\-output} (
+\begin{DoxyParamCaption}
+\item[{{\bf task\-\_\-info\-\_\-t}}]{ti}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{worker_8c_a5d35c6448a32348151eb87c00b3b36bb}
+
+
+\-Copy the itermediary pairs for a reduce task. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em ti} & \-The task information. \\
+\hline
+\end{DoxyParams}
+
+
+\-Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{worker_8c_a5d35c6448a32348151eb87c00b3b36bb_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{worker_8c_a5d35c6448a32348151eb87c00b3b36bb_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{worker_8c_a5c30e22e7fb9c6f78fca445efe8277f6}{\index{worker.\-c@{worker.\-c}!get\-\_\-mra\-\_\-worker\-\_\-id@{get\-\_\-mra\-\_\-worker\-\_\-id}}
+\index{get\-\_\-mra\-\_\-worker\-\_\-id@{get\-\_\-mra\-\_\-worker\-\_\-id}!worker.c@{worker.\-c}}
+\subsubsection[{get\-\_\-mra\-\_\-worker\-\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf get\-\_\-mra\-\_\-worker\-\_\-id} (
+\begin{DoxyParamCaption}
+\item[{msg\-\_\-host\-\_\-t}]{worker}
+\end{DoxyParamCaption}
+)}}\label{worker_8c_a5c30e22e7fb9c6f78fca445efe8277f6}
+
+
+\-Get the \-I\-D of a worker. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em worker} & \-The worker node. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The worker's \-I\-D number. 
+\end{DoxyReturn}
+
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{worker_8c_a5c30e22e7fb9c6f78fca445efe8277f6_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{worker_8c_a2a98086dee3b0dee1f4702f31ecd3edd}{\index{worker.\-c@{worker.\-c}!listen\-\_\-mra@{listen\-\_\-mra}}
+\index{listen\-\_\-mra@{listen\-\_\-mra}!worker.c@{worker.\-c}}
+\subsubsection[{listen\-\_\-mra}]{\setlength{\rightskip}{0pt plus 5cm}static int {\bf listen\-\_\-mra} (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{worker_8c_a2a98086dee3b0dee1f4702f31ecd3edd}
+
+
+\-Process that listens for tasks. 
+
+
+
+\-Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{worker_8c_a2a98086dee3b0dee1f4702f31ecd3edd_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{worker_8c_a2a98086dee3b0dee1f4702f31ecd3edd_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{worker_8c_a4d9e463f6550447d1fc574ff261b9473}{\index{worker.\-c@{worker.\-c}!mra\-\_\-heartbeat@{mra\-\_\-heartbeat}}
+\index{mra\-\_\-heartbeat@{mra\-\_\-heartbeat}!worker.c@{worker.\-c}}
+\subsubsection[{mra\-\_\-heartbeat}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf mra\-\_\-heartbeat} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{worker_8c_a4d9e463f6550447d1fc574ff261b9473}
+
+
+\-The mra\-\_\-heartbeat loop. 
+
+
+
+\-Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{worker_8c_a4d9e463f6550447d1fc574ff261b9473_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{worker_8c_a4d9e463f6550447d1fc574ff261b9473_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{worker_8c_a7c436b0eb3bc2ed66f582c0532e32681}{\index{worker.\-c@{worker.\-c}!update\-\_\-mra\-\_\-map\-\_\-output@{update\-\_\-mra\-\_\-map\-\_\-output}}
+\index{update\-\_\-mra\-\_\-map\-\_\-output@{update\-\_\-mra\-\_\-map\-\_\-output}!worker.c@{worker.\-c}}
+\subsubsection[{update\-\_\-mra\-\_\-map\-\_\-output}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf update\-\_\-mra\-\_\-map\-\_\-output} (
+\begin{DoxyParamCaption}
+\item[{msg\-\_\-host\-\_\-t}]{worker, }
+\item[{size\-\_\-t}]{mid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{worker_8c_a7c436b0eb3bc2ed66f582c0532e32681}
+
+
+\-Update the amount of data produced by a mapper. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em worker} & \-The worker that finished a map task. \\
+\hline
+{\em mid} & \-The \-I\-D of map task. \\
+\hline
+\end{DoxyParams}
+
+
+\-Here is the call graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{worker_8c_a7c436b0eb3bc2ed66f582c0532e32681_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{worker_8c_a7c436b0eb3bc2ed66f582c0532e32681_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{worker_8c_a3f18ef8503f272839fc15596ace82344}{\index{worker.\-c@{worker.\-c}!worker\-\_\-mra@{worker\-\_\-mra}}
+\index{worker\-\_\-mra@{worker\-\_\-mra}!worker.c@{worker.\-c}}
+\subsubsection[{worker\-\_\-mra}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf worker\-\_\-mra} (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{worker_8c_a3f18ef8503f272839fc15596ace82344}
+
+
+\-Main worker function. 
+
+\-This is the initial function of a worker node. \-It creates other processes and runs a mra\-\_\-heartbeat loop. 
+
+\-Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{worker_8c_a3f18ef8503f272839fc15596ace82344_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{worker_8c_a3f18ef8503f272839fc15596ace82344_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{worker_8c_a32bd1bae277b9aa336336310547bb693}{\index{worker.\-c@{worker.\-c}!\-X\-B\-T\-\_\-\-L\-O\-G\-\_\-\-E\-X\-T\-E\-R\-N\-A\-L\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-A\-T\-E\-G\-O\-R\-Y@{\-X\-B\-T\-\_\-\-L\-O\-G\-\_\-\-E\-X\-T\-E\-R\-N\-A\-L\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-A\-T\-E\-G\-O\-R\-Y}}
+\index{\-X\-B\-T\-\_\-\-L\-O\-G\-\_\-\-E\-X\-T\-E\-R\-N\-A\-L\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-A\-T\-E\-G\-O\-R\-Y@{\-X\-B\-T\-\_\-\-L\-O\-G\-\_\-\-E\-X\-T\-E\-R\-N\-A\-L\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-A\-T\-E\-G\-O\-R\-Y}!worker.c@{worker.\-c}}
+\subsubsection[{\-X\-B\-T\-\_\-\-L\-O\-G\-\_\-\-E\-X\-T\-E\-R\-N\-A\-L\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-A\-T\-E\-G\-O\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-X\-B\-T\-\_\-\-L\-O\-G\-\_\-\-E\-X\-T\-E\-R\-N\-A\-L\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-A\-T\-E\-G\-O\-R\-Y} (
+\begin{DoxyParamCaption}
+\item[{msg\-\_\-test}]{}
+\end{DoxyParamCaption}
+)}}\label{worker_8c_a32bd1bae277b9aa336336310547bb693}

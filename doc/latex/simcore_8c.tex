@@ -1,0 +1,399 @@
+\hypertarget{simcore_8c}{\section{src/simcore.c \-File \-Reference}
+\label{simcore_8c}\index{src/simcore.\-c@{src/simcore.\-c}}
+}
+{\ttfamily \#include $<$msg/msg.\-h$>$}\*
+{\ttfamily \#include $<$xbt/sysdep.\-h$>$}\*
+{\ttfamily \#include $<$xbt/log.\-h$>$}\*
+{\ttfamily \#include $<$xbt/asserts.\-h$>$}\*
+{\ttfamily \#include \char`\"{}mracommon.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}worker-\/mra.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}mradfs.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}mra.\-h\char`\"{}}\*
+\-Include dependency graph for simcore.\-c\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{simcore_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{simcore_8c_a706068f562dd5c64a8b7bbd4b2298dd1}{\-M\-A\-X\-\_\-\-L\-I\-N\-E\-\_\-\-S\-I\-Z\-E}~256
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{simcore_8c_ad2e657250a9756c87c6da2ea76f38875}{\-X\-B\-T\-\_\-\-L\-O\-G\-\_\-\-N\-E\-W\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-A\-T\-E\-G\-O\-R\-Y} (msg\-\_\-test,\char`\"{}\-M\-R\-A\char`\"{})
+\item 
+int \hyperlink{simcore_8c_afc38789b94eade9a7b1c6ae97a784af1}{master\-\_\-mra} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em \-Main master function. \end{DoxyCompactList}\item 
+int \hyperlink{simcore_8c_a3f18ef8503f272839fc15596ace82344}{worker\-\_\-mra} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em \-Main worker function. \end{DoxyCompactList}\item 
+static void \hyperlink{simcore_8c_a926867fcb6aaa2dcdd4f4a7ea5607a59}{check\-\_\-config\-\_\-mra} (void)
+\begin{DoxyCompactList}\small\item\em \-Check if the user configuration is sound. \end{DoxyCompactList}\item 
+static msg\-\_\-error\-\_\-t \hyperlink{simcore_8c_a38e6fe30126d50477eab07c8337e4d7c}{run\-\_\-simulation} (const char $\ast$platform\-\_\-file, const char $\ast$deploy\-\_\-file, const char $\ast$mra\-\_\-config\-\_\-file)
+\item 
+static void \hyperlink{simcore_8c_a266ca80d5d7ee9e58dab08f8d7044bf6}{init\-\_\-mr\-\_\-mra\-\_\-config} (const char $\ast$mra\-\_\-config\-\_\-file)
+\begin{DoxyCompactList}\small\item\em \-Initialize the \-Map\-Reduce configuration. \end{DoxyCompactList}\item 
+static void \hyperlink{simcore_8c_a88af1c2716456427567c196ae8d35387}{read\-\_\-mra\-\_\-config\-\_\-file} (const char $\ast$file\-\_\-name)
+\begin{DoxyCompactList}\small\item\em \-Read the \-Map\-Reduce configuration file. \end{DoxyCompactList}\item 
+static void \hyperlink{simcore_8c_a304f53ce22aa109f079f9c3e8c521dbc}{init\-\_\-mra\-\_\-config} (void)
+\begin{DoxyCompactList}\small\item\em \-Initialize the config structure. \end{DoxyCompactList}\item 
+static void \hyperlink{simcore_8c_ab6bf4d820598c4e044bd5a5430fa7047}{init\-\_\-job\-\_\-mra} (void)
+\begin{DoxyCompactList}\small\item\em \-Initialize the job structure. \end{DoxyCompactList}\item 
+static void \hyperlink{simcore_8c_a09cdc84e35f029d7393f59d8f19fa06e}{init\-\_\-mra\-\_\-stats} (void)
+\begin{DoxyCompactList}\small\item\em \-Initialize the stats structure. \end{DoxyCompactList}\item 
+static void \hyperlink{simcore_8c_a03e19a36bc82e880b5e652b2967f2721}{free\-\_\-mra\-\_\-global\-\_\-mem} (void)
+\begin{DoxyCompactList}\small\item\em \-Free allocated memory for global variables. \end{DoxyCompactList}\item 
+int \hyperlink{simcore_8c_a002d713ab68756c7102fdf5d914a30da}{\-M\-R\-A\-\_\-main} (const char $\ast$plat, const char $\ast$depl, const char $\ast$conf)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Define \-Documentation}
+\hypertarget{simcore_8c_a706068f562dd5c64a8b7bbd4b2298dd1}{\index{simcore.\-c@{simcore.\-c}!\-M\-A\-X\-\_\-\-L\-I\-N\-E\-\_\-\-S\-I\-Z\-E@{\-M\-A\-X\-\_\-\-L\-I\-N\-E\-\_\-\-S\-I\-Z\-E}}
+\index{\-M\-A\-X\-\_\-\-L\-I\-N\-E\-\_\-\-S\-I\-Z\-E@{\-M\-A\-X\-\_\-\-L\-I\-N\-E\-\_\-\-S\-I\-Z\-E}!simcore.c@{simcore.\-c}}
+\subsubsection[{\-M\-A\-X\-\_\-\-L\-I\-N\-E\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-M\-A\-X\-\_\-\-L\-I\-N\-E\-\_\-\-S\-I\-Z\-E}~256}}\label{simcore_8c_a706068f562dd5c64a8b7bbd4b2298dd1}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{simcore_8c_a926867fcb6aaa2dcdd4f4a7ea5607a59}{\index{simcore.\-c@{simcore.\-c}!check\-\_\-config\-\_\-mra@{check\-\_\-config\-\_\-mra}}
+\index{check\-\_\-config\-\_\-mra@{check\-\_\-config\-\_\-mra}!simcore.c@{simcore.\-c}}
+\subsubsection[{check\-\_\-config\-\_\-mra}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf check\-\_\-config\-\_\-mra} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{simcore_8c_a926867fcb6aaa2dcdd4f4a7ea5607a59}
+
+
+\-Check if the user configuration is sound. 
+
+
+
+\-Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{simcore_8c_a926867fcb6aaa2dcdd4f4a7ea5607a59_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{simcore_8c_a03e19a36bc82e880b5e652b2967f2721}{\index{simcore.\-c@{simcore.\-c}!free\-\_\-mra\-\_\-global\-\_\-mem@{free\-\_\-mra\-\_\-global\-\_\-mem}}
+\index{free\-\_\-mra\-\_\-global\-\_\-mem@{free\-\_\-mra\-\_\-global\-\_\-mem}!simcore.c@{simcore.\-c}}
+\subsubsection[{free\-\_\-mra\-\_\-global\-\_\-mem}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf free\-\_\-mra\-\_\-global\-\_\-mem} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{simcore_8c_a03e19a36bc82e880b5e652b2967f2721}
+
+
+\-Free allocated memory for global variables. 
+
+
+
+\-Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{simcore_8c_a03e19a36bc82e880b5e652b2967f2721_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{simcore_8c_ab6bf4d820598c4e044bd5a5430fa7047}{\index{simcore.\-c@{simcore.\-c}!init\-\_\-job\-\_\-mra@{init\-\_\-job\-\_\-mra}}
+\index{init\-\_\-job\-\_\-mra@{init\-\_\-job\-\_\-mra}!simcore.c@{simcore.\-c}}
+\subsubsection[{init\-\_\-job\-\_\-mra}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf init\-\_\-job\-\_\-mra} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{simcore_8c_ab6bf4d820598c4e044bd5a5430fa7047}
+
+
+\-Initialize the job structure. 
+
+
+
+\-Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{simcore_8c_ab6bf4d820598c4e044bd5a5430fa7047_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{simcore_8c_a266ca80d5d7ee9e58dab08f8d7044bf6}{\index{simcore.\-c@{simcore.\-c}!init\-\_\-mr\-\_\-mra\-\_\-config@{init\-\_\-mr\-\_\-mra\-\_\-config}}
+\index{init\-\_\-mr\-\_\-mra\-\_\-config@{init\-\_\-mr\-\_\-mra\-\_\-config}!simcore.c@{simcore.\-c}}
+\subsubsection[{init\-\_\-mr\-\_\-mra\-\_\-config}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf init\-\_\-mr\-\_\-mra\-\_\-config} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{mra\-\_\-config\-\_\-file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{simcore_8c_a266ca80d5d7ee9e58dab08f8d7044bf6}
+
+
+\-Initialize the \-Map\-Reduce configuration. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em mra\-\_\-config\-\_\-file} & \-The path/name of the configuration file. \\
+\hline
+\end{DoxyParams}
+
+
+\-Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{simcore_8c_a266ca80d5d7ee9e58dab08f8d7044bf6_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{simcore_8c_a266ca80d5d7ee9e58dab08f8d7044bf6_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{simcore_8c_a304f53ce22aa109f079f9c3e8c521dbc}{\index{simcore.\-c@{simcore.\-c}!init\-\_\-mra\-\_\-config@{init\-\_\-mra\-\_\-config}}
+\index{init\-\_\-mra\-\_\-config@{init\-\_\-mra\-\_\-config}!simcore.c@{simcore.\-c}}
+\subsubsection[{init\-\_\-mra\-\_\-config}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf init\-\_\-mra\-\_\-config} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{simcore_8c_a304f53ce22aa109f079f9c3e8c521dbc}
+
+
+\-Initialize the config structure. 
+
+
+
+\-Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{simcore_8c_a304f53ce22aa109f079f9c3e8c521dbc_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{simcore_8c_a304f53ce22aa109f079f9c3e8c521dbc_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{simcore_8c_a09cdc84e35f029d7393f59d8f19fa06e}{\index{simcore.\-c@{simcore.\-c}!init\-\_\-mra\-\_\-stats@{init\-\_\-mra\-\_\-stats}}
+\index{init\-\_\-mra\-\_\-stats@{init\-\_\-mra\-\_\-stats}!simcore.c@{simcore.\-c}}
+\subsubsection[{init\-\_\-mra\-\_\-stats}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf init\-\_\-mra\-\_\-stats} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{simcore_8c_a09cdc84e35f029d7393f59d8f19fa06e}
+
+
+\-Initialize the stats structure. 
+
+
+
+\-Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{simcore_8c_a09cdc84e35f029d7393f59d8f19fa06e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{simcore_8c_afc38789b94eade9a7b1c6ae97a784af1}{\index{simcore.\-c@{simcore.\-c}!master\-\_\-mra@{master\-\_\-mra}}
+\index{master\-\_\-mra@{master\-\_\-mra}!simcore.c@{simcore.\-c}}
+\subsubsection[{master\-\_\-mra}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf master\-\_\-mra} (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{simcore_8c_afc38789b94eade9a7b1c6ae97a784af1}
+
+
+\-Main master function. 
+
+
+
+\-Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{simcore_8c_afc38789b94eade9a7b1c6ae97a784af1_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{simcore_8c_afc38789b94eade9a7b1c6ae97a784af1_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{simcore_8c_a002d713ab68756c7102fdf5d914a30da}{\index{simcore.\-c@{simcore.\-c}!\-M\-R\-A\-\_\-main@{\-M\-R\-A\-\_\-main}}
+\index{\-M\-R\-A\-\_\-main@{\-M\-R\-A\-\_\-main}!simcore.c@{simcore.\-c}}
+\subsubsection[{\-M\-R\-A\-\_\-main}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-M\-R\-A\-\_\-main} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{plat, }
+\item[{const char $\ast$}]{depl, }
+\item[{const char $\ast$}]{conf}
+\end{DoxyParamCaption}
+)}}\label{simcore_8c_a002d713ab68756c7102fdf5d914a30da}
+
+
+\-Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{simcore_8c_a002d713ab68756c7102fdf5d914a30da_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{simcore_8c_a002d713ab68756c7102fdf5d914a30da_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{simcore_8c_a88af1c2716456427567c196ae8d35387}{\index{simcore.\-c@{simcore.\-c}!read\-\_\-mra\-\_\-config\-\_\-file@{read\-\_\-mra\-\_\-config\-\_\-file}}
+\index{read\-\_\-mra\-\_\-config\-\_\-file@{read\-\_\-mra\-\_\-config\-\_\-file}!simcore.c@{simcore.\-c}}
+\subsubsection[{read\-\_\-mra\-\_\-config\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}static void {\bf read\-\_\-mra\-\_\-config\-\_\-file} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{file\-\_\-name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{simcore_8c_a88af1c2716456427567c196ae8d35387}
+
+
+\-Read the \-Map\-Reduce configuration file. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em file\-\_\-name} & \-The path/name of the configuration file. \\
+\hline
+\end{DoxyParams}
+
+
+\-Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{simcore_8c_a88af1c2716456427567c196ae8d35387_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{simcore_8c_a38e6fe30126d50477eab07c8337e4d7c}{\index{simcore.\-c@{simcore.\-c}!run\-\_\-simulation@{run\-\_\-simulation}}
+\index{run\-\_\-simulation@{run\-\_\-simulation}!simcore.c@{simcore.\-c}}
+\subsubsection[{run\-\_\-simulation}]{\setlength{\rightskip}{0pt plus 5cm}static msg\-\_\-error\-\_\-t {\bf run\-\_\-simulation} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{platform\-\_\-file, }
+\item[{const char $\ast$}]{deploy\-\_\-file, }
+\item[{const char $\ast$}]{mra\-\_\-config\-\_\-file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}\label{simcore_8c_a38e6fe30126d50477eab07c8337e4d7c}
+
+\begin{DoxyParams}{\-Parameters}
+{\em platform\-\_\-file} & \-The path/name of the platform file. \\
+\hline
+{\em deploy\-\_\-file} & \-The path/name of the deploy file. \\
+\hline
+{\em mra\-\_\-config\-\_\-file} & \-The path/name of the configuration file. \\
+\hline
+\end{DoxyParams}
+
+
+\-Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{simcore_8c_a38e6fe30126d50477eab07c8337e4d7c_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{simcore_8c_a38e6fe30126d50477eab07c8337e4d7c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{simcore_8c_a3f18ef8503f272839fc15596ace82344}{\index{simcore.\-c@{simcore.\-c}!worker\-\_\-mra@{worker\-\_\-mra}}
+\index{worker\-\_\-mra@{worker\-\_\-mra}!simcore.c@{simcore.\-c}}
+\subsubsection[{worker\-\_\-mra}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf worker\-\_\-mra} (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{simcore_8c_a3f18ef8503f272839fc15596ace82344}
+
+
+\-Main worker function. 
+
+\-This is the initial function of a worker node. \-It creates other processes and runs a mra\-\_\-heartbeat loop. 
+
+\-Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{simcore_8c_a3f18ef8503f272839fc15596ace82344_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{simcore_8c_a3f18ef8503f272839fc15596ace82344_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{simcore_8c_ad2e657250a9756c87c6da2ea76f38875}{\index{simcore.\-c@{simcore.\-c}!\-X\-B\-T\-\_\-\-L\-O\-G\-\_\-\-N\-E\-W\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-A\-T\-E\-G\-O\-R\-Y@{\-X\-B\-T\-\_\-\-L\-O\-G\-\_\-\-N\-E\-W\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-A\-T\-E\-G\-O\-R\-Y}}
+\index{\-X\-B\-T\-\_\-\-L\-O\-G\-\_\-\-N\-E\-W\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-A\-T\-E\-G\-O\-R\-Y@{\-X\-B\-T\-\_\-\-L\-O\-G\-\_\-\-N\-E\-W\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-A\-T\-E\-G\-O\-R\-Y}!simcore.c@{simcore.\-c}}
+\subsubsection[{\-X\-B\-T\-\_\-\-L\-O\-G\-\_\-\-N\-E\-W\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-A\-T\-E\-G\-O\-R\-Y}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-X\-B\-T\-\_\-\-L\-O\-G\-\_\-\-N\-E\-W\-\_\-\-D\-E\-F\-A\-U\-L\-T\-\_\-\-C\-A\-T\-E\-G\-O\-R\-Y} (
+\begin{DoxyParamCaption}
+\item[{msg\-\_\-test}]{, }
+\item[{\char`\"{}\-M\-R\-A\char`\"{}}]{}
+\end{DoxyParamCaption}
+)}}\label{simcore_8c_ad2e657250a9756c87c6da2ea76f38875}

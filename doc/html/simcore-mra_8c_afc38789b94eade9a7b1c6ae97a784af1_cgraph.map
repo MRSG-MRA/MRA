@@ -1,0 +1,18 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$worker-mra_8c.html#a4d9e463f6550447d1fc574ff261b9473" title="The mra_heartbeat loop." alt="" coords="192,5,299,35"/>
+<area shape="rect" id="node9" href="$common-mra_8c.html#ad37a02c988c597622a346cb5293243fb" title="Compare the message from a task with a string." alt="" coords="837,31,933,62"/>
+<area shape="rect" id="node11" href="$master-mra_8c.html#a35e18876ff26f7fe749fe4aeba3a7208" title="Print the job configuration." alt="" coords="187,109,304,139"/>
+<area shape="rect" id="node13" href="$common-mra_8c.html#a6fc60933b9eabe64a880f68eba3131cc" title="Receive a message/task from a mailbox." alt="" coords="212,162,279,193"/>
+<area shape="rect" id="node15" href="$worker-mra_8c.html#a5c30e22e7fb9c6f78fca445efe8277f6" title="Get the ID of a worker." alt="" coords="652,317,788,347"/>
+<area shape="rect" id="node18" href="$master-mra_8c.html#a31c4fbd19a29ede1d95f2b70901f0670" title="Checks if a worker is a straggler." alt="" coords="436,265,559,295"/>
+<area shape="rect" id="node21" href="$master-mra_8c.html#a769bac1cdfdfc862a1c9dc5444a47c95" title="Mark the tasks of a straggler as possible speculative tasks." alt="" coords="153,317,337,347"/>
+<area shape="rect" id="node27" href="$master-mra_8c.html#a54a5360a29540b0302528bf7c22af577" title="Choose a map task, and send it to a worker." alt="" coords="155,395,336,426"/>
+<area shape="rect" id="node35" href="$master-mra_8c.html#a11c1ba3e81b04f147dddbfcc637ffd1f" title="Choose a reduce task, and send it to a worker." alt="" coords="147,449,344,479"/>
+<area shape="rect" id="node38" href="$master-mra_8c.html#abb91a100f0067b79a6d171ee510df540" title="Kill all copies of a task." alt="" coords="155,502,336,533"/>
+<area shape="rect" id="node40" href="$master-mra_8c.html#ad10e64f15346eb21a4a4b2dab5ab4007" title="Print job statistics." alt="" coords="191,555,300,586"/>
+<area shape="rect" id="node5" href="$common-mra_8c.html#a305ac8e3389f94106990aa3c52c91416" title="Send a short message, of size zero." alt="" coords="440,5,555,35"/>
+<area shape="rect" id="node7" href="$common-mra_8c.html#a385b12669d8faf7b5cdb54c1ae597e1c" title="Send a message/task." alt="" coords="695,5,745,35"/>
+<area shape="rect" id="node25" href="$master-mra_8c.html#a307706539b3d6ddd301c250ef7e0990c" title="Returns for how long a task is running." alt="" coords="415,369,580,399"/>
+<area shape="rect" id="node30" href="$dfs-mra_8c.html#a3f8eddb9dd6200115f7d88325537035e" title="Choose a random DataNode that owns a specific chunk." alt="" coords="392,473,603,503"/>
+<area shape="rect" id="node32" href="$master-mra_8c.html#ad1217d5b8cdd99a1e7b3755a9761d4ee" title="Send a task to a worker." alt="" coords="440,526,555,557"/>
+</map>

@@ -1,0 +1,88 @@
+\hypertarget{user-mra_8c}{\section{src/user-\/mra.c \-File \-Reference}
+\label{user-mra_8c}\index{src/user-\/mra.\-c@{src/user-\/mra.\-c}}
+}
+{\ttfamily \#include \char`\"{}common-\/mra.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}dfs-\/mra.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}mra.\-h\char`\"{}}\*
+\-Include dependency graph for user-\/mra.c\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{user-mra_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{user-mra_8c_ad32b287f1aaa8708a946e2909023bd66}{\-M\-R\-A\-\_\-init} (void)
+\item 
+void \hyperlink{user-mra_8c_acffcb0453d48f70652984d90ee689172}{\-M\-R\-A\-\_\-set\-\_\-task\-\_\-mra\-\_\-cost\-\_\-f} (double($\ast$f)(enum \hyperlink{mra_8h_afa14b6e068c0e0b8557777e16f2582f2}{phase\-\_\-e} phase, size\-\_\-t tid, size\-\_\-t wid))
+\item 
+void \hyperlink{user-mra_8c_abbd980571ade6f7620d2807e9e05ef8f}{\-M\-R\-A\-\_\-set\-\_\-dfs\-\_\-f} (void($\ast$f)(char $\ast$$\ast$mra\-\_\-dfs\-\_\-matrix, size\-\_\-t chunks, size\-\_\-t workers\-\_\-mra, int replicas))
+\item 
+void \hyperlink{user-mra_8c_ac642a851bf0b0df3254a086e12d93ab3}{\-M\-R\-A\-\_\-set\-\_\-map\-\_\-mra\-\_\-output\-\_\-f} (int($\ast$f)(size\-\_\-t mid, size\-\_\-t rid))
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{user-mra_8c_ad32b287f1aaa8708a946e2909023bd66}{\index{user-\/mra.\-c@{user-\/mra.\-c}!\-M\-R\-A\-\_\-init@{\-M\-R\-A\-\_\-init}}
+\index{\-M\-R\-A\-\_\-init@{\-M\-R\-A\-\_\-init}!user-mra.c@{user-\/mra.\-c}}
+\subsubsection[{\-M\-R\-A\-\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-M\-R\-A\-\_\-init} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{user-mra_8c_ad32b287f1aaa8708a946e2909023bd66}
+
+
+\-Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{user-mra_8c_ad32b287f1aaa8708a946e2909023bd66_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{user-mra_8c_abbd980571ade6f7620d2807e9e05ef8f}{\index{user-\/mra.\-c@{user-\/mra.\-c}!\-M\-R\-A\-\_\-set\-\_\-dfs\-\_\-f@{\-M\-R\-A\-\_\-set\-\_\-dfs\-\_\-f}}
+\index{\-M\-R\-A\-\_\-set\-\_\-dfs\-\_\-f@{\-M\-R\-A\-\_\-set\-\_\-dfs\-\_\-f}!user-mra.c@{user-\/mra.\-c}}
+\subsubsection[{\-M\-R\-A\-\_\-set\-\_\-dfs\-\_\-f}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-M\-R\-A\-\_\-set\-\_\-dfs\-\_\-f} (
+\begin{DoxyParamCaption}
+\item[{void($\ast$)(char $\ast$$\ast$mra\-\_\-dfs\-\_\-matrix, size\-\_\-t chunks, size\-\_\-t workers\-\_\-mra, int replicas)}]{f}
+\end{DoxyParamCaption}
+)}}\label{user-mra_8c_abbd980571ade6f7620d2807e9e05ef8f}
+\hypertarget{user-mra_8c_ac642a851bf0b0df3254a086e12d93ab3}{\index{user-\/mra.\-c@{user-\/mra.\-c}!\-M\-R\-A\-\_\-set\-\_\-map\-\_\-mra\-\_\-output\-\_\-f@{\-M\-R\-A\-\_\-set\-\_\-map\-\_\-mra\-\_\-output\-\_\-f}}
+\index{\-M\-R\-A\-\_\-set\-\_\-map\-\_\-mra\-\_\-output\-\_\-f@{\-M\-R\-A\-\_\-set\-\_\-map\-\_\-mra\-\_\-output\-\_\-f}!user-mra.c@{user-\/mra.\-c}}
+\subsubsection[{\-M\-R\-A\-\_\-set\-\_\-map\-\_\-mra\-\_\-output\-\_\-f}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-M\-R\-A\-\_\-set\-\_\-map\-\_\-mra\-\_\-output\-\_\-f} (
+\begin{DoxyParamCaption}
+\item[{int($\ast$)(size\-\_\-t mid, size\-\_\-t rid)}]{f}
+\end{DoxyParamCaption}
+)}}\label{user-mra_8c_ac642a851bf0b0df3254a086e12d93ab3}
+
+
+\-Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{user-mra_8c_ac642a851bf0b0df3254a086e12d93ab3_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{user-mra_8c_acffcb0453d48f70652984d90ee689172}{\index{user-\/mra.\-c@{user-\/mra.\-c}!\-M\-R\-A\-\_\-set\-\_\-task\-\_\-mra\-\_\-cost\-\_\-f@{\-M\-R\-A\-\_\-set\-\_\-task\-\_\-mra\-\_\-cost\-\_\-f}}
+\index{\-M\-R\-A\-\_\-set\-\_\-task\-\_\-mra\-\_\-cost\-\_\-f@{\-M\-R\-A\-\_\-set\-\_\-task\-\_\-mra\-\_\-cost\-\_\-f}!user-mra.c@{user-\/mra.\-c}}
+\subsubsection[{\-M\-R\-A\-\_\-set\-\_\-task\-\_\-mra\-\_\-cost\-\_\-f}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-M\-R\-A\-\_\-set\-\_\-task\-\_\-mra\-\_\-cost\-\_\-f} (
+\begin{DoxyParamCaption}
+\item[{double($\ast$)(enum {\bf phase\-\_\-e} phase, size\-\_\-t tid, size\-\_\-t wid)}]{f}
+\end{DoxyParamCaption}
+)}}\label{user-mra_8c_acffcb0453d48f70652984d90ee689172}
+
+
+\-Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{user-mra_8c_acffcb0453d48f70652984d90ee689172_icgraph}
+\end{center}
+\end{figure}
+
+
