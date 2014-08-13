@@ -14,7 +14,7 @@ To run the example, follow these steps:
 
 3) Compile MRA with 'make' in the command line, and then do the same for the example.
 
-4)  Into examples folder has platform samples. Install behind the python to run
+4)  Into examples folder, has platform samples. Install the python before for running,  in order to create another platforms.
 
 	Syntax: platform_file.xml num_workers cores_per_node_min[:numCores_max] cpu_min[:cpu_max] latency_min[:latency_max] bw_min[:bw_max]'
 	
