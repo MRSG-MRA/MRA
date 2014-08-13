@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$simcore-mra_8c.html#a304f53ce22aa109f079f9c3e8c521dbc" title="Initialize the config structure." alt="" coords="201,5,311,35"/>
-<area shape="rect" id="node7" href="$simcore-mra_8c.html#a09cdc84e35f029d7393f59d8f19fa06e" title="Initialize the stats structure." alt="" coords="205,58,307,89"/>
-<area shape="rect" id="node9" href="$simcore-mra_8c.html#ab6bf4d820598c4e044bd5a5430fa7047" title="Initialize the job structure." alt="" coords="209,111,303,142"/>
-<area shape="rect" id="node11" href="$dfs-mra_8c.html#a23d972ed8df40ef6ff709f57e3944042" title="Distribute chunks (and replicas) to DataNodes." alt="" coords="187,165,325,195"/>
-<area shape="rect" id="node5" href="$common-mra_8c.html#a411d5133ab6881d40ef4cb44a7a47428" title="Return the maximum of two values." alt="" coords="373,5,440,35"/>
-</map>
