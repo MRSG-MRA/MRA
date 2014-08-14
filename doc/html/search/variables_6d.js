@@ -14,5 +14,5 @@ var searchData=
   ['mra_5fheartbeats',['mra_heartbeats',['../structjob__s.html#a7e379eed44e91688e48a9ff5ff5a12c9',1,'job_s']]],
   ['mra_5fmap_5fremote',['mra_map_remote',['../structstats__s.html#ae49231fe6e7f535421d0b0cc63af8324',1,'stats_s']]],
   ['mra_5fnumber_5fof_5fworkers',['mra_number_of_workers',['../structconfig__s.html#a3a5b8a103b3cb1934cfb1aa58a1e4d86',1,'config_s']]],
-  ['mra_5fperc',['mra_perc',['../common-mra_8h.html#aaa0bc264a86ff2516e39fdba05b72b66',1,'common-mra.h']]]
+  ['mra_5fperc',['mra_perc',['../common__mra_8h.html#aaa0bc264a86ff2516e39fdba05b72b66',1,'common_mra.h']]]
 ];

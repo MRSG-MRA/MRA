@@ -7,7 +7,7 @@ DEFS = -L$(INSTALL_PATH)/lib
 LDADD = -lm -lsimgrid
 
 BIN = libmra.a
-OBJ = common-mra.o simcore-mra.o dfs-mra.o master-mra.o worker-mra.o user-mra.o
+OBJ = common_mra.o simcore_mra.o dfs_mra.o master_mra.o worker_mra.o user_mra.o
 
 all: $(BIN)
 

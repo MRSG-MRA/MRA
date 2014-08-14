@@ -1,14 +1,14 @@
 var files =
 [
-    [ "examples/hello.c", "hello_8c.html", "hello_8c" ],
-    [ "include/common-mra.h", "common-mra_8h.html", "common-mra_8h" ],
-    [ "include/dfs-mra.h", "dfs-mra_8h.html", "dfs-mra_8h" ],
+    [ "examples/hello_mra.c", "hello__mra_8c.html", "hello__mra_8c" ],
+    [ "include/common_mra.h", "common__mra_8h.html", "common__mra_8h" ],
+    [ "include/dfs_mra.h", "dfs__mra_8h.html", "dfs__mra_8h" ],
     [ "include/mra.h", "mra_8h.html", "mra_8h" ],
-    [ "include/worker-mra.h", "worker-mra_8h.html", "worker-mra_8h" ],
-    [ "src/common-mra.c", "common-mra_8c.html", "common-mra_8c" ],
-    [ "src/dfs-mra.c", "dfs-mra_8c.html", "dfs-mra_8c" ],
-    [ "src/master-mra.c", "master-mra_8c.html", "master-mra_8c" ],
-    [ "src/simcore-mra.c", "simcore-mra_8c.html", "simcore-mra_8c" ],
-    [ "src/user-mra.c", "user-mra_8c.html", "user-mra_8c" ],
-    [ "src/worker-mra.c", "worker-mra_8c.html", "worker-mra_8c" ]
+    [ "include/worker_mra.h", "worker__mra_8h.html", "worker__mra_8h" ],
+    [ "src/common_mra.c", "common__mra_8c.html", "common__mra_8c" ],
+    [ "src/dfs_mra.c", "dfs__mra_8c.html", "dfs__mra_8c" ],
+    [ "src/master_mra.c", "master__mra_8c.html", "master__mra_8c" ],
+    [ "src/simcore_mra.c", "simcore__mra_8c.html", "simcore__mra_8c" ],
+    [ "src/user_mra.c", "user__mra_8c.html", "user__mra_8c" ],
+    [ "src/worker_mra.c", "worker__mra_8c.html", "worker__mra_8c" ]
 ];

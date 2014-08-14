@@ -1,6 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$worker-mra_8c.html#a5c30e22e7fb9c6f78fca445efe8277f6" title="Get the ID of a worker." alt="" coords="337,13,473,43"/>
-<area shape="rect" id="node5" href="$common-mra_8c.html#a6fc60933b9eabe64a880f68eba3131cc" title="Receive a message/task from a mailbox." alt="" coords="196,25,263,55"/>
-<area shape="rect" id="node7" href="$common-mra_8c.html#ad37a02c988c597622a346cb5293243fb" title="Compare the message from a task with a string." alt="" coords="357,105,453,135"/>
-<area shape="rect" id="node9" href="$dfs-mra_8c.html#ada0444d4646937f1f59da2d5bd5cfad2" title="Process that responds to data requests." alt="" coords="172,78,287,109"/>
-</map>

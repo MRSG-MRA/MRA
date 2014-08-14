@@ -1,0 +1,492 @@
+\hypertarget{common__mra_8h}{\section{include/common\-\_\-mra.h \-File \-Reference}
+\label{common__mra_8h}\index{include/common\-\_\-mra.\-h@{include/common\-\_\-mra.\-h}}
+}
+{\ttfamily \#include $<$msg/msg.\-h$>$}\*
+{\ttfamily \#include $<$xbt/sysdep.\-h$>$}\*
+{\ttfamily \#include $<$xbt/log.\-h$>$}\*
+{\ttfamily \#include $<$xbt/asserts.\-h$>$}\*
+{\ttfamily \#include \char`\"{}mra.\-h\char`\"{}}\*
+\-Include dependency graph for common\-\_\-mra.\-h\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{common__mra_8h__incl}
+\end{center}
+\end{figure}
+\-This graph shows which files directly or indirectly include this file\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{common__mra_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{\-Data \-Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmra__heartbeat__s}{mra\-\_\-heartbeat\-\_\-s}
+\begin{DoxyCompactList}\small\item\em \-Information sent by the workers with every heartbeat. \end{DoxyCompactList}\item 
+struct \hyperlink{structconfig__s}{config\-\_\-s}
+\item 
+struct \hyperlink{structjob__s}{job\-\_\-s}
+\item 
+struct \hyperlink{structtask__info__s}{task\-\_\-info\-\_\-s}
+\begin{DoxyCompactList}\small\item\em \-Information sent as the task data. \end{DoxyCompactList}\item 
+struct \hyperlink{structstats__s}{stats\-\_\-s}
+\item 
+struct \hyperlink{structuser__s}{user\-\_\-s}
+\end{DoxyCompactItemize}
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{common__mra_8h_a85026a76b45b05d1b98bb9a1d1ea5385}{\-M\-R\-A\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-M\-I\-N\-\_\-\-I\-N\-T\-E\-R\-V\-A\-L}~3
+\item 
+\#define \hyperlink{common__mra_8h_a2f68e94ff27ef3f63e98127818653e8f}{\-M\-R\-A\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}~600
+\item 
+\#define \hyperlink{common__mra_8h_ae17048f0a7244495add2d7bff7575b46}{\-S\-M\-S\-\_\-\-G\-E\-T\-\_\-\-M\-R\-A\-\_\-\-C\-H\-U\-N\-K}~\char`\"{}\-S\-M\-S-\/\-G\-C\char`\"{}
+\item 
+\#define \hyperlink{common__mra_8h_abe9d0eaf98f72d6ef37b89d365ae4621}{\-S\-M\-S\-\_\-\-G\-E\-T\-\_\-\-I\-N\-T\-E\-R\-\_\-\-M\-R\-S\-G\-\_\-\-P\-A\-I\-R\-S}~\char`\"{}\-S\-M\-S-\/\-G\-I\-P\char`\"{}
+\item 
+\#define \hyperlink{common__mra_8h_a106ba618bcd33751585f4051cede493e}{\-S\-M\-S\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-M\-R\-A}~\char`\"{}\-S\-M\-S-\/\-H\-B\char`\"{}
+\item 
+\#define \hyperlink{common__mra_8h_ac21fccca7436107062418b1141b8637e}{\-S\-M\-S\-\_\-\-T\-A\-S\-K\-\_\-\-M\-R\-S\-G}~\char`\"{}\-S\-M\-S-\/\-T\char`\"{}
+\item 
+\#define \hyperlink{common__mra_8h_a38207200983740d1ce5ee98ae9efe08c}{\-S\-M\-S\-\_\-\-T\-A\-S\-K\-\_\-\-M\-R\-S\-G\-\_\-\-D\-O\-N\-E}~\char`\"{}\-S\-M\-S-\/\-T\-D\char`\"{}
+\item 
+\#define \hyperlink{common__mra_8h_a110bc7a79c41ebd364349073068a88b6}{\-S\-M\-S\-\_\-\-F\-I\-N\-I\-S\-H\-\_\-\-M\-R\-A}~\char`\"{}\-S\-M\-S-\/\-F\char`\"{}
+\item 
+\#define \hyperlink{common__mra_8h_a655c84af1b0034986ff56e12e84f983d}{\-N\-O\-N\-E}~(-\/1)
+\item 
+\#define \hyperlink{common__mra_8h_a3a11044774f43ab067a966d654bc1fa8}{\-M\-A\-X\-\_\-\-S\-P\-E\-C\-U\-L\-A\-T\-I\-V\-E\-\_\-\-C\-O\-P\-I\-E\-S}~3
+\item 
+\#define \hyperlink{common__mra_8h_afaa0d742cbc433ed6d7dbb10dfd94670}{\-M\-A\-I\-L\-B\-O\-X\-\_\-\-A\-L\-I\-A\-S\-\_\-\-S\-I\-Z\-E}~256
+\item 
+\#define \hyperlink{common__mra_8h_a7648dbffbb9dd848a40b7c76cf5e4223}{\-M\-A\-S\-T\-E\-R\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}~\char`\"{}\-M\-A\-S\-T\-E\-R\-\_\-\-M\-R\-A\char`\"{}
+\item 
+\#define \hyperlink{common__mra_8h_a03ecfabdf95bb7456f21bcd120c76665}{\-D\-A\-T\-A\-N\-O\-D\-E\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}~\char`\"{}\%zu\-:\-D\-N\char`\"{}
+\item 
+\#define \hyperlink{common__mra_8h_a1366ac09f7a23b1235da07586d163ebe}{\-T\-A\-S\-K\-T\-R\-A\-C\-K\-E\-R\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}~\char`\"{}\%zu\-:\-T\-T\char`\"{}
+\item 
+\#define \hyperlink{common__mra_8h_ae559bdca40b1742557e7cebb210c8959}{\-T\-A\-S\-K\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}~\char`\"{}\%zu\-:\%d\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{\-Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structmra__heartbeat__s}{mra\-\_\-heartbeat\-\_\-s} $\ast$ \hyperlink{common__mra_8h_a9a9d834f744f36f4e51ebf6c532e26bd}{mra\-\_\-heartbeat\-\_\-t}
+\item 
+typedef struct \hyperlink{structtask__info__s}{task\-\_\-info\-\_\-s} $\ast$ \hyperlink{common__mra_8h_a54f41524090023e9b283ecbef8b955d6}{mra\-\_\-task\-\_\-info\-\_\-t}
+\end{DoxyCompactItemize}
+\subsection*{\-Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{common__mra_8h_aadf6e8ce08a315d3a320b05b2bcf27c7}{task\-\_\-status\-\_\-e} \{ \hyperlink{common__mra_8h_aadf6e8ce08a315d3a320b05b2bcf27c7a107af46c195ca17124951f9da9e4516e}{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-P\-E\-N\-D\-I\-N\-G}, 
+\hyperlink{common__mra_8h_aadf6e8ce08a315d3a320b05b2bcf27c7a834ab8fd9011e98aadb58a05c2bcca7a}{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-T\-I\-P}, 
+\hyperlink{common__mra_8h_aadf6e8ce08a315d3a320b05b2bcf27c7aad2c0fd8c428d4848bcbfe0e338bed95}{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-T\-I\-P\-\_\-\-S\-L\-O\-W}, 
+\hyperlink{common__mra_8h_aadf6e8ce08a315d3a320b05b2bcf27c7a51f9b001d2b46f2aa6399622d2277520}{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-D\-O\-N\-E}
+ \}
+\begin{DoxyCompactList}\small\item\em \-Possible task status. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+msg\-\_\-error\-\_\-t \hyperlink{common__mra_8h_a385b12669d8faf7b5cdb54c1ae597e1c}{send} (const char $\ast$str, double cpu, double net, void $\ast$data, const char $\ast$mailbox)
+\begin{DoxyCompactList}\small\item\em \-Send a message/task. \end{DoxyCompactList}\item 
+msg\-\_\-error\-\_\-t \hyperlink{common__mra_8h_a305ac8e3389f94106990aa3c52c91416}{send\-\_\-mra\-\_\-sms} (const char $\ast$str, const char $\ast$mailbox)
+\begin{DoxyCompactList}\small\item\em \-Send a short message, of size zero. \end{DoxyCompactList}\item 
+msg\-\_\-error\-\_\-t \hyperlink{common__mra_8h_a6fc60933b9eabe64a880f68eba3131cc}{receive} (msg\-\_\-task\-\_\-t $\ast$msg, const char $\ast$mailbox)
+\begin{DoxyCompactList}\small\item\em \-Receive a message/task from a mailbox. \end{DoxyCompactList}\item 
+int \hyperlink{common__mra_8h_ad37a02c988c597622a346cb5293243fb}{message\-\_\-is} (msg\-\_\-task\-\_\-t msg, const char $\ast$str)
+\begin{DoxyCompactList}\small\item\em \-Compare the message from a task with a string. \end{DoxyCompactList}\item 
+int \hyperlink{common__mra_8h_a411d5133ab6881d40ef4cb44a7a47428}{maxval} (int a, int b)
+\begin{DoxyCompactList}\small\item\em \-Return the maximum of two values. \end{DoxyCompactList}\item 
+size\-\_\-t \hyperlink{common__mra_8h_a1df0d355a0754a40a7697437294d8431}{map\-\_\-mra\-\_\-output\-\_\-size} (size\-\_\-t mid)
+\begin{DoxyCompactList}\small\item\em \-Return the output size of a map task. \end{DoxyCompactList}\item 
+size\-\_\-t \hyperlink{common__mra_8h_a8205e98d4874b7e31f138d5016ad1eba}{reduce\-\_\-mra\-\_\-input\-\_\-size} (size\-\_\-t rid)
+\begin{DoxyCompactList}\small\item\em \-Return the input size of a reduce task. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+int $\ast$ \hyperlink{common__mra_8h_a25cc609dae2875ebd3e01dec54626409}{dist\-\_\-bruta}
+\begin{DoxyCompactList}\small\item\em \-Initialize dist\-\_\-bruta, task\-\_\-exec, avg\-\_\-task\-\_\-exec. \end{DoxyCompactList}\item 
+double $\ast$ \hyperlink{common__mra_8h_a3643aab6c35479d8e7c2f7e46bdb04b8}{task\-\_\-exec}
+\item 
+double $\ast$ \hyperlink{common__mra_8h_afc43959c8dc45a0582a605a20e83aa0d}{avg\-\_\-task\-\_\-exec\-\_\-map}
+\item 
+double $\ast$ \hyperlink{common__mra_8h_ad5b90869efe31de6176f099e9cf99de5}{avg\-\_\-task\-\_\-exec\-\_\-reduce}
+\item 
+int \hyperlink{common__mra_8h_a40c5dda5ba96917071a5d075c25444b2}{\-Fg}
+\item 
+int \hyperlink{common__mra_8h_aaa0bc264a86ff2516e39fdba05b72b66}{mra\-\_\-perc}
+\item 
+struct \hyperlink{structconfig__s}{config\-\_\-s} \hyperlink{common__mra_8h_a1860c3de3eef8309ccc6b068eb3a08f6}{config\-\_\-mra}
+\item 
+struct \hyperlink{structjob__s}{job\-\_\-s} \hyperlink{common__mra_8h_a110d69f20330d00e3fa77e764feb5d54}{job\-\_\-mra}
+\item 
+struct \hyperlink{structstats__s}{stats\-\_\-s} \hyperlink{common__mra_8h_aa526e398bda7952ec6bcc5c33d39abac}{stats\-\_\-mra}
+\item 
+struct \hyperlink{structuser__s}{user\-\_\-s} \hyperlink{common__mra_8h_ad7eb2fd97a2f868b28c25405de9a4e72}{user\-\_\-mra}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Define \-Documentation}
+\hypertarget{common__mra_8h_a03ecfabdf95bb7456f21bcd120c76665}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-D\-A\-T\-A\-N\-O\-D\-E\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X@{\-D\-A\-T\-A\-N\-O\-D\-E\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}}
+\index{\-D\-A\-T\-A\-N\-O\-D\-E\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X@{\-D\-A\-T\-A\-N\-O\-D\-E\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{\-D\-A\-T\-A\-N\-O\-D\-E\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-D\-A\-T\-A\-N\-O\-D\-E\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}~\char`\"{}\%zu\-:\-D\-N\char`\"{}}}\label{common__mra_8h_a03ecfabdf95bb7456f21bcd120c76665}
+\hypertarget{common__mra_8h_afaa0d742cbc433ed6d7dbb10dfd94670}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-M\-A\-I\-L\-B\-O\-X\-\_\-\-A\-L\-I\-A\-S\-\_\-\-S\-I\-Z\-E@{\-M\-A\-I\-L\-B\-O\-X\-\_\-\-A\-L\-I\-A\-S\-\_\-\-S\-I\-Z\-E}}
+\index{\-M\-A\-I\-L\-B\-O\-X\-\_\-\-A\-L\-I\-A\-S\-\_\-\-S\-I\-Z\-E@{\-M\-A\-I\-L\-B\-O\-X\-\_\-\-A\-L\-I\-A\-S\-\_\-\-S\-I\-Z\-E}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{\-M\-A\-I\-L\-B\-O\-X\-\_\-\-A\-L\-I\-A\-S\-\_\-\-S\-I\-Z\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-M\-A\-I\-L\-B\-O\-X\-\_\-\-A\-L\-I\-A\-S\-\_\-\-S\-I\-Z\-E}~256}}\label{common__mra_8h_afaa0d742cbc433ed6d7dbb10dfd94670}
+\hypertarget{common__mra_8h_a7648dbffbb9dd848a40b7c76cf5e4223}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-M\-A\-S\-T\-E\-R\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X@{\-M\-A\-S\-T\-E\-R\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}}
+\index{\-M\-A\-S\-T\-E\-R\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X@{\-M\-A\-S\-T\-E\-R\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{\-M\-A\-S\-T\-E\-R\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-M\-A\-S\-T\-E\-R\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}~\char`\"{}\-M\-A\-S\-T\-E\-R\-\_\-\-M\-R\-A\char`\"{}}}\label{common__mra_8h_a7648dbffbb9dd848a40b7c76cf5e4223}
+\hypertarget{common__mra_8h_a3a11044774f43ab067a966d654bc1fa8}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-M\-A\-X\-\_\-\-S\-P\-E\-C\-U\-L\-A\-T\-I\-V\-E\-\_\-\-C\-O\-P\-I\-E\-S@{\-M\-A\-X\-\_\-\-S\-P\-E\-C\-U\-L\-A\-T\-I\-V\-E\-\_\-\-C\-O\-P\-I\-E\-S}}
+\index{\-M\-A\-X\-\_\-\-S\-P\-E\-C\-U\-L\-A\-T\-I\-V\-E\-\_\-\-C\-O\-P\-I\-E\-S@{\-M\-A\-X\-\_\-\-S\-P\-E\-C\-U\-L\-A\-T\-I\-V\-E\-\_\-\-C\-O\-P\-I\-E\-S}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{\-M\-A\-X\-\_\-\-S\-P\-E\-C\-U\-L\-A\-T\-I\-V\-E\-\_\-\-C\-O\-P\-I\-E\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-M\-A\-X\-\_\-\-S\-P\-E\-C\-U\-L\-A\-T\-I\-V\-E\-\_\-\-C\-O\-P\-I\-E\-S}~3}}\label{common__mra_8h_a3a11044774f43ab067a966d654bc1fa8}
+\hypertarget{common__mra_8h_a85026a76b45b05d1b98bb9a1d1ea5385}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-M\-R\-A\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-M\-I\-N\-\_\-\-I\-N\-T\-E\-R\-V\-A\-L@{\-M\-R\-A\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-M\-I\-N\-\_\-\-I\-N\-T\-E\-R\-V\-A\-L}}
+\index{\-M\-R\-A\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-M\-I\-N\-\_\-\-I\-N\-T\-E\-R\-V\-A\-L@{\-M\-R\-A\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-M\-I\-N\-\_\-\-I\-N\-T\-E\-R\-V\-A\-L}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{\-M\-R\-A\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-M\-I\-N\-\_\-\-I\-N\-T\-E\-R\-V\-A\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-M\-R\-A\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-M\-I\-N\-\_\-\-I\-N\-T\-E\-R\-V\-A\-L}~3}}\label{common__mra_8h_a85026a76b45b05d1b98bb9a1d1ea5385}
+\hypertarget{common__mra_8h_a2f68e94ff27ef3f63e98127818653e8f}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-M\-R\-A\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T@{\-M\-R\-A\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}}
+\index{\-M\-R\-A\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T@{\-M\-R\-A\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{\-M\-R\-A\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-M\-R\-A\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-T\-I\-M\-E\-O\-U\-T}~600}}\label{common__mra_8h_a2f68e94ff27ef3f63e98127818653e8f}
+\hypertarget{common__mra_8h_a655c84af1b0034986ff56e12e84f983d}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-N\-O\-N\-E@{\-N\-O\-N\-E}}
+\index{\-N\-O\-N\-E@{\-N\-O\-N\-E}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{\-N\-O\-N\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-N\-O\-N\-E}~(-\/1)}}\label{common__mra_8h_a655c84af1b0034986ff56e12e84f983d}
+\hypertarget{common__mra_8h_a110bc7a79c41ebd364349073068a88b6}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-S\-M\-S\-\_\-\-F\-I\-N\-I\-S\-H\-\_\-\-M\-R\-A@{\-S\-M\-S\-\_\-\-F\-I\-N\-I\-S\-H\-\_\-\-M\-R\-A}}
+\index{\-S\-M\-S\-\_\-\-F\-I\-N\-I\-S\-H\-\_\-\-M\-R\-A@{\-S\-M\-S\-\_\-\-F\-I\-N\-I\-S\-H\-\_\-\-M\-R\-A}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{\-S\-M\-S\-\_\-\-F\-I\-N\-I\-S\-H\-\_\-\-M\-R\-A}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-M\-S\-\_\-\-F\-I\-N\-I\-S\-H\-\_\-\-M\-R\-A}~\char`\"{}\-S\-M\-S-\/\-F\char`\"{}}}\label{common__mra_8h_a110bc7a79c41ebd364349073068a88b6}
+\hypertarget{common__mra_8h_abe9d0eaf98f72d6ef37b89d365ae4621}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-S\-M\-S\-\_\-\-G\-E\-T\-\_\-\-I\-N\-T\-E\-R\-\_\-\-M\-R\-S\-G\-\_\-\-P\-A\-I\-R\-S@{\-S\-M\-S\-\_\-\-G\-E\-T\-\_\-\-I\-N\-T\-E\-R\-\_\-\-M\-R\-S\-G\-\_\-\-P\-A\-I\-R\-S}}
+\index{\-S\-M\-S\-\_\-\-G\-E\-T\-\_\-\-I\-N\-T\-E\-R\-\_\-\-M\-R\-S\-G\-\_\-\-P\-A\-I\-R\-S@{\-S\-M\-S\-\_\-\-G\-E\-T\-\_\-\-I\-N\-T\-E\-R\-\_\-\-M\-R\-S\-G\-\_\-\-P\-A\-I\-R\-S}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{\-S\-M\-S\-\_\-\-G\-E\-T\-\_\-\-I\-N\-T\-E\-R\-\_\-\-M\-R\-S\-G\-\_\-\-P\-A\-I\-R\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-M\-S\-\_\-\-G\-E\-T\-\_\-\-I\-N\-T\-E\-R\-\_\-\-M\-R\-S\-G\-\_\-\-P\-A\-I\-R\-S}~\char`\"{}\-S\-M\-S-\/\-G\-I\-P\char`\"{}}}\label{common__mra_8h_abe9d0eaf98f72d6ef37b89d365ae4621}
+\hypertarget{common__mra_8h_ae17048f0a7244495add2d7bff7575b46}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-S\-M\-S\-\_\-\-G\-E\-T\-\_\-\-M\-R\-A\-\_\-\-C\-H\-U\-N\-K@{\-S\-M\-S\-\_\-\-G\-E\-T\-\_\-\-M\-R\-A\-\_\-\-C\-H\-U\-N\-K}}
+\index{\-S\-M\-S\-\_\-\-G\-E\-T\-\_\-\-M\-R\-A\-\_\-\-C\-H\-U\-N\-K@{\-S\-M\-S\-\_\-\-G\-E\-T\-\_\-\-M\-R\-A\-\_\-\-C\-H\-U\-N\-K}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{\-S\-M\-S\-\_\-\-G\-E\-T\-\_\-\-M\-R\-A\-\_\-\-C\-H\-U\-N\-K}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-M\-S\-\_\-\-G\-E\-T\-\_\-\-M\-R\-A\-\_\-\-C\-H\-U\-N\-K}~\char`\"{}\-S\-M\-S-\/\-G\-C\char`\"{}}}\label{common__mra_8h_ae17048f0a7244495add2d7bff7575b46}
+\hypertarget{common__mra_8h_a106ba618bcd33751585f4051cede493e}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-S\-M\-S\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-M\-R\-A@{\-S\-M\-S\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-M\-R\-A}}
+\index{\-S\-M\-S\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-M\-R\-A@{\-S\-M\-S\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-M\-R\-A}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{\-S\-M\-S\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-M\-R\-A}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-M\-S\-\_\-\-H\-E\-A\-R\-T\-B\-E\-A\-T\-\_\-\-M\-R\-A}~\char`\"{}\-S\-M\-S-\/\-H\-B\char`\"{}}}\label{common__mra_8h_a106ba618bcd33751585f4051cede493e}
+\hypertarget{common__mra_8h_ac21fccca7436107062418b1141b8637e}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-S\-M\-S\-\_\-\-T\-A\-S\-K\-\_\-\-M\-R\-S\-G@{\-S\-M\-S\-\_\-\-T\-A\-S\-K\-\_\-\-M\-R\-S\-G}}
+\index{\-S\-M\-S\-\_\-\-T\-A\-S\-K\-\_\-\-M\-R\-S\-G@{\-S\-M\-S\-\_\-\-T\-A\-S\-K\-\_\-\-M\-R\-S\-G}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{\-S\-M\-S\-\_\-\-T\-A\-S\-K\-\_\-\-M\-R\-S\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-M\-S\-\_\-\-T\-A\-S\-K\-\_\-\-M\-R\-S\-G}~\char`\"{}\-S\-M\-S-\/\-T\char`\"{}}}\label{common__mra_8h_ac21fccca7436107062418b1141b8637e}
+\hypertarget{common__mra_8h_a38207200983740d1ce5ee98ae9efe08c}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-S\-M\-S\-\_\-\-T\-A\-S\-K\-\_\-\-M\-R\-S\-G\-\_\-\-D\-O\-N\-E@{\-S\-M\-S\-\_\-\-T\-A\-S\-K\-\_\-\-M\-R\-S\-G\-\_\-\-D\-O\-N\-E}}
+\index{\-S\-M\-S\-\_\-\-T\-A\-S\-K\-\_\-\-M\-R\-S\-G\-\_\-\-D\-O\-N\-E@{\-S\-M\-S\-\_\-\-T\-A\-S\-K\-\_\-\-M\-R\-S\-G\-\_\-\-D\-O\-N\-E}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{\-S\-M\-S\-\_\-\-T\-A\-S\-K\-\_\-\-M\-R\-S\-G\-\_\-\-D\-O\-N\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-S\-M\-S\-\_\-\-T\-A\-S\-K\-\_\-\-M\-R\-S\-G\-\_\-\-D\-O\-N\-E}~\char`\"{}\-S\-M\-S-\/\-T\-D\char`\"{}}}\label{common__mra_8h_a38207200983740d1ce5ee98ae9efe08c}
+\hypertarget{common__mra_8h_ae559bdca40b1742557e7cebb210c8959}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-T\-A\-S\-K\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X@{\-T\-A\-S\-K\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}}
+\index{\-T\-A\-S\-K\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X@{\-T\-A\-S\-K\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{\-T\-A\-S\-K\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-T\-A\-S\-K\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}~\char`\"{}\%zu\-:\%d\char`\"{}}}\label{common__mra_8h_ae559bdca40b1742557e7cebb210c8959}
+\hypertarget{common__mra_8h_a1366ac09f7a23b1235da07586d163ebe}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-T\-A\-S\-K\-T\-R\-A\-C\-K\-E\-R\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X@{\-T\-A\-S\-K\-T\-R\-A\-C\-K\-E\-R\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}}
+\index{\-T\-A\-S\-K\-T\-R\-A\-C\-K\-E\-R\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X@{\-T\-A\-S\-K\-T\-R\-A\-C\-K\-E\-R\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{\-T\-A\-S\-K\-T\-R\-A\-C\-K\-E\-R\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf \-T\-A\-S\-K\-T\-R\-A\-C\-K\-E\-R\-\_\-\-M\-R\-A\-\_\-\-M\-A\-I\-L\-B\-O\-X}~\char`\"{}\%zu\-:\-T\-T\char`\"{}}}\label{common__mra_8h_a1366ac09f7a23b1235da07586d163ebe}
+
+
+\subsection{\-Typedef \-Documentation}
+\hypertarget{common__mra_8h_a9a9d834f744f36f4e51ebf6c532e26bd}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!mra\-\_\-heartbeat\-\_\-t@{mra\-\_\-heartbeat\-\_\-t}}
+\index{mra\-\_\-heartbeat\-\_\-t@{mra\-\_\-heartbeat\-\_\-t}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{mra\-\_\-heartbeat\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf mra\-\_\-heartbeat\-\_\-s}$\ast$ {\bf mra\-\_\-heartbeat\-\_\-t}}}\label{common__mra_8h_a9a9d834f744f36f4e51ebf6c532e26bd}
+\hypertarget{common__mra_8h_a54f41524090023e9b283ecbef8b955d6}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!mra\-\_\-task\-\_\-info\-\_\-t@{mra\-\_\-task\-\_\-info\-\_\-t}}
+\index{mra\-\_\-task\-\_\-info\-\_\-t@{mra\-\_\-task\-\_\-info\-\_\-t}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{mra\-\_\-task\-\_\-info\-\_\-t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf task\-\_\-info\-\_\-s}$\ast$ {\bf mra\-\_\-task\-\_\-info\-\_\-t}}}\label{common__mra_8h_a54f41524090023e9b283ecbef8b955d6}
+
+
+\subsection{\-Enumeration \-Type \-Documentation}
+\hypertarget{common__mra_8h_aadf6e8ce08a315d3a320b05b2bcf27c7}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!task\-\_\-status\-\_\-e@{task\-\_\-status\-\_\-e}}
+\index{task\-\_\-status\-\_\-e@{task\-\_\-status\-\_\-e}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{task\-\_\-status\-\_\-e}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf task\-\_\-status\-\_\-e}}}\label{common__mra_8h_aadf6e8ce08a315d3a320b05b2bcf27c7}
+
+
+\-Possible task status. 
+
+\begin{Desc}
+\item[\-Enumerator\-: ]\par
+\begin{description}
+\index{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-P\-E\-N\-D\-I\-N\-G@{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-P\-E\-N\-D\-I\-N\-G}!common\-\_\-mra.\-h@{common\-\_\-mra.\-h}}\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-P\-E\-N\-D\-I\-N\-G@{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-P\-E\-N\-D\-I\-N\-G}}\item[{\em 
+\hypertarget{common__mra_8h_aadf6e8ce08a315d3a320b05b2bcf27c7a107af46c195ca17124951f9da9e4516e}{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-P\-E\-N\-D\-I\-N\-G}\label{common__mra_8h_aadf6e8ce08a315d3a320b05b2bcf27c7a107af46c195ca17124951f9da9e4516e}
+}]\index{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-T\-I\-P@{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-T\-I\-P}!common\-\_\-mra.\-h@{common\-\_\-mra.\-h}}\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-T\-I\-P@{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-T\-I\-P}}\item[{\em 
+\hypertarget{common__mra_8h_aadf6e8ce08a315d3a320b05b2bcf27c7a834ab8fd9011e98aadb58a05c2bcca7a}{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-T\-I\-P}\label{common__mra_8h_aadf6e8ce08a315d3a320b05b2bcf27c7a834ab8fd9011e98aadb58a05c2bcca7a}
+}]\index{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-T\-I\-P\-\_\-\-S\-L\-O\-W@{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-T\-I\-P\-\_\-\-S\-L\-O\-W}!common\-\_\-mra.\-h@{common\-\_\-mra.\-h}}\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-T\-I\-P\-\_\-\-S\-L\-O\-W@{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-T\-I\-P\-\_\-\-S\-L\-O\-W}}\item[{\em 
+\hypertarget{common__mra_8h_aadf6e8ce08a315d3a320b05b2bcf27c7aad2c0fd8c428d4848bcbfe0e338bed95}{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-T\-I\-P\-\_\-\-S\-L\-O\-W}\label{common__mra_8h_aadf6e8ce08a315d3a320b05b2bcf27c7aad2c0fd8c428d4848bcbfe0e338bed95}
+}]\index{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-D\-O\-N\-E@{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-D\-O\-N\-E}!common\-\_\-mra.\-h@{common\-\_\-mra.\-h}}\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-D\-O\-N\-E@{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-D\-O\-N\-E}}\item[{\em 
+\hypertarget{common__mra_8h_aadf6e8ce08a315d3a320b05b2bcf27c7a51f9b001d2b46f2aa6399622d2277520}{\-T\-\_\-\-S\-T\-A\-T\-U\-S\-\_\-\-M\-R\-A\-\_\-\-D\-O\-N\-E}\label{common__mra_8h_aadf6e8ce08a315d3a320b05b2bcf27c7a51f9b001d2b46f2aa6399622d2277520}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{common__mra_8h_a1df0d355a0754a40a7697437294d8431}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!map\-\_\-mra\-\_\-output\-\_\-size@{map\-\_\-mra\-\_\-output\-\_\-size}}
+\index{map\-\_\-mra\-\_\-output\-\_\-size@{map\-\_\-mra\-\_\-output\-\_\-size}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{map\-\_\-mra\-\_\-output\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf map\-\_\-mra\-\_\-output\-\_\-size} (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{mid}
+\end{DoxyParamCaption}
+)}}\label{common__mra_8h_a1df0d355a0754a40a7697437294d8431}
+
+
+\-Return the output size of a map task. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em mid} & \-The map task \-I\-D. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The task output size in bytes. 
+\end{DoxyReturn}
+\hypertarget{common__mra_8h_a411d5133ab6881d40ef4cb44a7a47428}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!maxval@{maxval}}
+\index{maxval@{maxval}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{maxval}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf maxval} (
+\begin{DoxyParamCaption}
+\item[{int}]{a, }
+\item[{int}]{b}
+\end{DoxyParamCaption}
+)}}\label{common__mra_8h_a411d5133ab6881d40ef4cb44a7a47428}
+
+
+\-Return the maximum of two values. 
+
+
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{common__mra_8h_a411d5133ab6881d40ef4cb44a7a47428_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{common__mra_8h_ad37a02c988c597622a346cb5293243fb}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!message\-\_\-is@{message\-\_\-is}}
+\index{message\-\_\-is@{message\-\_\-is}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{message\-\_\-is}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf message\-\_\-is} (
+\begin{DoxyParamCaption}
+\item[{msg\-\_\-task\-\_\-t}]{msg, }
+\item[{const char $\ast$}]{str}
+\end{DoxyParamCaption}
+)}}\label{common__mra_8h_ad37a02c988c597622a346cb5293243fb}
+
+
+\-Compare the message from a task with a string. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em msg} & \-The message/task. \\
+\hline
+{\em str} & \-The string to compare with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-A positive value if matches, zero if doesn't. 
+\end{DoxyReturn}
+
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{common__mra_8h_ad37a02c988c597622a346cb5293243fb_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{common__mra_8h_a6fc60933b9eabe64a880f68eba3131cc}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!receive@{receive}}
+\index{receive@{receive}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{receive}]{\setlength{\rightskip}{0pt plus 5cm}msg\-\_\-error\-\_\-t {\bf receive} (
+\begin{DoxyParamCaption}
+\item[{msg\-\_\-task\-\_\-t $\ast$}]{msg, }
+\item[{const char $\ast$}]{mailbox}
+\end{DoxyParamCaption}
+)}}\label{common__mra_8h_a6fc60933b9eabe64a880f68eba3131cc}
+
+
+\-Receive a message/task from a mailbox. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em msg} & \-Where to store the received message. \\
+\hline
+{\em mailbox} & \-The mailbox alias. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The status of the transfer. 
+\end{DoxyReturn}
+
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{common__mra_8h_a6fc60933b9eabe64a880f68eba3131cc_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{common__mra_8h_a8205e98d4874b7e31f138d5016ad1eba}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!reduce\-\_\-mra\-\_\-input\-\_\-size@{reduce\-\_\-mra\-\_\-input\-\_\-size}}
+\index{reduce\-\_\-mra\-\_\-input\-\_\-size@{reduce\-\_\-mra\-\_\-input\-\_\-size}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{reduce\-\_\-mra\-\_\-input\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf reduce\-\_\-mra\-\_\-input\-\_\-size} (
+\begin{DoxyParamCaption}
+\item[{size\-\_\-t}]{rid}
+\end{DoxyParamCaption}
+)}}\label{common__mra_8h_a8205e98d4874b7e31f138d5016ad1eba}
+
+
+\-Return the input size of a reduce task. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em rid} & \-The reduce task \-I\-D. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The task input size in bytes. 
+\end{DoxyReturn}
+
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{common__mra_8h_a8205e98d4874b7e31f138d5016ad1eba_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{common__mra_8h_a385b12669d8faf7b5cdb54c1ae597e1c}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!send@{send}}
+\index{send@{send}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{send}]{\setlength{\rightskip}{0pt plus 5cm}msg\-\_\-error\-\_\-t {\bf send} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{str, }
+\item[{double}]{cpu, }
+\item[{double}]{net, }
+\item[{void $\ast$}]{data, }
+\item[{const char $\ast$}]{mailbox}
+\end{DoxyParamCaption}
+)}}\label{common__mra_8h_a385b12669d8faf7b5cdb54c1ae597e1c}
+
+
+\-Send a message/task. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em str} & \-The message. \\
+\hline
+{\em cpu} & \-The amount of cpu required by the task. \\
+\hline
+{\em net} & \-The message size in bytes. \\
+\hline
+{\em data} & \-Any data to attatch to the message. \\
+\hline
+{\em mailbox} & \-The destination mailbox alias. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The \-M\-S\-G status of the operation. 
+\end{DoxyReturn}
+
+
+\-Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{common__mra_8h_a385b12669d8faf7b5cdb54c1ae597e1c_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{common__mra_8h_a385b12669d8faf7b5cdb54c1ae597e1c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{common__mra_8h_a305ac8e3389f94106990aa3c52c91416}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!send\-\_\-mra\-\_\-sms@{send\-\_\-mra\-\_\-sms}}
+\index{send\-\_\-mra\-\_\-sms@{send\-\_\-mra\-\_\-sms}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{send\-\_\-mra\-\_\-sms}]{\setlength{\rightskip}{0pt plus 5cm}msg\-\_\-error\-\_\-t {\bf send\-\_\-mra\-\_\-sms} (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{str, }
+\item[{const char $\ast$}]{mailbox}
+\end{DoxyParamCaption}
+)}}\label{common__mra_8h_a305ac8e3389f94106990aa3c52c91416}
+
+
+\-Send a short message, of size zero. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em str} & \-The message. \\
+\hline
+{\em mailbox} & \-The destination mailbox alias. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The \-M\-S\-G status of the operation. 
+\end{DoxyReturn}
+
+
+\-Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{common__mra_8h_a305ac8e3389f94106990aa3c52c91416_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{common__mra_8h_a305ac8e3389f94106990aa3c52c91416_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{\-Variable \-Documentation}
+\hypertarget{common__mra_8h_afc43959c8dc45a0582a605a20e83aa0d}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!avg\-\_\-task\-\_\-exec\-\_\-map@{avg\-\_\-task\-\_\-exec\-\_\-map}}
+\index{avg\-\_\-task\-\_\-exec\-\_\-map@{avg\-\_\-task\-\_\-exec\-\_\-map}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{avg\-\_\-task\-\_\-exec\-\_\-map}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ {\bf avg\-\_\-task\-\_\-exec\-\_\-map}}}\label{common__mra_8h_afc43959c8dc45a0582a605a20e83aa0d}
+\hypertarget{common__mra_8h_ad5b90869efe31de6176f099e9cf99de5}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!avg\-\_\-task\-\_\-exec\-\_\-reduce@{avg\-\_\-task\-\_\-exec\-\_\-reduce}}
+\index{avg\-\_\-task\-\_\-exec\-\_\-reduce@{avg\-\_\-task\-\_\-exec\-\_\-reduce}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{avg\-\_\-task\-\_\-exec\-\_\-reduce}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ {\bf avg\-\_\-task\-\_\-exec\-\_\-reduce}}}\label{common__mra_8h_ad5b90869efe31de6176f099e9cf99de5}
+\hypertarget{common__mra_8h_a1860c3de3eef8309ccc6b068eb3a08f6}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!config\-\_\-mra@{config\-\_\-mra}}
+\index{config\-\_\-mra@{config\-\_\-mra}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{config\-\_\-mra}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf config\-\_\-s}  {\bf config\-\_\-mra}}}\label{common__mra_8h_a1860c3de3eef8309ccc6b068eb3a08f6}
+\hypertarget{common__mra_8h_a25cc609dae2875ebd3e01dec54626409}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!dist\-\_\-bruta@{dist\-\_\-bruta}}
+\index{dist\-\_\-bruta@{dist\-\_\-bruta}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{dist\-\_\-bruta}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ {\bf dist\-\_\-bruta}}}\label{common__mra_8h_a25cc609dae2875ebd3e01dec54626409}
+
+
+\-Initialize dist\-\_\-bruta, task\-\_\-exec, avg\-\_\-task\-\_\-exec. 
+
+\hypertarget{common__mra_8h_a40c5dda5ba96917071a5d075c25444b2}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!\-Fg@{\-Fg}}
+\index{\-Fg@{\-Fg}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{\-Fg}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Fg}}}\label{common__mra_8h_a40c5dda5ba96917071a5d075c25444b2}
+\hypertarget{common__mra_8h_a110d69f20330d00e3fa77e764feb5d54}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!job\-\_\-mra@{job\-\_\-mra}}
+\index{job\-\_\-mra@{job\-\_\-mra}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{job\-\_\-mra}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf job\-\_\-s}  {\bf job\-\_\-mra}}}\label{common__mra_8h_a110d69f20330d00e3fa77e764feb5d54}
+\hypertarget{common__mra_8h_aaa0bc264a86ff2516e39fdba05b72b66}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!mra\-\_\-perc@{mra\-\_\-perc}}
+\index{mra\-\_\-perc@{mra\-\_\-perc}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{mra\-\_\-perc}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf mra\-\_\-perc}}}\label{common__mra_8h_aaa0bc264a86ff2516e39fdba05b72b66}
+\hypertarget{common__mra_8h_aa526e398bda7952ec6bcc5c33d39abac}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!stats\-\_\-mra@{stats\-\_\-mra}}
+\index{stats\-\_\-mra@{stats\-\_\-mra}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{stats\-\_\-mra}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf stats\-\_\-s}  {\bf stats\-\_\-mra}}}\label{common__mra_8h_aa526e398bda7952ec6bcc5c33d39abac}
+\hypertarget{common__mra_8h_a3643aab6c35479d8e7c2f7e46bdb04b8}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!task\-\_\-exec@{task\-\_\-exec}}
+\index{task\-\_\-exec@{task\-\_\-exec}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{task\-\_\-exec}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ {\bf task\-\_\-exec}}}\label{common__mra_8h_a3643aab6c35479d8e7c2f7e46bdb04b8}
+\hypertarget{common__mra_8h_ad7eb2fd97a2f868b28c25405de9a4e72}{\index{common\-\_\-mra.\-h@{common\-\_\-mra.\-h}!user\-\_\-mra@{user\-\_\-mra}}
+\index{user\-\_\-mra@{user\-\_\-mra}!common_mra.h@{common\-\_\-mra.\-h}}
+\subsubsection[{user\-\_\-mra}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf user\-\_\-s}  {\bf user\-\_\-mra}}}\label{common__mra_8h_ad7eb2fd97a2f868b28c25405de9a4e72}

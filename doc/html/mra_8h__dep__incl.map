@@ -1,10 +1,10 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$simcore-mra_8c.html" title="src/simcore&#45;mra.c" alt="" coords="5,166,133,197"/>
-<area shape="rect" id="node5" href="$user-mra_8c.html" title="src/user&#45;mra.c" alt="" coords="157,166,264,197"/>
-<area shape="rect" id="node7" href="$hello_8c.html" title="examples/hello.c" alt="" coords="288,166,411,197"/>
-<area shape="rect" id="node9" href="$common-mra_8h.html" title="include/common&#45;mra.h" alt="" coords="392,86,549,117"/>
-<area shape="rect" id="node11" href="$common-mra_8c.html" title="src/common&#45;mra.c" alt="" coords="845,166,976,197"/>
-<area shape="rect" id="node13" href="$dfs-mra_8c.html" title="src/dfs&#45;mra.c" alt="" coords="435,166,533,197"/>
-<area shape="rect" id="node15" href="$master-mra_8c.html" title="src/master&#45;mra.c" alt="" coords="557,166,677,197"/>
-<area shape="rect" id="node19" href="$worker-mra_8c.html" title="src/worker&#45;mra.c" alt="" coords="701,166,821,197"/>
+<area shape="rect" id="node3" href="$simcore__mra_8c.html" title="src/simcore_mra.c" alt="" coords="5,166,136,197"/>
+<area shape="rect" id="node5" href="$user__mra_8c.html" title="src/user_mra.c" alt="" coords="160,166,269,197"/>
+<area shape="rect" id="node7" href="$hello__mra_8c.html" title="examples/hello_mra.c" alt="" coords="293,166,448,197"/>
+<area shape="rect" id="node9" href="$common__mra_8h.html" title="include/common_mra.h" alt="" coords="424,86,584,117"/>
+<area shape="rect" id="node11" href="$common__mra_8c.html" title="src/common_mra.c" alt="" coords="896,166,1032,197"/>
+<area shape="rect" id="node13" href="$dfs__mra_8c.html" title="src/dfs_mra.c" alt="" coords="472,166,573,197"/>
+<area shape="rect" id="node15" href="$master__mra_8c.html" title="src/master_mra.c" alt="" coords="597,166,723,197"/>
+<area shape="rect" id="node19" href="$worker__mra_8c.html" title="src/worker_mra.c" alt="" coords="747,166,872,197"/>
 </map>

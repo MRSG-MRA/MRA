@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['simcore_2dmra_2ec',['simcore-mra.c',['../simcore-mra_8c.html',1,'']]]
+  ['simcore_5fmra_2ec',['simcore_mra.c',['../simcore__mra_8c.html',1,'']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['worker_2dmra_2ec',['worker-mra.c',['../worker-mra_8c.html',1,'']]],
-  ['worker_2dmra_2eh',['worker-mra.h',['../worker-mra_8h.html',1,'']]]
+  ['worker_5fmra_2ec',['worker_mra.c',['../worker__mra_8c.html',1,'']]],
+  ['worker_5fmra_2eh',['worker_mra.h',['../worker__mra_8h.html',1,'']]]
 ];

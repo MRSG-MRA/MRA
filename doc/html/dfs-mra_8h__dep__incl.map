@@ -1,7 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$dfs-mra_8c.html" title="src/dfs&#45;mra.c" alt="" coords="5,86,104,117"/>
-<area shape="rect" id="node5" href="$master-mra_8c.html" title="src/master&#45;mra.c" alt="" coords="128,86,248,117"/>
-<area shape="rect" id="node7" href="$simcore-mra_8c.html" title="src/simcore&#45;mra.c" alt="" coords="272,86,400,117"/>
-<area shape="rect" id="node9" href="$user-mra_8c.html" title="src/user&#45;mra.c" alt="" coords="424,86,531,117"/>
-<area shape="rect" id="node11" href="$worker-mra_8c.html" title="src/worker&#45;mra.c" alt="" coords="555,86,675,117"/>
-</map>

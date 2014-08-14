@@ -1,0 +1,170 @@
+\hypertarget{dfs__mra_8h}{\section{include/dfs\-\_\-mra.h \-File \-Reference}
+\label{dfs__mra_8h}\index{include/dfs\-\_\-mra.\-h@{include/dfs\-\_\-mra.\-h}}
+}
+\-This graph shows which files directly or indirectly include this file\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dfs__mra_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{dfs__mra_8h_a23d972ed8df40ef6ff709f57e3944042}{distribute\-\_\-data\-\_\-mra} (void)
+\begin{DoxyCompactList}\small\item\em \-Distribute chunks (and replicas) to \-Data\-Nodes. \end{DoxyCompactList}\item 
+void \hyperlink{dfs__mra_8h_ac144b7da2b0cb2e76cf7226740c54dc1}{default\-\_\-mra\-\_\-dfs\-\_\-f} (char $\ast$$\ast$mra\-\_\-dfs\-\_\-matrix, size\-\_\-t chunks, size\-\_\-t workers\-\_\-mra, int replicas)
+\begin{DoxyCompactList}\small\item\em \-Default data distribution algorithm. \end{DoxyCompactList}\item 
+size\-\_\-t \hyperlink{dfs__mra_8h_a3f8eddb9dd6200115f7d88325537035e}{find\-\_\-random\-\_\-mra\-\_\-chunk\-\_\-owner} (int cid)
+\begin{DoxyCompactList}\small\item\em \-Choose a random \-Data\-Node that owns a specific chunk. \end{DoxyCompactList}\item 
+int \hyperlink{dfs__mra_8h_a86d9bef64a7e145c3e00de4e74e8d1c6}{data\-\_\-node\-\_\-mra} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em \-Data\-Node main function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$$\ast$ \hyperlink{dfs__mra_8h_a03bfd03cf290b4a74e89090bde97bd2f}{chunk\-\_\-owner\-\_\-mra}
+\begin{DoxyCompactList}\small\item\em \-Matrix that maps chunks to workers. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{dfs__mra_8h_a86d9bef64a7e145c3e00de4e74e8d1c6}{\index{dfs\-\_\-mra.\-h@{dfs\-\_\-mra.\-h}!data\-\_\-node\-\_\-mra@{data\-\_\-node\-\_\-mra}}
+\index{data\-\_\-node\-\_\-mra@{data\-\_\-node\-\_\-mra}!dfs_mra.h@{dfs\-\_\-mra.\-h}}
+\subsubsection[{data\-\_\-node\-\_\-mra}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf data\-\_\-node\-\_\-mra} (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{dfs__mra_8h_a86d9bef64a7e145c3e00de4e74e8d1c6}
+
+
+\-Data\-Node main function. 
+
+\-Process that listens for data requests. 
+
+\-Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dfs__mra_8h_a86d9bef64a7e145c3e00de4e74e8d1c6_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dfs__mra_8h_a86d9bef64a7e145c3e00de4e74e8d1c6_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{dfs__mra_8h_ac144b7da2b0cb2e76cf7226740c54dc1}{\index{dfs\-\_\-mra.\-h@{dfs\-\_\-mra.\-h}!default\-\_\-mra\-\_\-dfs\-\_\-f@{default\-\_\-mra\-\_\-dfs\-\_\-f}}
+\index{default\-\_\-mra\-\_\-dfs\-\_\-f@{default\-\_\-mra\-\_\-dfs\-\_\-f}!dfs_mra.h@{dfs\-\_\-mra.\-h}}
+\subsubsection[{default\-\_\-mra\-\_\-dfs\-\_\-f}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf default\-\_\-mra\-\_\-dfs\-\_\-f} (
+\begin{DoxyParamCaption}
+\item[{char $\ast$$\ast$}]{mra\-\_\-dfs\-\_\-matrix, }
+\item[{size\-\_\-t}]{chunks, }
+\item[{size\-\_\-t}]{workers\-\_\-mra, }
+\item[{int}]{replicas}
+\end{DoxyParamCaption}
+)}}\label{dfs__mra_8h_ac144b7da2b0cb2e76cf7226740c54dc1}
+
+
+\-Default data distribution algorithm. 
+
+lista de workers -\/-\/$>$ workers\-\_\-hosts\mbox{[}id\mbox{]} (array) pegar capacidade -\/-\/$>$ \-M\-S\-G\-\_\-get\-\_\-host\-\_\-speed (config\-\_\-mra.\-workers\mbox{[}owner\mbox{]}) p\-\_\-worker\-\_\-cap -\/-\/$>$ \-Calcula a capacidade computacional relativa de cada worker baseado na capacidade total da grid. dist\-\_\-bruta -\/-\/$>$ É o array com as tribuições brutas, antes do ajuste de menor te\-\_\-exec prev\-\_\-exec -\/-\/$>$ É o array com o valor de previsão de término de todas as tarefas distribuídas ao worker; temp\-\_\-corr -\/-\/$>$ É o array com o tempo que será utilizado para encontar a melhor distribuição task\-\_\-exec -\/-\/$>$ É o array que contém o tempo de cada worker para executar uma tarefa computacional padrão
+
+config\-\_\-mra.\-slots\-\_\-mra\mbox{[}\-M\-R\-A\-\_\-\-M\-A\-P\mbox{]};
+
+max\-\_\-prev\-\_\-exec-\/-\/$>$ verifica qual é o maior tempo de execução previsto
+
+\-Algoritmo\-\_\-min\-Max \-Ajuste de \-Força \-Bruta com uma \-Otimização \-Combinatória para obter uma distribuição de chunks com o menor tempo de execução possível
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{dfs__mra_8h_ac144b7da2b0cb2e76cf7226740c54dc1_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{dfs__mra_8h_a23d972ed8df40ef6ff709f57e3944042}{\index{dfs\-\_\-mra.\-h@{dfs\-\_\-mra.\-h}!distribute\-\_\-data\-\_\-mra@{distribute\-\_\-data\-\_\-mra}}
+\index{distribute\-\_\-data\-\_\-mra@{distribute\-\_\-data\-\_\-mra}!dfs_mra.h@{dfs\-\_\-mra.\-h}}
+\subsubsection[{distribute\-\_\-data\-\_\-mra}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf distribute\-\_\-data\-\_\-mra} (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{dfs__mra_8h_a23d972ed8df40ef6ff709f57e3944042}
+
+
+\-Distribute chunks (and replicas) to \-Data\-Nodes. 
+
+
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dfs__mra_8h_a23d972ed8df40ef6ff709f57e3944042_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{dfs__mra_8h_a3f8eddb9dd6200115f7d88325537035e}{\index{dfs\-\_\-mra.\-h@{dfs\-\_\-mra.\-h}!find\-\_\-random\-\_\-mra\-\_\-chunk\-\_\-owner@{find\-\_\-random\-\_\-mra\-\_\-chunk\-\_\-owner}}
+\index{find\-\_\-random\-\_\-mra\-\_\-chunk\-\_\-owner@{find\-\_\-random\-\_\-mra\-\_\-chunk\-\_\-owner}!dfs_mra.h@{dfs\-\_\-mra.\-h}}
+\subsubsection[{find\-\_\-random\-\_\-mra\-\_\-chunk\-\_\-owner}]{\setlength{\rightskip}{0pt plus 5cm}size\-\_\-t {\bf find\-\_\-random\-\_\-mra\-\_\-chunk\-\_\-owner} (
+\begin{DoxyParamCaption}
+\item[{int}]{cid}
+\end{DoxyParamCaption}
+)}}\label{dfs__mra_8h_a3f8eddb9dd6200115f7d88325537035e}
+
+
+\-Choose a random \-Data\-Node that owns a specific chunk. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em cid} & \-The chunk \-I\-D. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The \-I\-D of the \-Data\-Node.
+\end{DoxyReturn}
+\-Distribution of \-Data \-Replication 
+\begin{DoxyParams}{\-Parameters}
+{\em cid} & \-The chunk \-I\-D. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The \-I\-D of the \-Data\-Node. 
+\end{DoxyReturn}
+
+
+\-Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dfs__mra_8h_a3f8eddb9dd6200115f7d88325537035e_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{\-Variable \-Documentation}
+\hypertarget{dfs__mra_8h_a03bfd03cf290b4a74e89090bde97bd2f}{\index{dfs\-\_\-mra.\-h@{dfs\-\_\-mra.\-h}!chunk\-\_\-owner\-\_\-mra@{chunk\-\_\-owner\-\_\-mra}}
+\index{chunk\-\_\-owner\-\_\-mra@{chunk\-\_\-owner\-\_\-mra}!dfs_mra.h@{dfs\-\_\-mra.\-h}}
+\subsubsection[{chunk\-\_\-owner\-\_\-mra}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$$\ast$ {\bf chunk\-\_\-owner\-\_\-mra}}}\label{dfs__mra_8h_a03bfd03cf290b4a74e89090bde97bd2f}
+
+
+\-Matrix that maps chunks to workers. 
+

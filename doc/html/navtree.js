@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "MRA++", "index.html", [
+  [ "MRA++ Simulator", "index.html", [
     [ "Data Structures", null, [
       [ "Data Structures", "annotated.html", "annotated" ],
       [ "Data Structure Index", "classes.html", null ],
