@@ -22,7 +22,7 @@ along with MRSG and MRA++.  If not, see <http://www.gnu.org/licenses/>. */
 #define MAXIMUM_WORKER_FAILURES 4
 
 typedef struct w_info_s {
-	size_t  wid;
+	size_t  mra_wid;
 }* w_mra_info_t ;
 
 /**

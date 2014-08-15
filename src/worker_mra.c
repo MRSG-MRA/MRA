@@ -36,7 +36,7 @@ size_t get_mra_worker_id (msg_host_t worker)
     w_mra_info_t  wi;
 
     wi = (w_mra_info_t) MSG_host_get_data (worker);
-    return wi->wid;
+    return wi->mra_wid;
 }
 
 /**
@@ -117,13 +117,13 @@ static int listen_mra (int argc, char* argv[])
 static int compute_mra (int argc, char* argv[])
 {
     msg_error_t  status;
-    msg_task_t   task;
+    msg_task_t   mra_task;
     mra_task_info_t  ti;
     xbt_ex_t     e;
 
-    task = (msg_task_t) MSG_process_get_data (MSG_process_self ());
-    ti = (mra_task_info_t) MSG_task_get_data (task);
-    ti->pid = MSG_process_self_PID ();
+    mra_task = (msg_task_t) MSG_process_get_data (MSG_process_self ());
+    ti = (mra_task_info_t) MSG_task_get_data (mra_task);
+    ti->mra_pid = MSG_process_self_PID ();
 
     switch (ti->phase)
     {
@@ -136,14 +136,14 @@ static int compute_mra (int argc, char* argv[])
 	    break;
     }
 
-    if (job_mra.task_status[ti->phase][ti->id] != T_STATUS_MRA_DONE)
+    if (job_mra.task_status[ti->phase][ti->mra_tid] != T_STATUS_MRA_DONE)
     {
 	TRY
 	{
-	    status = MSG_task_execute (task);
+	    status = MSG_task_execute (mra_task);
 
 	    if (ti->phase == MRA_MAP && status == MSG_OK)
-		update_mra_map_output (MSG_host_self (), ti->id);
+		update_mra_map_output (MSG_host_self (), ti->mra_tid);
 	}
 	CATCH (e)
 	{
@@ -152,7 +152,7 @@ static int compute_mra (int argc, char* argv[])
 	}
     }
 
-    job_mra.mra_heartbeats[ti->wid].slots_av[ti->phase]++;
+    job_mra.mra_heartbeats[ti->mra_wid].slots_av[ti->phase]++;
     
     if (!job_mra.finished)
 	send (SMS_TASK_MRSG_DONE, 0.0, 0.0, ti, MASTER_MRA_MAILBOX);
@@ -168,12 +168,12 @@ static int compute_mra (int argc, char* argv[])
 static void update_mra_map_output (msg_host_t worker, size_t mid)
 {
     size_t  rid;
-    size_t  wid;
+    size_t  mra_wid;
 
-    wid = get_mra_worker_id (worker);
+    mra_wid = get_mra_worker_id (worker);
 
     for (rid = 0; rid < config_mra.amount_of_tasks_mra[MRA_REDUCE]; rid++)
-	job_mra.map_output[wid][rid] += user_mra.map_mra_output_f (mid, rid);
+	job_mra.map_output[mra_wid][rid] += user_mra.map_mra_output_f (mid, rid);
 }
 
 /**
@@ -190,9 +190,9 @@ static void get_mra_chunk (mra_task_info_t ti)
     my_id = get_mra_worker_id (MSG_host_self ());
 
     /* Request the chunk to the source node. */
-    if (ti->src != my_id)
+    if (ti->mra_src != my_id)
     {
-	sprintf (mailbox, DATANODE_MRA_MAILBOX, ti->src);
+	sprintf (mailbox, DATANODE_MRA_MAILBOX, ti->mra_src);
 	status = send_mra_sms (SMS_GET_MRA_CHUNK, mailbox);
 	if (status == MSG_OK)
 	{
@@ -215,14 +215,14 @@ static void get_mra_map_output (mra_task_info_t ti)
     msg_task_t   data = NULL;
     size_t       total_copied, must_copy;
     size_t       my_id;
-    size_t       wid;
+    size_t       mra_wid;
     size_t*      data_copied;
 
     my_id = get_mra_worker_id (MSG_host_self ());
     data_copied = xbt_new0 (size_t, config_mra.mra_number_of_workers);
     ti->map_output_copied = data_copied;
     total_copied = 0;
-    must_copy = reduce_mra_input_size (ti->id);
+    must_copy = reduce_mra_input_size (ti->mra_tid);
     
     
 #ifdef VERBOSE
@@ -230,17 +230,17 @@ static void get_mra_map_output (mra_task_info_t ti)
 #endif    
     while (total_copied < must_copy)
     	{
-			for (wid = 0; wid < config_mra.mra_number_of_workers; wid++)
+			for (mra_wid = 0; mra_wid < config_mra.mra_number_of_workers; mra_wid++)
 				{
-	    	  if (job_mra.task_status[MRA_REDUCE][ti->id] == T_STATUS_MRA_DONE)
+	    	  if (job_mra.task_status[MRA_REDUCE][ti->mra_tid] == T_STATUS_MRA_DONE)
 	    			{
 							xbt_free_ref (&data_copied);
 							return;
 	    			}
 
-	    		if (job_mra.map_output[wid][ti->id] > data_copied[wid])
+	    		if (job_mra.map_output[mra_wid][ti->mra_tid] > data_copied[mra_wid])
 	    			{
-							sprintf (mailbox, DATANODE_MRA_MAILBOX, wid);
+							sprintf (mailbox, DATANODE_MRA_MAILBOX, mra_wid);
 							status = send (SMS_GET_INTER_MRSG_PAIRS, 0.0, 0.0, ti, mailbox);
 							if (status == MSG_OK)
 								{
@@ -250,7 +250,7 @@ static void get_mra_map_output (mra_task_info_t ti)
 		    					status = receive (&data, mailbox);
 		    					if (status == MSG_OK)
 		    						{
-											data_copied[wid] += MSG_task_get_data_size (data);
+											data_copied[mra_wid] += MSG_task_get_data_size (data);
 											total_copied += MSG_task_get_data_size (data);				
 											MSG_task_destroy (data);
 		    						}

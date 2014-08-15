@@ -75,7 +75,7 @@ static void read_mra_config_file (const char* file_name)
 int mra_map_mra_output_function (size_t mid, size_t rid)
 {
 
-		return ((config_mra.mra_chunk_size*mra_perc/100)/config_mra.amount_of_tasks_mra[MRA_REDUCE]) ;
+		return ((config_mra.mra_chunk_size*mra_perc/100)/config_mra.amount_of_tasks_mra[MRA_REDUCE]);
 //     return 2*1024*1024;
 }
 
@@ -85,10 +85,10 @@ int mra_map_mra_output_function (size_t mid, size_t rid)
  *
  * @param  phase  The execution phase.
  * @param  tid    The ID of the task.
- * @param  wid    The ID of the worker that received the task.
+ * @param  mra_wid    The ID of the worker that received the task.
  * @return The task cost in FLOPs.
  */
-double mra_task_mra_cost_function (enum phase_e phase, size_t tid, size_t wid)
+double mra_task_mra_cost_function (enum phase_e phase, size_t tid, size_t mra_wid)
 {
     switch (phase)
     {

@@ -68,7 +68,7 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
     int      tot_tasks_reduce=0;
     double   max_prev_exec;
     double   min_temp_corr;
-    int      id, idmin = 0;
+    int      mra_tid, idmin = 0;
     int      id1, idmax = 0;
     int      soma_tot=0;
     double   min_max= 1;
@@ -159,12 +159,12 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
   	      				if (max_prev_exec < prev_exec[owner])
   	           			{
       		     				max_prev_exec = prev_exec[owner];
-      		     				id = owner;
+      		     				mra_tid = owner;
                 		}
     	     			}
     	/* @brief Reduz 1 chunk da distribuição e recalcula Novamente prev_exe, temp_corr e soma_dist       	 */
        			log = fopen ("Dist_Bruta.log", "w");
-        		owner = id;
+        		owner = mra_tid;
         		soma_temp=0;
         		if (adjust > 0) 
         			{
@@ -216,7 +216,7 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
   	  			if (max_prev_exec <= prev_exec[idmax])
      	    		{
       					max_prev_exec = prev_exec[idmax];
-      					id = idmax;
+      					mra_tid = idmax;
             	}
             }
           for (idmin = 0; idmin < config_mra.mra_number_of_workers; idmin++)
@@ -238,7 +238,7 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
         
         //Troca os chunks de nó
         
-        dist_bruta[id]= dist_bruta[id]-1;
+        dist_bruta[mra_tid]= dist_bruta[mra_tid]-1;
         dist_bruta[id1]= dist_bruta[id1]+1; 	
 
     		soma_dist=0;
@@ -271,11 +271,11 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
       for (owner = 0; owner < config_mra.mra_number_of_workers; owner++)
       	{
          avg_task_exec_map = xbt_new0 (double, config_mra.mra_number_of_workers);     
-         for (id=0; id < config_mra.mra_number_of_workers; id++)
+         for (mra_tid=0; mra_tid < config_mra.mra_number_of_workers; mra_tid++)
          	{
-         		if (dist_bruta[owner] == dist_bruta[id] )
+         		if (dist_bruta[owner] == dist_bruta[mra_tid] )
          			{
-         				avg_t_exec = task_exec[id] + avg_t_exec;
+         				avg_t_exec = task_exec[mra_tid] + avg_t_exec;
          				cont_avg++;        
          			}
          	}
@@ -314,11 +314,11 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
     for (owner = 0; owner < config_mra.mra_number_of_workers; owner++)
       	{
           avg_task_exec_reduce = xbt_new0 (double, config_mra.mra_number_of_workers);     
-          for (id=0; id < config_mra.mra_number_of_workers; id++)
+          for (mra_tid=0; mra_tid < config_mra.mra_number_of_workers; mra_tid++)
          	 {
-         		 if (dist_bruta[owner] == dist_bruta[id] )
+         		 if (dist_bruta[owner] == dist_bruta[mra_tid] )
          			{
-         				avg_t_exec = task_exec[id] + avg_t_exec;
+         				avg_t_exec = task_exec[mra_tid] + avg_t_exec;
          				cont_avg++;        
          	 		}
          	 }
@@ -432,7 +432,7 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
                   rpl++;
                   }
                   }
-                  fprintf (log,"wid: %u \t dist_b:%u \t owner: %zu \t dist_b[owner]: %u \t  chunk: %zu \t rpl:%u \n", i, dist_bruta[i], owner, dist_bruta [owner], chunk, rpl); 
+                  fprintf (log,"mra_wid: %u \t dist_b:%u \t owner: %zu \t dist_b[owner]: %u \t  chunk: %zu \t rpl:%u \n", i, dist_bruta[i], owner, dist_bruta [owner], chunk, rpl); 
                   if (rpl == config_mra.mra_chunk_replicas -1 && chunk < config_mra.mra_chunk_count -1 ){
                   chunk++;
                   rpl=0;
@@ -474,14 +474,14 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
  	{
     int     replica;
     size_t  owner = NONE;
-    size_t  wid;
+    size_t  mra_wid;
 
     replica = rand () % config_mra.mra_chunk_replicas;
-    for (wid = 0; wid < config_mra.mra_number_of_workers; wid++)
+    for (mra_wid = 0; mra_wid < config_mra.mra_number_of_workers; mra_wid++)
     	{
-				if (chunk_owner_mra[cid][wid])
+				if (chunk_owner_mra[cid][mra_wid])
 					{
-	    			owner = wid;
+	    			owner = mra_wid;
 	    			if (replica == 0)
 	    				{
 								break;
@@ -550,7 +550,7 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
     else if (message_is (msg, SMS_GET_INTER_MRSG_PAIRS))
     	{
 			ti = (mra_task_info_t) MSG_task_get_data (msg);
-			data_size = job_mra.map_output[my_id][ti->id] - ti->map_output_copied[my_id];
+			data_size = job_mra.map_output[my_id][ti->mra_tid] - ti->map_output_copied[my_id];
 			MSG_task_dsend (MSG_task_create ("DATA-IP", 0.0, data_size, NULL), mailbox, NULL);
 						
    		}

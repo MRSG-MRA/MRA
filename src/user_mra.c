@@ -27,7 +27,7 @@ void MRA_init (void)
     user_mra.map_mra_output_f = NULL;
 }
 
-void MRA_set_task_mra_cost_f ( double (*f)(enum phase_e phase, size_t tid, size_t wid) )
+void MRA_set_task_mra_cost_f ( double (*f)(enum phase_e phase, size_t tid, size_t mra_wid) )
 {
     user_mra.task_mra_cost_f = f;
 }

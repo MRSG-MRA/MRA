@@ -85,6 +85,7 @@ struct config_s {
     int            amount_of_tasks_mra[2];
     int            mra_number_of_workers;
     int            slots_mra[2];
+    int            mra_perc;
     int            initialized;
     msg_host_t*    workers_mra;
 } config_mra;
@@ -102,11 +103,11 @@ struct job_s {
 /** @brief  Information sent as the task data. */
 struct task_info_s {
     enum phase_e  phase;
-    size_t        id;
-    size_t        src;
-    size_t        wid;
-    int           pid;
-    msg_task_t    task;
+    size_t        mra_tid;
+    size_t        mra_src;
+    size_t        mra_wid;
+    int           mra_pid;
+    msg_task_t    mra_task;
     size_t*       map_output_copied;
     double        shuffle_mra_end;
 };
@@ -114,16 +115,16 @@ struct task_info_s {
 typedef struct task_info_s* mra_task_info_t;
 
 struct stats_s {
-    int   map_local;
+    int   map_local_mra;
     int   mra_map_remote;
-    int   map_spec_l;
-    int   map_spec_r;
-    int   reduce_normal;
-    int   reduce_spec;
+    int   map_spec_mra_l;
+    int   map_spec_mra_r;
+    int   reduce_mra_normal;
+    int   reduce_mra_spec;
 } stats_mra;
 
 struct user_s {
-    double (*task_mra_cost_f)(enum phase_e phase, size_t tid, size_t wid);
+    double (*task_mra_cost_f)(enum phase_e phase, size_t tid, size_t mra_wid);
     void (*mra_dfs_f)(char** mra_dfs_matrix, size_t chunks, size_t workers_mra, int replicas);
     int (*map_mra_output_f)(size_t mid, size_t rid);
 } user_mra;

@@ -209,7 +209,7 @@ static void init_mra_config (void)
     const char*    process_name = NULL;
     msg_host_t     host;
     msg_process_t  process;
-    size_t         wid;
+    size_t         mra_wid;
     unsigned int   cursor;
     w_mra_info_t       wi;
     xbt_dynar_t    process_list;
@@ -228,7 +228,7 @@ static void init_mra_config (void)
 
     config_mra.workers_mra = xbt_new (msg_host_t, config_mra.mra_number_of_workers);
 
-    wid = 0;
+    mra_wid = 0;
     config_mra.grid_cpu_power = 0.0;
     xbt_dynar_foreach (process_list, cursor, process)
     {
@@ -236,14 +236,14 @@ static void init_mra_config (void)
 	host = MSG_process_get_host (process);
 	if ( strcmp (process_name, "worker_mra") == 0 )
 	{
-	    config_mra.workers_mra[wid] = host;
+	    config_mra.workers_mra[mra_wid] = host;
 	    /* Set the worker ID as its data. */
 	    wi = xbt_new (struct w_info_s, 1);
-	    wi->wid = wid;
+	    wi->mra_wid = mra_wid;
 	    MSG_host_set_data (host, (void*)wi);
 	    /* Add the worker's cpu power to the grid total. */
 	    config_mra.grid_cpu_power += MSG_get_host_speed (host);
-	    wid++;
+	    mra_wid++;
 	}
     }
     config_mra.grid_average_speed = config_mra.grid_cpu_power / config_mra.mra_number_of_workers;
@@ -260,16 +260,16 @@ static void init_mra_config (void)
 static void init_job_mra (void)
 {
     int     i;
-    size_t  wid;
+    size_t  mra_wid;
 
     xbt_assert (config_mra.initialized, "init_mra_config has to be called before init_job_mra");
 
     job_mra.finished = 0;
     job_mra.mra_heartbeats = xbt_new (struct mra_heartbeat_s, config_mra.mra_number_of_workers);
-    for (wid = 0; wid < config_mra.mra_number_of_workers; wid++)
+    for (mra_wid = 0; mra_wid < config_mra.mra_number_of_workers; mra_wid++)
     {
-	job_mra.mra_heartbeats[wid].slots_av[MRA_MAP] = config_mra.slots_mra[MRA_MAP];
-	job_mra.mra_heartbeats[wid].slots_av[MRA_REDUCE] = config_mra.slots_mra[MRA_REDUCE];
+	job_mra.mra_heartbeats[mra_wid].slots_av[MRA_MAP] = config_mra.slots_mra[MRA_MAP];
+	job_mra.mra_heartbeats[mra_wid].slots_av[MRA_REDUCE] = config_mra.slots_mra[MRA_REDUCE];
     }
 
     /* Initialize map information. */
@@ -306,12 +306,12 @@ static void init_mra_stats (void)
 {
     xbt_assert (config_mra.initialized, "init_mra_config has to be called before init_mra_stats");
 
-    stats_mra.map_local = 0;
+    stats_mra.map_local_mra = 0;
     stats_mra.mra_map_remote = 0;
-    stats_mra.map_spec_l = 0;
-    stats_mra.map_spec_r = 0;
-    stats_mra.reduce_normal = 0;
-    stats_mra.reduce_spec = 0;
+    stats_mra.map_spec_mra_l = 0;
+    stats_mra.map_spec_mra_r = 0;
+    stats_mra.reduce_mra_normal = 0;
+    stats_mra.reduce_mra_spec = 0;
 }
 
 /**

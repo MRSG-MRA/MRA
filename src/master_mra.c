@@ -30,7 +30,7 @@ static void print_mra_config (void);
 static void print_mra_stats (void);
 //static int is_straggler (msg_host_t worker);
 static int is_straggler_mra (enum phase_e phase, msg_host_t worker);
-static int task_time_elapsed_mra (msg_task_t task);
+static int task_time_elapsed_mra (msg_task_t mra_task);
 //static void set_speculative_tasks (msg_host_t worker);
 static void set_mra_speculative_tasks (enum phase_e phase, msg_host_t worker);
 static void send_map_to_mra_worker (msg_host_t dest);
@@ -45,7 +45,7 @@ int master_mra (int argc, char* argv[])
     msg_error_t  status;
     msg_host_t   worker;
     msg_task_t   msg = NULL;
-    size_t       wid;
+    size_t       mra_wid;
     mra_task_info_t  ti;
 
     print_mra_config ();
@@ -61,11 +61,11 @@ int master_mra (int argc, char* argv[])
 			if (status == MSG_OK)
 				{
 	    		worker = MSG_task_get_source (msg);
-	    		wid = get_mra_worker_id (worker);
+	    		mra_wid = get_mra_worker_id (worker);
 
 	    		if (message_is (msg, SMS_HEARTBEAT_MRA))
 	     			{
-							mra_heartbeat = &job_mra.mra_heartbeats[wid];
+							mra_heartbeat = &job_mra.mra_heartbeats[mra_wid];
 	  
 	    			if (is_straggler_mra (MRA_MAP, worker) )
 	    				{
@@ -73,7 +73,7 @@ int master_mra (int argc, char* argv[])
 	    				 } 
 	    			else 
 	    			  {	   
-	 							if (mra_heartbeat->slots_av[MRA_MAP] > 0 && dist_bruta [wid] > 0) 
+	 							if (mra_heartbeat->slots_av[MRA_MAP] > 0 && dist_bruta [mra_wid] > 0) 
 	    							send_map_to_mra_worker (worker); 
 		    			 }
 		    
@@ -83,7 +83,7 @@ int master_mra (int argc, char* argv[])
 							   		  
 						else{
 						
-								if (mra_heartbeat->slots_av[MRA_REDUCE] > 0 && dist_bruta [wid] > 0)     								
+								if (mra_heartbeat->slots_av[MRA_REDUCE] > 0 && dist_bruta [mra_wid] > 0)     								
 								   send_reduce_to_mra_worker (worker);
 		    			}
 		    						
@@ -92,9 +92,9 @@ int master_mra (int argc, char* argv[])
 	    			{
 							ti = (mra_task_info_t) MSG_task_get_data (msg);
 
-							if (job_mra.task_status[ti->phase][ti->id] != T_STATUS_MRA_DONE)
+							if (job_mra.task_status[ti->phase][ti->mra_tid] != T_STATUS_MRA_DONE)
 								{
-		    					job_mra.task_status[ti->phase][ti->id] = T_STATUS_MRA_DONE;
+		    					job_mra.task_status[ti->phase][ti->mra_tid] = T_STATUS_MRA_DONE;
 		    					finish_all_mra_task_copies (ti);
 		    					job_mra.tasks_pending[ti->phase]--;
 		    					if (job_mra.tasks_pending[ti->phase] <= 0)
@@ -154,14 +154,14 @@ static void print_mra_config (void)
 static void print_mra_stats (void)
 {
     XBT_INFO ("MRA_JOB STATISTICS:");
-    XBT_INFO ("local maps: %d", stats_mra.map_local);
+    XBT_INFO ("local maps: %d", stats_mra.map_local_mra);
     XBT_INFO ("non-local maps: %d", stats_mra.mra_map_remote);
-    XBT_INFO ("speculative maps (local): %d", stats_mra.map_spec_l);
-    XBT_INFO ("speculative maps (remote): %d", stats_mra.map_spec_r);
-    XBT_INFO ("total non-local maps: %d", stats_mra.mra_map_remote + stats_mra.map_spec_r);
-    XBT_INFO ("total speculative maps: %d", stats_mra.map_spec_l + stats_mra.map_spec_r);
-    XBT_INFO ("normal reduces: %d", stats_mra.reduce_normal);
-    XBT_INFO ("speculative reduces: %d", stats_mra.reduce_spec);
+    XBT_INFO ("speculative maps (local): %d", stats_mra.map_spec_mra_l);
+    XBT_INFO ("speculative maps (remote): %d", stats_mra.map_spec_mra_r);
+    XBT_INFO ("total non-local maps: %d", stats_mra.mra_map_remote + stats_mra.map_spec_mra_r);
+    XBT_INFO ("total speculative maps: %d", stats_mra.map_spec_mra_l + stats_mra.map_spec_mra_r);
+    XBT_INFO ("normal reduces: %d", stats_mra.reduce_mra_normal);
+    XBT_INFO ("speculative reduces: %d", stats_mra.reduce_mra_spec);
     XBT_INFO (" ");
 }
 
@@ -173,17 +173,17 @@ static void print_mra_stats (void)
 static int is_straggler_mra (enum phase_e phase, msg_host_t worker)
 {
     int     task_count;
-    size_t  wid;
+    size_t  mra_wid;
 
 
-    wid = get_mra_worker_id (worker);
+    mra_wid = get_mra_worker_id (worker);
 
-    task_count = (config_mra.slots_mra[MRA_MAP] + config_mra.slots_mra[MRA_REDUCE]) - (job_mra.mra_heartbeats[wid].slots_av[MRA_MAP] + job_mra.mra_heartbeats[wid].slots_av[MRA_REDUCE]);
+    task_count = (config_mra.slots_mra[MRA_MAP] + config_mra.slots_mra[MRA_REDUCE]) - (job_mra.mra_heartbeats[mra_wid].slots_av[MRA_MAP] + job_mra.mra_heartbeats[mra_wid].slots_av[MRA_REDUCE]);
 
   switch (phase)
     {
 	case MRA_MAP:
-	 if (MSG_get_host_speed (worker) < avg_task_exec_map[wid] && task_count > 0){
+	 if (MSG_get_host_speed (worker) < avg_task_exec_map[mra_wid] && task_count > 0){
 	   return 1;}
             break;
 	    
@@ -201,16 +201,16 @@ static int is_straggler_mra (enum phase_e phase, msg_host_t worker)
 
 
 /* @brief  Returns for how long a task is running.
- * @param  task  The task to be probed.
+ * @param  mra_task  The task to be probed.
  * @return The amount of seconds since the beginning of the computation.
  */
-static int task_time_elapsed_mra (msg_task_t task)
+static int task_time_elapsed_mra (msg_task_t mra_task)
 {
     mra_task_info_t  ti;
 
-    ti = (mra_task_info_t) MSG_task_get_data (task);
+    ti = (mra_task_info_t) MSG_task_get_data (mra_task);
 
-    return (MSG_task_get_compute_duration (task) - MSG_task_get_remaining_computation (task))/ MSG_get_host_speed (config_mra.workers_mra[ti->wid]);
+    return (MSG_task_get_compute_duration (mra_task) - MSG_task_get_remaining_computation (mra_task))/ MSG_get_host_speed (config_mra.workers_mra[ti->mra_wid]);
 }
 
 /* @brief  Mark the tasks of a straggler as possible speculative tasks.
@@ -222,24 +222,24 @@ static int task_time_elapsed_mra (msg_task_t task)
 static void set_mra_speculative_tasks (enum phase_e phase, msg_host_t worker)
  {
     size_t       tid;
-    size_t       wid;
+    size_t       mra_wid;
     mra_task_info_t  ti;
 
-    wid = get_mra_worker_id (worker);
+    mra_wid = get_mra_worker_id (worker);
 
       switch (phase)
     {
 	    case MRA_MAP:    
    				if (is_straggler_mra (MRA_MAP, worker) == 1 )
    					{
-    					if (job_mra.mra_heartbeats[wid].slots_av[MRA_MAP] < config_mra.slots_mra[MRA_MAP])
+    					if (job_mra.mra_heartbeats[mra_wid].slots_av[MRA_MAP] < config_mra.slots_mra[MRA_MAP])
     						{
           				for (tid = 0; tid < config_mra.amount_of_tasks_mra[MRA_MAP]; tid++)
 	    							{
 	     								if (job_mra.task_list[MRA_MAP][tid][0] != NULL)
 	       								{
 		 											ti = (mra_task_info_t) MSG_task_get_data (job_mra.task_list[MRA_MAP][tid][0]);
-		   										if (ti->wid == wid && task_time_elapsed_mra (job_mra.task_list[MRA_MAP][tid][0]) > 60)
+		   										if (ti->mra_wid == mra_wid && task_time_elapsed_mra (job_mra.task_list[MRA_MAP][tid][0]) > 60)
 		  											{
 		    											job_mra.task_status[MRA_MAP][tid] = T_STATUS_MRA_TIP_SLOW;
 		  											}
@@ -252,14 +252,14 @@ static void set_mra_speculative_tasks (enum phase_e phase, msg_host_t worker)
        case MRA_REDUCE:
     			if (is_straggler_mra (MRA_REDUCE, worker) == 1 )
     				{
-       				if (job_mra.mra_heartbeats[wid].slots_av[MRA_REDUCE] < config_mra.slots_mra[MRA_REDUCE])
+       				if (job_mra.mra_heartbeats[mra_wid].slots_av[MRA_REDUCE] < config_mra.slots_mra[MRA_REDUCE])
         				{
 	   							for (tid = 0; tid < config_mra.amount_of_tasks_mra[MRA_REDUCE]; tid++)
 	    							{
 	      							if (job_mra.task_list[MRA_REDUCE][tid][0] != NULL)
 	      								{
 													ti = (mra_task_info_t) MSG_task_get_data (job_mra.task_list[MRA_REDUCE][tid][0]);
-		  										if (ti->wid == wid && task_time_elapsed_mra (job_mra.task_list[MRA_REDUCE][tid][0]) > 60)
+		  										if (ti->mra_wid == mra_wid && task_time_elapsed_mra (job_mra.task_list[MRA_REDUCE][tid][0]) > 60)
 		  											{
 		    											job_mra.task_status[MRA_REDUCE][tid] = T_STATUS_MRA_TIP_SLOW;
 		  											}
@@ -282,7 +282,7 @@ static void send_map_to_mra_worker (msg_host_t dest)
     size_t  chunk;
     size_t  sid = NONE;
     size_t  tid = NONE;
-    size_t  wid;
+    size_t  mra_wid;
 
     if (job_mra.tasks_pending[MRA_MAP] <= 0)
 	  return;
@@ -290,14 +290,14 @@ static void send_map_to_mra_worker (msg_host_t dest)
     enum { LOCAL, REMOTE, LOCAL_SPEC, REMOTE_SPEC, NO_TASK };
     task_type = NO_TASK;
 
-    wid = get_mra_worker_id (dest);
+    mra_wid = get_mra_worker_id (dest);
 
     /* Look for a task for the worker. */
     for (chunk = 0; chunk < config_mra.mra_chunk_count; chunk++)
       {
 	      if (job_mra.task_status[MRA_MAP][chunk] == T_STATUS_MRA_PENDING)
 	       	{
-	    		if (chunk_owner_mra[chunk][wid])
+	    		if (chunk_owner_mra[chunk][mra_wid])
 	    		{
 						task_type = LOCAL;
 						tid = chunk;
@@ -313,7 +313,7 @@ static void send_map_to_mra_worker (msg_host_t dest)
 		&& task_type > REMOTE
 		&& !job_mra.task_instances[MRA_MAP][chunk] )
 	{
-	    if (chunk_owner_mra[chunk][wid])
+	    if (chunk_owner_mra[chunk][mra_wid])
 	    {
 		task_type = LOCAL_SPEC;
 		tid = chunk;
@@ -330,8 +330,8 @@ static void send_map_to_mra_worker (msg_host_t dest)
     {
 	case LOCAL:
 	    flags = "";
-	    sid = wid;
-	    stats_mra.map_local++;
+	    sid = mra_wid;
+	    stats_mra.map_local_mra++;
 	    break;
 
 	case REMOTE:
@@ -342,14 +342,14 @@ static void send_map_to_mra_worker (msg_host_t dest)
 
 	case LOCAL_SPEC:
 	    flags = "(speculative)";
-	    sid = wid;
-	    stats_mra.map_spec_l++;
+	    sid = mra_wid;
+	    stats_mra.map_spec_mra_l++;
 	    break;
 
 	case REMOTE_SPEC:
 	    flags = "(non-local, speculative)";
 	    sid = find_random_mra_chunk_owner (tid);
-	    stats_mra.map_spec_r++;
+	    stats_mra.map_spec_mra_r++;
 	    break;
 
 	default: return;
@@ -397,12 +397,12 @@ static void send_reduce_to_mra_worker (msg_host_t dest)
     		{
 					case NORMAL:
 	    		flags = "";
-	    		stats_mra.reduce_normal++;
+	    		stats_mra.reduce_mra_normal++;
 	    		break;
 
 					case SPECULATIVE:
 	    		flags = "(speculative)";
-	    		stats_mra.reduce_spec++;
+	    		stats_mra.reduce_mra_spec++;
 	    		break;
 
 					default: return;
@@ -425,49 +425,49 @@ static void send_mra_task (enum phase_e phase, size_t tid, size_t data_src, msg_
     char         mailbox[MAILBOX_ALIAS_SIZE];
     int          i;
     double       cpu_required = 0.0;
-    msg_task_t   task = NULL;
+    msg_task_t   mra_task = NULL;
     mra_task_info_t  task_info;
-    size_t       wid;
+    size_t       mra_wid;
 
-    wid = get_mra_worker_id (dest);
+    mra_wid = get_mra_worker_id (dest);
 
-    cpu_required = user_mra.task_mra_cost_f (phase, tid, wid);
+    cpu_required = user_mra.task_mra_cost_f (phase, tid, mra_wid);
 
     task_info = xbt_new (struct task_info_s, 1);
-    task = MSG_task_create (SMS_TASK_MRSG, cpu_required, 0.0, (void*) task_info);
+    mra_task = MSG_task_create (SMS_TASK_MRSG, cpu_required, 0.0, (void*) task_info);
 
     task_info->phase = phase;
-    task_info->id = tid;
-    task_info->src = data_src;
-    task_info->wid = wid;
-    task_info->task = task;
+    task_info->mra_tid = tid;
+    task_info->mra_src = data_src;
+    task_info->mra_wid = mra_wid;
+    task_info->mra_task = mra_task;
     task_info->shuffle_mra_end = 0.0;
 
     // for tracing purposes...
-    MSG_task_set_category (task, (phase==MRA_MAP?"MRA_MAP":"MRA_REDUCE"));
+    MSG_task_set_category (mra_task, (phase==MRA_MAP?"MRA_MAP":"MRA_REDUCE"));
 
     if (job_mra.task_status[phase][tid] != T_STATUS_MRA_TIP_SLOW)
 	job_mra.task_status[phase][tid] = T_STATUS_MRA_TIP;
 
-    job_mra.mra_heartbeats[wid].slots_av[phase]--;
+    job_mra.mra_heartbeats[mra_wid].slots_av[phase]--;
 
     for (i = 0; i < MAX_SPECULATIVE_COPIES; i++)
     {
 	if (job_mra.task_list[phase][tid][i] == NULL)
 	{
-	    job_mra.task_list[phase][tid][i] = task;
+	    job_mra.task_list[phase][tid][i] = mra_task;
 	    break;
 	}
     }
 
-    fprintf (tasks_log, "%d_%zu_%d,%s,%zu,%.3f,START,\n", phase, tid, i, (phase==MRA_MAP?"MRA_MAP":"MRA_REDUCE"), wid, MSG_get_clock ());
+    fprintf (tasks_log, "%d_%zu_%d,%s,%zu,%.3f,START,\n", phase, tid, i, (phase==MRA_MAP?"MRA_MAP":"MRA_REDUCE"), mra_wid, MSG_get_clock ());
 
 #ifdef VERBOSE
     XBT_INFO ("TX: %s > %s", SMS_TASK_MRSG, MSG_host_get_name (dest));
 #endif
 
-    sprintf (mailbox, TASKTRACKER_MRA_MAILBOX, wid);
-    xbt_assert (MSG_task_send (task, mailbox) == MSG_OK, "ERROR SENDING MESSAGE");
+    sprintf (mailbox, TASKTRACKER_MRA_MAILBOX, mra_wid);
+    xbt_assert (MSG_task_send (mra_task, mailbox) == MSG_OK, "ERROR SENDING MESSAGE");
 
     job_mra.task_instances[phase][tid]++;
 }
@@ -480,7 +480,7 @@ static void finish_all_mra_task_copies (mra_task_info_t ti)
 {
     int     i;
     int     phase = ti->phase;
-    size_t  tid = ti->id;
+    size_t  tid = ti->mra_tid;
 
     for (i = 0; i < MAX_SPECULATIVE_COPIES; i++)
     {
@@ -489,7 +489,7 @@ static void finish_all_mra_task_copies (mra_task_info_t ti)
 	    //MSG_task_cancel (job.task_list[phase][tid][i]);
 	    MSG_task_destroy (job_mra.task_list[phase][tid][i]);
 	    job_mra.task_list[phase][tid][i] = NULL;
-	    fprintf (tasks_log, "%d_%zu_%d,%s,%zu,%.3f,END,%.3f\n", ti->phase, tid, i, (ti->phase==MRA_MAP?"MRA_MAP":"MRA_REDUCE"), ti->wid, MSG_get_clock (), ti->shuffle_mra_end);
+	    fprintf (tasks_log, "%d_%zu_%d,%s,%zu,%.3f,END,%.3f\n", ti->phase, tid, i, (ti->phase==MRA_MAP?"MRA_MAP":"MRA_REDUCE"), ti->mra_wid, MSG_get_clock (), ti->shuffle_mra_end);
 				}
     }
 }

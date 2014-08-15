@@ -31,7 +31,7 @@ void MRA_init (void);
 
 int MRA_main (const char* plat, const char* depl, const char* conf);
 
-void MRA_set_task_mra_cost_f ( double (*f)(enum phase_e phase, size_t tid, size_t wid) );
+void MRA_set_task_mra_cost_f ( double (*f)(enum phase_e phase, size_t tid, size_t mra_wid) );
 
 void MRA_set_dfs_f ( void (*f)(char** mra_dfs_matrix, size_t chunks, size_t workers_mra, int replicas) );
 
