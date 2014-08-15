@@ -9,7 +9,7 @@ var master__mra_8c =
     [ "send_mra_task", "master__mra_8c.html#ad1217d5b8cdd99a1e7b3755a9761d4ee", null ],
     [ "send_reduce_to_mra_worker", "master__mra_8c.html#a11c1ba3e81b04f147dddbfcc637ffd1f", null ],
     [ "set_mra_speculative_tasks", "master__mra_8c.html#a769bac1cdfdfc862a1c9dc5444a47c95", null ],
-    [ "task_time_elapsed_mra", "master__mra_8c.html#a307706539b3d6ddd301c250ef7e0990c", null ],
+    [ "task_time_elapsed_mra", "master__mra_8c.html#ae022ecd66fc6b19fd3d7fad2856d8565", null ],
     [ "XBT_LOG_EXTERNAL_DEFAULT_CATEGORY", "master__mra_8c.html#a32bd1bae277b9aa336336310547bb693", null ],
     [ "tasks_log", "master__mra_8c.html#a42ff89a9ffd23ba410ff217181554f6c", null ]
 ];

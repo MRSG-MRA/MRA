@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>MRA++ Simulator: Data Fields</title>
+<title>BigHybrid - BitDew-MapReduce Module: Data Fields</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -30,14 +30,14 @@
  <tbody>
  <tr style="height: 56px;">
   
-  <td id="projectlogo"><img alt="Logo" src="mra_logo.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="bighybrid-1.png"/></td>
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">MRA++ Simulator
-   &#160;<span id="projectnumber">version 3.11</span>
+   <div id="projectname">BigHybrid - BitDew-MapReduce Module
+   
    </div>
-   <div id="projectbrief">MapReduce to Heterogeneous Environments, basead on MRSG Simulator</div>
+   <div id="projectbrief">BitDew-MapReduce Simulator, a BigHybrid Module</div>
   </td>
   
   
@@ -143,9 +143,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
-<li>id
-: <a class="el" href="structtask__info__s.html#a4974ced5dfb8d5d2ab72351cc12e1bb6">task_info_s</a>
-</li>
 <li>initialized
 : <a class="el" href="structconfig__s.html#a0c33578ad98e034d6ef2fa0563f64a10">config_s</a>
 </li>
@@ -153,8 +150,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
-<li>map_local
-: <a class="el" href="structstats__s.html#ac3b2752238687f8f231dc7ee3fb66126">stats_s</a>
+<li>map_local_mra
+: <a class="el" href="structstats__s.html#adcedbda5e76a9889264ceaee65869ee2">stats_s</a>
 </li>
 <li>map_mra_output_f
 : <a class="el" href="structuser__s.html#ab9a47b1668a675fb95ca6489d1da13a7">user_s</a>
@@ -165,11 +162,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>map_output_copied
 : <a class="el" href="structtask__info__s.html#a89d391613219da550d84283a89461bf4">task_info_s</a>
 </li>
-<li>map_spec_l
-: <a class="el" href="structstats__s.html#a8928364ec78465521407e3978bb0256b">stats_s</a>
+<li>map_spec_mra_l
+: <a class="el" href="structstats__s.html#ac9381e330c8050d2d3df2f859bd918c6">stats_s</a>
 </li>
-<li>map_spec_r
-: <a class="el" href="structstats__s.html#aaa36a987438e3743fb4fddf2e3b766ac">stats_s</a>
+<li>map_spec_mra_r
+: <a class="el" href="structstats__s.html#a82788df4c198445c9e98885554e7547e">stats_s</a>
 </li>
 <li>mra_chunk_count
 : <a class="el" href="structconfig__s.html#ac38b035ee453f7d1c10d3f7632d2b01f">config_s</a>
@@ -195,6 +192,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>mra_number_of_workers
 : <a class="el" href="structconfig__s.html#a3a5b8a103b3cb1934cfb1aa58a1e4d86">config_s</a>
 </li>
+<li>mra_perc
+: <a class="el" href="structconfig__s.html#adadf8069230f456ecdae7c54335a26ae">config_s</a>
+</li>
+<li>mra_pid
+: <a class="el" href="structtask__info__s.html#acff51cde025ad7e22bd8384c9c0d80a3">task_info_s</a>
+</li>
+<li>mra_slots
+: <a class="el" href="structconfig__s.html#aadb02d2bc4ef97df61437cd6ce290dc3">config_s</a>
+</li>
+<li>mra_src
+: <a class="el" href="structtask__info__s.html#a7d3cdee7eb4a4084c5b4af5580d9fa95">task_info_s</a>
+</li>
+<li>mra_task
+: <a class="el" href="structtask__info__s.html#a70ba0b860dd946edf6c6eb51c7b73e5e">task_info_s</a>
+</li>
+<li>mra_tid
+: <a class="el" href="structtask__info__s.html#ac2337919496d0e92e93c78169e1ba55c">task_info_s</a>
+</li>
+<li>mra_wid
+: <a class="el" href="structw__info__s.html#ae4edd16fc599ac5f7145749edd14f4b0">w_info_s</a>
+, <a class="el" href="structtask__info__s.html#a07be34d19a5e034649be10544ef03c3a">task_info_s</a>
+</li>
 </ul>
 
 
@@ -202,18 +221,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>phase
 : <a class="el" href="structtask__info__s.html#afa72d514e04545e1916981f970178902">task_info_s</a>
 </li>
-<li>pid
-: <a class="el" href="structtask__info__s.html#abf5e8401c80afb200b761ed7207cfcea">task_info_s</a>
-</li>
 </ul>
 
 
 <h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
-<li>reduce_normal
-: <a class="el" href="structstats__s.html#ac416c784bd8cc7f6ff36fc0424a3e3bc">stats_s</a>
+<li>reduce_mra_normal
+: <a class="el" href="structstats__s.html#a39eb5deee8e57d0593fa394fe6c16e2e">stats_s</a>
 </li>
-<li>reduce_spec
-: <a class="el" href="structstats__s.html#a72a455323e2db452773d6e4d21fe8554">stats_s</a>
+<li>reduce_mra_spec
+: <a class="el" href="structstats__s.html#afca83864d0ef1099c294559d36aef00d">stats_s</a>
 </li>
 </ul>
 
@@ -225,19 +241,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>slots_av
 : <a class="el" href="structmra__heartbeat__s.html#a4807e7c902185697b22776045965e1a6">mra_heartbeat_s</a>
 </li>
-<li>slots_mra
-: <a class="el" href="structconfig__s.html#af8edcffd357e2d4087165a18b2c3e767">config_s</a>
-</li>
-<li>src
-: <a class="el" href="structtask__info__s.html#a80e71f08fc31bfe88a8c546f0e8155d7">task_info_s</a>
-</li>
 </ul>
 
 
 <h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
-<li>task
-: <a class="el" href="structtask__info__s.html#a852100955a5ed323f31c670ef596787c">task_info_s</a>
-</li>
 <li>task_instances
 : <a class="el" href="structjob__s.html#a511f43e33a73ddbda1ec080c2f972e33">job_s</a>
 </li>
@@ -245,7 +252,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="structjob__s.html#a30c1a20fc86906cb521672940ff65c0f">job_s</a>
 </li>
 <li>task_mra_cost_f
-: <a class="el" href="structuser__s.html#aa32af3ea6ee92e53a04476911d65f2c1">user_s</a>
+: <a class="el" href="structuser__s.html#a890ed4a7db91dc3dead62657f5ec7ff4">user_s</a>
 </li>
 <li>task_status
 : <a class="el" href="structjob__s.html#a25c05f7bc2c55b8626a947c42fbea207">job_s</a>
@@ -257,10 +264,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_w"></a>- w -</h3><ul>
-<li>wid
-: <a class="el" href="structtask__info__s.html#a7b70c65e767769e2a42e6c5978c2c669">task_info_s</a>
-, <a class="el" href="structw__info__s.html#ae293128296d6f73011e64ebbd840cb0c">w_info_s</a>
-</li>
 <li>workers_mra
 : <a class="el" href="structconfig__s.html#a25044c7b99a27e3823ec661de25d38d5">config_s</a>
 </li>
@@ -284,7 +287,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="nav-path" class="navpath">
     <ul>
 
-    <li class="footer">Generated on Thu Aug 14 2014 20:59:35 for MRA++ Simulator by
+    <li class="footer">Generated on Fri Aug 15 2014 19:46:22 for BigHybrid - BitDew-MapReduce Module by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.6.1 </li>
    </ul>

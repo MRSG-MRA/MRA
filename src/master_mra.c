@@ -134,7 +134,7 @@ int master_mra (int argc, char* argv[])
 static void print_mra_config (void)
 {
     XBT_INFO ("MRA_JOB CONFIGURATION:");
-    XBT_INFO ("slots_mra: %d map, %d reduce", config_mra.slots_mra[MRA_MAP], config_mra.slots_mra[MRA_REDUCE]);
+    XBT_INFO ("slots_mra: %d map, %d reduce", config_mra.mra_slots[MRA_MAP], config_mra.mra_slots[MRA_REDUCE]);
     XBT_INFO ("MRA_chunk replicas: %d", config_mra.mra_chunk_replicas);
     XBT_INFO ("MRA_chunk size: %.0f MB", config_mra.mra_chunk_size/1024/1024);
     XBT_INFO ("MRA_input chunks: %d", config_mra.mra_chunk_count);
@@ -178,7 +178,7 @@ static int is_straggler_mra (enum phase_e phase, msg_host_t worker)
 
     mra_wid = get_mra_worker_id (worker);
 
-    task_count = (config_mra.slots_mra[MRA_MAP] + config_mra.slots_mra[MRA_REDUCE]) - (job_mra.mra_heartbeats[mra_wid].slots_av[MRA_MAP] + job_mra.mra_heartbeats[mra_wid].slots_av[MRA_REDUCE]);
+    task_count = (config_mra.mra_slots[MRA_MAP] + config_mra.mra_slots[MRA_REDUCE]) - (job_mra.mra_heartbeats[mra_wid].slots_av[MRA_MAP] + job_mra.mra_heartbeats[mra_wid].slots_av[MRA_REDUCE]);
 
   switch (phase)
     {
@@ -232,7 +232,7 @@ static void set_mra_speculative_tasks (enum phase_e phase, msg_host_t worker)
 	    case MRA_MAP:    
    				if (is_straggler_mra (MRA_MAP, worker) == 1 )
    					{
-    					if (job_mra.mra_heartbeats[mra_wid].slots_av[MRA_MAP] < config_mra.slots_mra[MRA_MAP])
+    					if (job_mra.mra_heartbeats[mra_wid].slots_av[MRA_MAP] < config_mra.mra_slots[MRA_MAP])
     						{
           				for (tid = 0; tid < config_mra.amount_of_tasks_mra[MRA_MAP]; tid++)
 	    							{
@@ -252,7 +252,7 @@ static void set_mra_speculative_tasks (enum phase_e phase, msg_host_t worker)
        case MRA_REDUCE:
     			if (is_straggler_mra (MRA_REDUCE, worker) == 1 )
     				{
-       				if (job_mra.mra_heartbeats[mra_wid].slots_av[MRA_REDUCE] < config_mra.slots_mra[MRA_REDUCE])
+       				if (job_mra.mra_heartbeats[mra_wid].slots_av[MRA_REDUCE] < config_mra.mra_slots[MRA_REDUCE])
         				{
 	   							for (tid = 0; tid < config_mra.amount_of_tasks_mra[MRA_REDUCE]; tid++)
 	    							{

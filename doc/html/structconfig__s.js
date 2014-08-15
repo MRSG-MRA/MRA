@@ -9,6 +9,7 @@ var structconfig__s =
     [ "mra_chunk_size", "structconfig__s.html#a33bd48451a5304468d1a438573193d92", null ],
     [ "mra_heartbeat_interval", "structconfig__s.html#a705e55f5c2e8ea0d55c129a81c06654e", null ],
     [ "mra_number_of_workers", "structconfig__s.html#a3a5b8a103b3cb1934cfb1aa58a1e4d86", null ],
-    [ "slots_mra", "structconfig__s.html#af8edcffd357e2d4087165a18b2c3e767", null ],
+    [ "mra_perc", "structconfig__s.html#adadf8069230f456ecdae7c54335a26ae", null ],
+    [ "mra_slots", "structconfig__s.html#aadb02d2bc4ef97df61437cd6ce290dc3", null ],
     [ "workers_mra", "structconfig__s.html#a25044c7b99a27e3823ec661de25d38d5", null ]
 ];

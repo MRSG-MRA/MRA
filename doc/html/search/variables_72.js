@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['reduce_5fnormal',['reduce_normal',['../structstats__s.html#ac416c784bd8cc7f6ff36fc0424a3e3bc',1,'stats_s']]],
-  ['reduce_5fspec',['reduce_spec',['../structstats__s.html#a72a455323e2db452773d6e4d21fe8554',1,'stats_s']]]
+  ['reduce_5fmra_5fnormal',['reduce_mra_normal',['../structstats__s.html#a39eb5deee8e57d0593fa394fe6c16e2e',1,'stats_s']]],
+  ['reduce_5fmra_5fspec',['reduce_mra_spec',['../structstats__s.html#afca83864d0ef1099c294559d36aef00d',1,'stats_s']]]
 ];

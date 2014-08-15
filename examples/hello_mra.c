@@ -110,11 +110,8 @@ int main (int argc, char* argv[])
     MRA_set_map_mra_output_f (mra_map_mra_output_function);
     /* Run the simulation. */
     MRA_main ("mra-plat15-10M.xml", "d-mra-plat15-10M.xml", "mra15.conf");
-    //MRA_main ("mra-plat10-net_var.xml", "d-mra-plat10-net_var.xml", "mra10.conf");
-    //MRA_main ("mra-plat32-10M.xml", "d-mra-plat32-10M.xml", "mra32.conf");
-    //MRA_main ("mra-plat64-10M.xml", "d-mra-plat64-10M.xml", "mra64.conf");
-    //MRA_main ("mra-plat128-1G.xml", "d-mra-plat128-1G.xml", "mra128.conf"); 
-    //MRA_main ("mra-plat256-10M.xml", "d-mra-plat256-10M.xml", "mra256.conf");
+    //MRA_main ("mra-plat11-10M.xml", "d-mra-plat11-10M.xml", "mra11.conf");
+
     return 0;
 }
 

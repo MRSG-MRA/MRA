@@ -84,7 +84,7 @@ struct config_s {
     int            mra_heartbeat_interval;
     int            amount_of_tasks_mra[2];
     int            mra_number_of_workers;
-    int            slots_mra[2];
+    int            mra_slots[2];
     int            mra_perc;
     int            initialized;
     msg_host_t*    workers_mra;

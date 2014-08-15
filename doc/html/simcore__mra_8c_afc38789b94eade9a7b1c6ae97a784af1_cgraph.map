@@ -12,7 +12,7 @@
 <area shape="rect" id="node40" href="$master__mra_8c.html#ad10e64f15346eb21a4a4b2dab5ab4007" title="Print job statistics." alt="" coords="191,555,300,586"/>
 <area shape="rect" id="node5" href="$common__mra_8c.html#a305ac8e3389f94106990aa3c52c91416" title="Send a short message, of size zero." alt="" coords="440,5,555,35"/>
 <area shape="rect" id="node7" href="$common__mra_8c.html#a385b12669d8faf7b5cdb54c1ae597e1c" title="Send a message/task." alt="" coords="695,5,745,35"/>
-<area shape="rect" id="node25" href="$master__mra_8c.html#a307706539b3d6ddd301c250ef7e0990c" title="task_time_elapsed_mra" alt="" coords="415,369,580,399"/>
+<area shape="rect" id="node25" href="$master__mra_8c.html#ae022ecd66fc6b19fd3d7fad2856d8565" title="task_time_elapsed_mra" alt="" coords="415,369,580,399"/>
 <area shape="rect" id="node30" href="$dfs__mra_8c.html#a3f8eddb9dd6200115f7d88325537035e" title="Choose a random DataNode that owns a specific chunk." alt="" coords="392,473,603,503"/>
 <area shape="rect" id="node32" href="$master__mra_8c.html#ad1217d5b8cdd99a1e7b3755a9761d4ee" title="Send a task to a worker." alt="" coords="440,526,555,557"/>
 </map>

@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "MRA++ Simulator", "index.html", [
+  [ "BigHybrid - BitDew-MapReduce Module", "index.html", [
     [ "Data Structures", null, [
       [ "Data Structures", "annotated.html", "annotated" ],
       [ "Data Structure Index", "classes.html", null ],

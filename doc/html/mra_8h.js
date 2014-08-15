@@ -5,5 +5,5 @@ var mra_8h =
     [ "MRA_main", "mra_8h.html#a002d713ab68756c7102fdf5d914a30da", null ],
     [ "MRA_set_dfs_f", "mra_8h.html#abbd980571ade6f7620d2807e9e05ef8f", null ],
     [ "MRA_set_map_mra_output_f", "mra_8h.html#ac642a851bf0b0df3254a086e12d93ab3", null ],
-    [ "MRA_set_task_mra_cost_f", "mra_8h.html#acffcb0453d48f70652984d90ee689172", null ]
+    [ "MRA_set_task_mra_cost_f", "mra_8h.html#a73ece9c7e7ced82440095c4216c02ad9", null ]
 ];

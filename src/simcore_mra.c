@@ -135,9 +135,9 @@ static void read_mra_config_file (const char* file_name)
     config_mra.mra_chunk_size = 67108864;
     config_mra.mra_chunk_count = 0;
     config_mra.mra_chunk_replicas = 3;
-    config_mra.slots_mra[MRA_MAP] = 2;
+    config_mra.mra_slots[MRA_MAP] = 2;
     config_mra.amount_of_tasks_mra[MRA_REDUCE] = 1;
-    config_mra.slots_mra[MRA_REDUCE] = 2;
+    config_mra.mra_slots[MRA_REDUCE] = 2;
     Fg=1;
     mra_perc=100;
 
@@ -164,7 +164,7 @@ static void read_mra_config_file (const char* file_name)
 	}
 	else if ( strcmp (property, "mra_map_slots") == 0 )
 	{
-	    fscanf (file, "%d", &config_mra.slots_mra[MRA_MAP]);
+	    fscanf (file, "%d", &config_mra.mra_slots[MRA_MAP]);
 	}
 	else if ( strcmp (property, "grain_factor") == 0 )
 	{
@@ -180,7 +180,7 @@ static void read_mra_config_file (const char* file_name)
 	}
 	else if ( strcmp (property, "mra_reduce_slots") == 0 )
 	{
-	    fscanf (file, "%d", &config_mra.slots_mra[MRA_REDUCE]);
+	    fscanf (file, "%d", &config_mra.mra_slots[MRA_REDUCE]);
 	}
 	else
 	{
@@ -196,9 +196,9 @@ static void read_mra_config_file (const char* file_name)
     xbt_assert (config_mra.mra_chunk_size > 0, "MRA_Chunk size must be greater than zero");
     xbt_assert (config_mra.mra_chunk_count > 0, "The amount of MRA_input chunks must be greater than zero");
     xbt_assert (config_mra.mra_chunk_replicas > 0, "The amount of MRA_chunk replicas must be greater than zero");
-    xbt_assert (config_mra.slots_mra[MRA_MAP] > 0, "MRA_Map slots must be greater than zero");
+    xbt_assert (config_mra.mra_slots[MRA_MAP] > 0, "MRA_Map slots must be greater than zero");
     xbt_assert (config_mra.amount_of_tasks_mra[MRA_REDUCE] >= 0, "The number of MRA_reduce tasks can't be negative");
-    xbt_assert (config_mra.slots_mra[MRA_REDUCE] > 0, "MRA_Reduce slots must be greater than zero");
+    xbt_assert (config_mra.mra_slots[MRA_REDUCE] > 0, "MRA_Reduce slots must be greater than zero");
 }
 
 /**
@@ -268,8 +268,8 @@ static void init_job_mra (void)
     job_mra.mra_heartbeats = xbt_new (struct mra_heartbeat_s, config_mra.mra_number_of_workers);
     for (mra_wid = 0; mra_wid < config_mra.mra_number_of_workers; mra_wid++)
     {
-	job_mra.mra_heartbeats[mra_wid].slots_av[MRA_MAP] = config_mra.slots_mra[MRA_MAP];
-	job_mra.mra_heartbeats[mra_wid].slots_av[MRA_REDUCE] = config_mra.slots_mra[MRA_REDUCE];
+	job_mra.mra_heartbeats[mra_wid].slots_av[MRA_MAP] = config_mra.mra_slots[MRA_MAP];
+	job_mra.mra_heartbeats[mra_wid].slots_av[MRA_REDUCE] = config_mra.mra_slots[MRA_REDUCE];
     }
 
     /* Initialize map information. */

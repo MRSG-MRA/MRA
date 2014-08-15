@@ -129,7 +129,7 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
 	
 	dist_bruta[owner] = (int) ceil(p_worker_cap[owner]*tasks_map);
 	
-	prev_exec[owner] = ((dist_bruta[owner]*task_exec[owner])/config_mra.slots_mra[MRA_MAP]);
+	prev_exec[owner] = ((dist_bruta[owner]*task_exec[owner])/config_mra.mra_slots[MRA_MAP]);
 	
 	temp_corr[owner] = prev_exec[owner]+task_exec[owner];
 	
@@ -186,7 +186,7 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
     	      soma_dist=0;
     				for (owner = 0; owner < config_mra.mra_number_of_workers; owner++)
     	   				{	    	
-    	     				prev_exec[owner] = ((dist_bruta[owner]*task_exec[owner])/config_mra.slots_mra[MRA_MAP]);
+    	     				prev_exec[owner] = ((dist_bruta[owner]*task_exec[owner])/config_mra.mra_slots[MRA_MAP]);
 	     						temp_corr[owner] = prev_exec[owner]+task_exec[owner];
 	     						soma_dist = soma_dist + dist_bruta[owner];
 	              

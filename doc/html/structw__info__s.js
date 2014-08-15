@@ -1,4 +1,4 @@
 var structw__info__s =
 [
-    [ "wid", "structw__info__s.html#ae293128296d6f73011e64ebbd840cb0c", null ]
+    [ "mra_wid", "structw__info__s.html#ae4edd16fc599ac5f7145749edd14f4b0", null ]
 ];

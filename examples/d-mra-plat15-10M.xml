@@ -1,0 +1,20 @@
+<?xml version='1.0'?>
+<!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid.dtd">
+<platform version="3">
+	<process host="MRA-Host 0" function="master_mra"/>
+	<process host="MRA-Host 1" function="worker_mra"/>
+	<process host="MRA-Host 2" function="worker_mra"/>
+	<process host="MRA-Host 3" function="worker_mra"/>
+	<process host="MRA-Host 4" function="worker_mra"/>
+	<process host="MRA-Host 5" function="worker_mra"/>
+	<process host="MRA-Host 6" function="worker_mra"/>
+	<process host="MRA-Host 7" function="worker_mra"/>
+	<process host="MRA-Host 8" function="worker_mra"/>
+	<process host="MRA-Host 9" function="worker_mra"/>
+	<process host="MRA-Host 10" function="worker_mra"/>
+	<process host="MRA-Host 11" function="worker_mra"/>
+	<process host="MRA-Host 12" function="worker_mra"/>
+	<process host="MRA-Host 13" function="worker_mra"/>
+	<process host="MRA-Host 14" function="worker_mra"/>
+	<process host="MRA-Host 15" function="worker_mra"/>
+</platform>
