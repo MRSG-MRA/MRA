@@ -13,7 +13,7 @@ struct = {
 double
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'mra_chunk_size';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '79';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -56,7 +56,7 @@ _EnD_oF_dEf_TeXt_;
 double
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'grid_average_speed';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '80';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -89,7 +89,7 @@ _EnD_oF_dEf_TeXt_;
 double
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'grid_cpu_power';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '81';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -122,7 +122,7 @@ _EnD_oF_dEf_TeXt_;
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'mra_chunk_count';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '82';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -175,7 +175,7 @@ _EnD_oF_dEf_TeXt_;
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'mra_chunk_replicas';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '83';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -218,7 +218,7 @@ _EnD_oF_dEf_TeXt_;
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'mra_heartbeat_interval';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '84';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -251,7 +251,7 @@ _EnD_oF_dEf_TeXt_;
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'amount_of_tasks_mra';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '85';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -324,7 +324,7 @@ _EnD_oF_dEf_TeXt_;
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'mra_number_of_workers';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '86';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -377,7 +377,7 @@ _EnD_oF_dEf_TeXt_;
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'mra_slots';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '87';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -425,7 +425,7 @@ _EnD_oF_dEf_TeXt_;
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'mra_perc';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '88';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -443,7 +443,7 @@ _EnD_oF_dEf_TeXt_;
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'initialized';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '89';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -481,7 +481,7 @@ _EnD_oF_dEf_TeXt_;
 msg_host_t *
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'workers_mra';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '90';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -511,7 +511,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* sec-member */
   }; /* cp-section */
-  cp-filename  = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+  cp-filename  = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
   cp-fileline  = '78';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
@@ -534,7 +534,7 @@ struct = {
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'finished';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '94';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -582,7 +582,7 @@ _EnD_oF_dEf_TeXt_;
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'tasks_pending';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '95';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -620,7 +620,7 @@ _EnD_oF_dEf_TeXt_;
 int *
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'task_instances';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '96';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -663,7 +663,7 @@ _EnD_oF_dEf_TeXt_;
 int *
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'task_status';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '97';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -726,7 +726,7 @@ _EnD_oF_dEf_TeXt_;
 msg_task_t **
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'task_list';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '98';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -769,7 +769,7 @@ _EnD_oF_dEf_TeXt_;
 size_t **
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'map_output';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '99';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -807,7 +807,7 @@ _EnD_oF_dEf_TeXt_;
 mra_heartbeat_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'mra_heartbeats';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '100';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -852,7 +852,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* sec-member */
   }; /* cp-section */
-  cp-filename  = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+  cp-filename  = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
   cp-fileline  = '93';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
@@ -899,7 +899,7 @@ struct = {
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'slots_av';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '72';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -939,7 +939,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* sec-member */
   }; /* cp-section */
-  cp-filename  = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+  cp-filename  = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
   cp-fileline  = '71';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 Information sent by the workers with every heartbeat.
@@ -962,7 +962,7 @@ struct = {
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'map_local_mra';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '118';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -995,7 +995,7 @@ _EnD_oF_dEf_TeXt_;
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'mra_map_remote';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '119';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1028,7 +1028,7 @@ _EnD_oF_dEf_TeXt_;
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'map_spec_mra_l';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '120';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1061,7 +1061,7 @@ _EnD_oF_dEf_TeXt_;
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'map_spec_mra_r';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '121';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1094,7 +1094,7 @@ _EnD_oF_dEf_TeXt_;
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'reduce_mra_normal';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '122';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1127,7 +1127,7 @@ _EnD_oF_dEf_TeXt_;
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'reduce_mra_spec';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '123';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1152,7 +1152,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* sec-member */
   }; /* cp-section */
-  cp-filename  = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+  cp-filename  = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
   cp-fileline  = '117';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
@@ -1175,7 +1175,7 @@ struct = {
 enum phase_e
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'phase';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '105';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1208,7 +1208,7 @@ _EnD_oF_dEf_TeXt_;
 size_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'mra_tid';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '106';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1251,7 +1251,7 @@ _EnD_oF_dEf_TeXt_;
 size_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'mra_src';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '107';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1274,7 +1274,7 @@ _EnD_oF_dEf_TeXt_;
 size_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'mra_wid';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '108';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1312,7 +1312,7 @@ _EnD_oF_dEf_TeXt_;
 int
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'mra_pid';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '109';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1335,7 +1335,7 @@ _EnD_oF_dEf_TeXt_;
 msg_task_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'mra_task';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '110';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1353,7 +1353,7 @@ _EnD_oF_dEf_TeXt_;
 size_t *
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'map_output_copied';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '111';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1381,7 +1381,7 @@ _EnD_oF_dEf_TeXt_;
 double
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'shuffle_mra_end';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '112';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1401,7 +1401,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* sec-member */
   }; /* cp-section */
-  cp-filename  = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+  cp-filename  = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
   cp-fileline  = '104';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 Information sent as the task data.
@@ -1424,7 +1424,7 @@ struct = {
 double(*
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'task_mra_cost_f';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '127';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1462,7 +1462,7 @@ _EnD_oF_dEf_TeXt_;
 void(*
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'mra_dfs_f';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '128';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1495,7 +1495,7 @@ _EnD_oF_dEf_TeXt_;
 int(*
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'map_mra_output_f';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       sec-mem-desc-line = '129';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1535,7 +1535,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* sec-member */
   }; /* cp-section */
-  cp-filename  = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+  cp-filename  = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
   cp-fileline  = '126';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
@@ -1558,7 +1558,7 @@ struct = {
 size_t
 _EnD_oF_dEf_TeXt_;
       sec-mem-name = 'mra_wid';
-      sec-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/worker_mra.h';
+      sec-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/worker_mra.h';
       sec-mem-desc-line = '25';
       sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1578,7 +1578,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* sec-member */
   }; /* cp-section */
-  cp-filename  = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/worker_mra.h';
+  cp-filename  = '/home/julio/Simulador/MRA-3.11/include/worker_mra.h';
   cp-fileline  = '24';
   cp-briefdesc = <<_EnD_oF_dEf_TeXt_
 
@@ -1606,7 +1606,7 @@ const char *
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'file_name';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/examples/hello_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/examples/hello_mra.c';
       func-mem-desc-line = '23';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1661,7 +1661,7 @@ size_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'rid';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/examples/hello_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/examples/hello_mra.c';
       func-mem-desc-line = '76';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1727,7 +1727,7 @@ size_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'mra_wid';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/examples/hello_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/examples/hello_mra.c';
       func-mem-desc-line = '92';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1783,7 +1783,7 @@ _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'argv';
         func-mem-param-array = '[]';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/examples/hello_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/examples/hello_mra.c';
       func-mem-desc-line = '104';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1823,7 +1823,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* func-member */
     };
-  file-full-name  = '/home/julio/Simulador/BigHybrid/MRA_3.11/examples/hello_mra.c';
+  file-full-name  = '/home/julio/Simulador/MRA-3.11/examples/hello_mra.c';
   file-first-line = '1';
   file-briefdesc  = <<_EnD_oF_dEf_TeXt_
 
@@ -1845,7 +1845,7 @@ file = {
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 3
 _EnD_oF_dEf_TeXt_;
-      define-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      define-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       define-mem-desc-line = '39';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1868,7 +1868,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 600
 _EnD_oF_dEf_TeXt_;
-      define-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      define-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       define-mem-desc-line = '40';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1886,7 +1886,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 "SMS-GC"
 _EnD_oF_dEf_TeXt_;
-      define-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      define-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       define-mem-desc-line = '44';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1914,7 +1914,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 "SMS-GIP"
 _EnD_oF_dEf_TeXt_;
-      define-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      define-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       define-mem-desc-line = '45';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1942,7 +1942,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 "SMS-HB"
 _EnD_oF_dEf_TeXt_;
-      define-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      define-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       define-mem-desc-line = '46';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -1975,7 +1975,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 "SMS-T"
 _EnD_oF_dEf_TeXt_;
-      define-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      define-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       define-mem-desc-line = '47';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -2003,7 +2003,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 "SMS-TD"
 _EnD_oF_dEf_TeXt_;
-      define-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      define-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       define-mem-desc-line = '48';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -2031,7 +2031,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 "SMS-F"
 _EnD_oF_dEf_TeXt_;
-      define-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      define-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       define-mem-desc-line = '49';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -2064,7 +2064,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 (-1)
 _EnD_oF_dEf_TeXt_;
-      define-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      define-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       define-mem-desc-line = '51';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -2097,7 +2097,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 3
 _EnD_oF_dEf_TeXt_;
-      define-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      define-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       define-mem-desc-line = '52';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -2130,7 +2130,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 256
 _EnD_oF_dEf_TeXt_;
-      define-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      define-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       define-mem-desc-line = '55';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -2183,7 +2183,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 "MASTER_MRA"
 _EnD_oF_dEf_TeXt_;
-      define-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      define-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       define-mem-desc-line = '56';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -2216,7 +2216,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 "%zu:DN"
 _EnD_oF_dEf_TeXt_;
-      define-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      define-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       define-mem-desc-line = '57';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -2254,7 +2254,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 "%zu:TT"
 _EnD_oF_dEf_TeXt_;
-      define-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      define-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       define-mem-desc-line = '58';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -2287,7 +2287,7 @@ _EnD_oF_dEf_TeXt_;
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 "%zu:%d"
 _EnD_oF_dEf_TeXt_;
-      define-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      define-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       define-mem-desc-line = '59';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -2322,7 +2322,7 @@ _EnD_oF_dEf_TeXt_;
 struct mra_heartbeat_s *
 _EnD_oF_dEf_TeXt_;
       typedef-mem-name = 'mra_heartbeat_t';
-      typedef-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      typedef-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       typedef-mem-desc-line = '75';
       typedef-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -2340,7 +2340,7 @@ _EnD_oF_dEf_TeXt_;
 struct task_info_s *
 _EnD_oF_dEf_TeXt_;
       typedef-mem-name = 'mra_task_info_t';
-      typedef-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      typedef-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       typedef-mem-desc-line = '115';
       typedef-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -2361,7 +2361,7 @@ _EnD_oF_dEf_TeXt_;
       enum-mem-enum = { enum-name = T_STATUS_MRA_TIP; };
       enum-mem-enum = { enum-name = T_STATUS_MRA_TIP_SLOW; };
       enum-mem-enum = { enum-name = T_STATUS_MRA_DONE; };
-      enum-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      enum-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       enum-mem-desc-line = '62';
       enum-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Possible task status.
@@ -2411,7 +2411,7 @@ const char *
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'mailbox';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       func-mem-desc-line = '142';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Send a message/task.
@@ -2471,7 +2471,7 @@ const char *
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'mailbox';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       func-mem-desc-line = '150';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Send a short message, of size zero.
@@ -2523,7 +2523,7 @@ const char *
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'mailbox';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       func-mem-desc-line = '158';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Receive a message/task from a mailbox.
@@ -2580,7 +2580,7 @@ const char *
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'str';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       func-mem-desc-line = '166';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Compare the message from a task with a string.
@@ -2637,7 +2637,7 @@ int
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'b';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       func-mem-desc-line = '171';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Return the maximum of two values.
@@ -2666,7 +2666,7 @@ size_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'mid';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       func-mem-desc-line = '173';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Return the output size of a map task.
@@ -2711,7 +2711,7 @@ size_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'rid';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       func-mem-desc-line = '175';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Return the input size of a reduce task.
@@ -2757,7 +2757,7 @@ _EnD_oF_dEf_TeXt_;
 int *
 _EnD_oF_dEf_TeXt_;
       var-mem-name = 'dist_bruta';
-      var-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      var-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       var-mem-desc-line = '29';
       var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Initialize dist_bruta, task_exec, avg_task_exec.
@@ -2785,7 +2785,7 @@ _EnD_oF_dEf_TeXt_;
 double *
 _EnD_oF_dEf_TeXt_;
       var-mem-name = 'task_exec';
-      var-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      var-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       var-mem-desc-line = '30';
       var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -2808,7 +2808,7 @@ _EnD_oF_dEf_TeXt_;
 double *
 _EnD_oF_dEf_TeXt_;
       var-mem-name = 'avg_task_exec_map';
-      var-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      var-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       var-mem-desc-line = '31';
       var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -2836,7 +2836,7 @@ _EnD_oF_dEf_TeXt_;
 double *
 _EnD_oF_dEf_TeXt_;
       var-mem-name = 'avg_task_exec_reduce';
-      var-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      var-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       var-mem-desc-line = '32';
       var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -2859,7 +2859,7 @@ _EnD_oF_dEf_TeXt_;
 int
 _EnD_oF_dEf_TeXt_;
       var-mem-name = 'Fg';
-      var-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      var-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       var-mem-desc-line = '33';
       var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -2907,7 +2907,7 @@ _EnD_oF_dEf_TeXt_;
 int
 _EnD_oF_dEf_TeXt_;
       var-mem-name = 'mra_perc';
-      var-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      var-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       var-mem-desc-line = '34';
       var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -2940,7 +2940,7 @@ _EnD_oF_dEf_TeXt_;
 struct config_s
 _EnD_oF_dEf_TeXt_;
       var-mem-name = 'config_mra';
-      var-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      var-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       var-mem-desc-line = '91';
       var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -3068,7 +3068,7 @@ _EnD_oF_dEf_TeXt_;
 struct job_s
 _EnD_oF_dEf_TeXt_;
       var-mem-name = 'job_mra';
-      var-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      var-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       var-mem-desc-line = '101';
       var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -3166,7 +3166,7 @@ _EnD_oF_dEf_TeXt_;
 struct stats_s
 _EnD_oF_dEf_TeXt_;
       var-mem-name = 'stats_mra';
-      var-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      var-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       var-mem-desc-line = '124';
       var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -3204,7 +3204,7 @@ _EnD_oF_dEf_TeXt_;
 struct user_s
 _EnD_oF_dEf_TeXt_;
       var-mem-name = 'user_mra';
-      var-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+      var-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
       var-mem-desc-line = '130';
       var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -3264,7 +3264,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* var-member */
     };
-  file-full-name  = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/common_mra.h';
+  file-full-name  = '/home/julio/Simulador/MRA-3.11/include/common_mra.h';
   file-first-line = '1';
   file-briefdesc  = <<_EnD_oF_dEf_TeXt_
 
@@ -3291,7 +3291,7 @@ _EnD_oF_dEf_TeXt_;
 void
 _EnD_oF_dEf_TeXt_;
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/dfs_mra.h';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/dfs_mra.h';
       func-mem-desc-line = '29';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Distribute chunks (and replicas) to DataNodes.
@@ -3363,7 +3363,7 @@ int
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'replicas';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/dfs_mra.h';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/dfs_mra.h';
       func-mem-desc-line = '34';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Default data distribution algorithm.
@@ -3457,7 +3457,7 @@ int
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'cid';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/dfs_mra.h';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/dfs_mra.h';
       func-mem-desc-line = '41';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Choose a random DataNode that owns a specific chunk.
@@ -3518,7 +3518,7 @@ _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'argv';
         func-mem-param-array = '[]';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/dfs_mra.h';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/dfs_mra.h';
       func-mem-desc-line = '48';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 DataNode main function.
@@ -3583,7 +3583,7 @@ _EnD_oF_dEf_TeXt_;
 char **
 _EnD_oF_dEf_TeXt_;
       var-mem-name = 'chunk_owner_mra';
-      var-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/dfs_mra.h';
+      var-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/dfs_mra.h';
       var-mem-desc-line = '24';
       var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Matrix that maps chunks to workers.
@@ -3618,7 +3618,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* var-member */
     };
-  file-full-name  = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/dfs_mra.h';
+  file-full-name  = '/home/julio/Simulador/MRA-3.11/include/dfs_mra.h';
   file-first-line = '1';
   file-briefdesc  = <<_EnD_oF_dEf_TeXt_
 
@@ -3639,7 +3639,7 @@ file = {
       enum-mem-name = 'phase_e';
       enum-mem-enum = { enum-name = MRA_MAP; };
       enum-mem-enum = { enum-name = MRA_REDUCE; };
-      enum-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/mra.h';
+      enum-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/mra.h';
       enum-mem-desc-line = '25';
       enum-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Possible execution phases.
@@ -3664,7 +3664,7 @@ _EnD_oF_dEf_TeXt_;
 void
 _EnD_oF_dEf_TeXt_;
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/mra.h';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/mra.h';
       func-mem-desc-line = '30';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -3725,7 +3725,7 @@ const char *
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'conf';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/mra.h';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/mra.h';
       func-mem-desc-line = '32';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -3769,7 +3769,7 @@ double(*)(enum phase_e phase, size_t tid, size_t mra_wid)
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'f';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/mra.h';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/mra.h';
       func-mem-desc-line = '34';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -3803,7 +3803,7 @@ void(*)(char **mra_dfs_matrix, size_t chunks, size_t workers_mra, int replicas)
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'f';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/mra.h';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/mra.h';
       func-mem-desc-line = '36';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -3832,7 +3832,7 @@ int(*)(size_t mid, size_t rid)
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'f';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/mra.h';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/mra.h';
       func-mem-desc-line = '38';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -3852,7 +3852,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* func-member */
     };
-  file-full-name  = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/mra.h';
+  file-full-name  = '/home/julio/Simulador/MRA-3.11/include/mra.h';
   file-first-line = '1';
   file-briefdesc  = <<_EnD_oF_dEf_TeXt_
 
@@ -3874,7 +3874,7 @@ file = {
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 4
 _EnD_oF_dEf_TeXt_;
-      define-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/worker_mra.h';
+      define-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/worker_mra.h';
       define-mem-desc-line = '22';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -3894,7 +3894,7 @@ _EnD_oF_dEf_TeXt_;
 struct w_info_s *
 _EnD_oF_dEf_TeXt_;
       typedef-mem-name = 'w_mra_info_t';
-      typedef-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/worker_mra.h';
+      typedef-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/worker_mra.h';
       typedef-mem-desc-line = '26';
       typedef-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -3920,7 +3920,7 @@ msg_host_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'worker';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/worker_mra.h';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/include/worker_mra.h';
       func-mem-desc-line = '33';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Get the ID of a worker.
@@ -3996,7 +3996,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* func-member */
     };
-  file-full-name  = '/home/julio/Simulador/BigHybrid/MRA_3.11/include/worker_mra.h';
+  file-full-name  = '/home/julio/Simulador/MRA-3.11/include/worker_mra.h';
   file-first-line = '1';
   file-briefdesc  = <<_EnD_oF_dEf_TeXt_
 
@@ -4023,7 +4023,7 @@ _EnD_oF_dEf_TeXt_;
 msg_test
 _EnD_oF_dEf_TeXt_;
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/common_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/common_mra.c';
       func-mem-desc-line = '22';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -4071,7 +4071,7 @@ const char *
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'mailbox';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/common_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/common_mra.c';
       func-mem-desc-line = '25';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Send a message/task.
@@ -4131,7 +4131,7 @@ const char *
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'mailbox';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/common_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/common_mra.c';
       func-mem-desc-line = '47';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Send a short message, of size zero.
@@ -4183,7 +4183,7 @@ const char *
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'mailbox';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/common_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/common_mra.c';
       func-mem-desc-line = '52';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Receive a message/task from a mailbox.
@@ -4240,7 +4240,7 @@ const char *
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'str';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/common_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/common_mra.c';
       func-mem-desc-line = '66';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Compare the message from a task with a string.
@@ -4297,7 +4297,7 @@ int
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'b';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/common_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/common_mra.c';
       func-mem-desc-line = '74';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Return the maximum of two values.
@@ -4326,7 +4326,7 @@ size_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'mid';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/common_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/common_mra.c';
       func-mem-desc-line = '88';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Return the output size of a map task.
@@ -4371,7 +4371,7 @@ size_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'rid';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/common_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/common_mra.c';
       func-mem-desc-line = '106';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Return the input size of a reduce task.
@@ -4407,7 +4407,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* func-member */
     };
-  file-full-name  = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/common_mra.c';
+  file-full-name  = '/home/julio/Simulador/MRA-3.11/src/common_mra.c';
   file-first-line = '1';
   file-briefdesc  = <<_EnD_oF_dEf_TeXt_
 
@@ -4434,7 +4434,7 @@ _EnD_oF_dEf_TeXt_;
 msg_test
 _EnD_oF_dEf_TeXt_;
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/dfs_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/dfs_mra.c';
       func-mem-desc-line = '24';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -4458,7 +4458,7 @@ msg_task_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'msg';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/dfs_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/dfs_mra.c';
       func-mem-desc-line = '27';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Process that responds to data requests.
@@ -4536,7 +4536,7 @@ _EnD_oF_dEf_TeXt_;
 void
 _EnD_oF_dEf_TeXt_;
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/dfs_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/dfs_mra.c';
       func-mem-desc-line = '31';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Distribute chunks (and replicas) to DataNodes.
@@ -4608,7 +4608,7 @@ int
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'replicas';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/dfs_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/dfs_mra.c';
       func-mem-desc-line = '46';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Default data distribution algorithm.
@@ -4702,7 +4702,7 @@ int
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'cid';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/dfs_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/dfs_mra.c';
       func-mem-desc-line = '474';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Choose a random DataNode that owns a specific chunk.
@@ -4760,7 +4760,7 @@ _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'argv';
         func-mem-param-array = '[]';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/dfs_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/dfs_mra.c';
       func-mem-desc-line = '505';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 DataNode main function.
@@ -4815,7 +4815,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* func-member */
     };
-  file-full-name  = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/dfs_mra.c';
+  file-full-name  = '/home/julio/Simulador/MRA-3.11/src/dfs_mra.c';
   file-first-line = '1';
   file-briefdesc  = <<_EnD_oF_dEf_TeXt_
 
@@ -4842,7 +4842,7 @@ _EnD_oF_dEf_TeXt_;
 msg_test
 _EnD_oF_dEf_TeXt_;
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/master_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/master_mra.c';
       func-mem-desc-line = '25';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -4865,7 +4865,7 @@ _EnD_oF_dEf_TeXt_;
 void
 _EnD_oF_dEf_TeXt_;
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/master_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/master_mra.c';
       func-mem-desc-line = '29';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Print the job configuration.
@@ -4958,7 +4958,7 @@ _EnD_oF_dEf_TeXt_;
 void
 _EnD_oF_dEf_TeXt_;
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/master_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/master_mra.c';
       func-mem-desc-line = '30';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Print job statistics.
@@ -5023,7 +5023,7 @@ msg_host_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'worker';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/master_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/master_mra.c';
       func-mem-desc-line = '32';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -5097,7 +5097,7 @@ msg_task_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'mra_task';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/master_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/master_mra.c';
       func-mem-desc-line = '33';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -5142,7 +5142,7 @@ msg_host_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'worker';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/master_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/master_mra.c';
       func-mem-desc-line = '35';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -5236,7 +5236,7 @@ msg_host_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'dest';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/master_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/master_mra.c';
       func-mem-desc-line = '36';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Choose a map task, and send it to a worker.
@@ -5345,7 +5345,7 @@ msg_host_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'dest';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/master_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/master_mra.c';
       func-mem-desc-line = '37';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Choose a reduce task, and send it to a worker.
@@ -5452,7 +5452,7 @@ msg_host_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'dest';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/master_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/master_mra.c';
       func-mem-desc-line = '38';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Send a task to a worker.
@@ -5564,7 +5564,7 @@ mra_task_info_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'ti';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/master_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/master_mra.c';
       func-mem-desc-line = '39';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Kill all copies of a task.
@@ -5640,7 +5640,7 @@ _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'argv';
         func-mem-param-array = '[]';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/master_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/master_mra.c';
       func-mem-desc-line = '43';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Main master function.
@@ -5795,7 +5795,7 @@ _EnD_oF_dEf_TeXt_;
 static FILE *
 _EnD_oF_dEf_TeXt_;
       var-mem-name = 'tasks_log';
-      var-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/master_mra.c';
+      var-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/master_mra.c';
       var-mem-desc-line = '27';
       var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -5820,7 +5820,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* var-member */
     };
-  file-full-name  = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/master_mra.c';
+  file-full-name  = '/home/julio/Simulador/MRA-3.11/src/master_mra.c';
   file-first-line = '1';
   file-briefdesc  = <<_EnD_oF_dEf_TeXt_
 
@@ -5842,7 +5842,7 @@ file = {
       define-mem-initializer = <<_EnD_oF_dEf_TeXt_
 256
 _EnD_oF_dEf_TeXt_;
-      define-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/simcore_mra.c';
+      define-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/simcore_mra.c';
       define-mem-desc-line = '29';
       define-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -5872,7 +5872,7 @@ _EnD_oF_dEf_TeXt_;
 "MRA"
 _EnD_oF_dEf_TeXt_;
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/simcore_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/simcore_mra.c';
       func-mem-desc-line = '27';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -5903,7 +5903,7 @@ _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'argv';
         func-mem-param-array = '[]';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/simcore_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/simcore_mra.c';
       func-mem-desc-line = '32';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Main master function.
@@ -6069,7 +6069,7 @@ _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'argv';
         func-mem-param-array = '[]';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/simcore_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/simcore_mra.c';
       func-mem-desc-line = '33';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Main worker function.
@@ -6143,7 +6143,7 @@ _EnD_oF_dEf_TeXt_;
 void
 _EnD_oF_dEf_TeXt_;
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/simcore_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/simcore_mra.c';
       func-mem-desc-line = '35';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Check if the user configuration is sound.
@@ -6194,7 +6194,7 @@ const char *
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'mra_config_file';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/simcore_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/simcore_mra.c';
       func-mem-desc-line = '36';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -6250,7 +6250,7 @@ const char *
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'mra_config_file';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/simcore_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/simcore_mra.c';
       func-mem-desc-line = '37';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Initialize the MapReduce configuration.
@@ -6299,7 +6299,7 @@ const char *
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'file_name';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/simcore_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/simcore_mra.c';
       func-mem-desc-line = '38';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Read the MapReduce configuration file.
@@ -6372,7 +6372,7 @@ _EnD_oF_dEf_TeXt_;
 void
 _EnD_oF_dEf_TeXt_;
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/simcore_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/simcore_mra.c';
       func-mem-desc-line = '39';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Initialize the config structure.
@@ -6460,7 +6460,7 @@ _EnD_oF_dEf_TeXt_;
 void
 _EnD_oF_dEf_TeXt_;
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/simcore_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/simcore_mra.c';
       func-mem-desc-line = '40';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Initialize the job structure.
@@ -6568,7 +6568,7 @@ _EnD_oF_dEf_TeXt_;
 void
 _EnD_oF_dEf_TeXt_;
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/simcore_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/simcore_mra.c';
       func-mem-desc-line = '41';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Initialize the stats structure.
@@ -6631,7 +6631,7 @@ _EnD_oF_dEf_TeXt_;
 void
 _EnD_oF_dEf_TeXt_;
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/simcore_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/simcore_mra.c';
       func-mem-desc-line = '42';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Free allocated memory for global variables.
@@ -6722,7 +6722,7 @@ const char *
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'conf';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/simcore_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/simcore_mra.c';
       func-mem-desc-line = '45';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -6752,7 +6752,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* func-member */
     };
-  file-full-name  = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/simcore_mra.c';
+  file-full-name  = '/home/julio/Simulador/MRA-3.11/src/simcore_mra.c';
   file-first-line = '1';
   file-briefdesc  = <<_EnD_oF_dEf_TeXt_
 
@@ -6779,7 +6779,7 @@ _EnD_oF_dEf_TeXt_;
 void
 _EnD_oF_dEf_TeXt_;
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/user_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/user_mra.c';
       func-mem-desc-line = '24';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -6828,7 +6828,7 @@ double(*)(enum phase_e phase, size_t tid, size_t mra_wid)
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'f';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/user_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/user_mra.c';
       func-mem-desc-line = '31';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -6862,7 +6862,7 @@ void(*)(char **mra_dfs_matrix, size_t chunks, size_t workers_mra, int replicas)
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'f';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/user_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/user_mra.c';
       func-mem-desc-line = '36';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -6891,7 +6891,7 @@ int(*)(size_t mid, size_t rid)
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'f';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/user_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/user_mra.c';
       func-mem-desc-line = '41';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -6911,7 +6911,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* func-member */
     };
-  file-full-name  = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/user_mra.c';
+  file-full-name  = '/home/julio/Simulador/MRA-3.11/src/user_mra.c';
   file-first-line = '1';
   file-briefdesc  = <<_EnD_oF_dEf_TeXt_
 
@@ -6938,7 +6938,7 @@ _EnD_oF_dEf_TeXt_;
 msg_test
 _EnD_oF_dEf_TeXt_;
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/worker_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/worker_mra.c';
       func-mem-desc-line = '25';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 
@@ -6961,7 +6961,7 @@ _EnD_oF_dEf_TeXt_;
 void
 _EnD_oF_dEf_TeXt_;
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/worker_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/worker_mra.c';
       func-mem-desc-line = '27';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 The mra_heartbeat loop.
@@ -7027,7 +7027,7 @@ _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'argv';
         func-mem-param-array = '[]';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/worker_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/worker_mra.c';
       func-mem-desc-line = '28';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Process that listens for tasks.
@@ -7108,7 +7108,7 @@ _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'argv';
         func-mem-param-array = '[]';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/worker_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/worker_mra.c';
       func-mem-desc-line = '29';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Process that computes a task.
@@ -7228,7 +7228,7 @@ size_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'mid';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/worker_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/worker_mra.c';
       func-mem-desc-line = '30';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Update the amount of data produced by a mapper.
@@ -7283,7 +7283,7 @@ mra_task_info_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'ti';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/worker_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/worker_mra.c';
       func-mem-desc-line = '31';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Get the chunk associated to a map task.
@@ -7352,7 +7352,7 @@ mra_task_info_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'ti';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/worker_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/worker_mra.c';
       func-mem-desc-line = '32';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Copy the itermediary pairs for a reduce task.
@@ -7461,7 +7461,7 @@ msg_host_t
 _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'worker';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/worker_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/worker_mra.c';
       func-mem-desc-line = '35';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Get the ID of a worker.
@@ -7558,7 +7558,7 @@ _EnD_oF_dEf_TeXt_;
         func-mem-param-declname = 'argv';
         func-mem-param-array = '[]';
       }; /*        func-mem-param--param */
-      func-mem-desc-file = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/worker_mra.c';
+      func-mem-desc-file = '/home/julio/Simulador/MRA-3.11/src/worker_mra.c';
       func-mem-desc-line = '49';
       func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
 Main worker function.
@@ -7619,7 +7619,7 @@ _EnD_oF_dEf_TeXt_;
     };
     }; /* func-member */
     };
-  file-full-name  = '/home/julio/Simulador/BigHybrid/MRA_3.11/src/worker_mra.c';
+  file-full-name  = '/home/julio/Simulador/MRA-3.11/src/worker_mra.c';
   file-first-line = '1';
   file-briefdesc  = <<_EnD_oF_dEf_TeXt_
 

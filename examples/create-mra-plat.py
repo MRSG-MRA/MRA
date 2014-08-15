@@ -6,12 +6,12 @@ import random
 
 if len(sys.argv) < 7:
 	print 'Usage:', sys.argv[0], 'platform_file.xml num_workers cores_per_node_min[:numCores_max] cpu_min[:cpu_max] latency_min[:latency_max] bw_min[:bw_max]'
-	print 'Ex:', sys.argv[0], 'plat.xml 5 2 1e9 1e-4 1.25e8'
-	print 'Or:', sys.argv[0], 'plat-cpu_var.xml 10 2 4e9:7e9 1e-4 1.25e8'
-	print 'Or:', sys.argv[0], 'plat-BW_var.xml 10 2 7e9 1e-4 1.25e6:1.25e8'
-	print 'Or:', sys.argv[0], 'plat-Lat_var.xml 10 2 7e9 1e-4:1e-2 1.25e8'
-	print 'Or:', sys.argv[0], 'plat-net_var.xml 10 2 7e9 1e-4:1e-2 1.25e6:1.25e8'
-	print 'Or:', sys.argv[0], 'plat-ALL_var.xml 10 2 4e9:7e9 1e-4:1e-2 1.25e6:1.25e8'
+	print 'Ex. Homogeneous  :', sys.argv[0], 'plat.xml 5 2 1e9 1e-4 1.25e8'
+	print 'Or  Heterogeneous:', sys.argv[0], 'plat-cpu_var.xml 10 2 4e9:7e9 1e-4 1.25e8'
+	print 'Or  Heterogeneous:', sys.argv[0], 'plat-BW_var.xml 10 2 7e9 1e-4 1.25e6:1.25e8'
+	print 'Or  Heterogeneous:', sys.argv[0], 'plat-Lat_var.xml 10 2 7e9 1e-4:1e-2 1.25e8'
+	print 'Or  Heterogeneous:', sys.argv[0], 'plat-net_var.xml 10 2 7e9 1e-4:1e-2 1.25e6:1.25e8'
+	print 'Or  Heterogeneous:', sys.argv[0], 'plat-ALL_var.xml 10 2 4e9:7e9 1e-4:1e-2 1.25e6:1.25e8'
 #	print 'Distribution_name',, sys.argv[0], 'uniform, beta, expo, gamma, gauss, logn, weibull'
 	sys.exit(1)
 
@@ -47,25 +47,25 @@ random.seed()
 output.write('\n')
 if len(cpu) == 1 and len(numCores) == 1:
 	for i in range(numNodes):
-		output.write('\t<host id="MRA-Host ' + str(i) + '" power="' + str(cpu[0]) + '" core="' + str(numCores[0]) + '" />\n')
+		output.write('\t<host id="MRA_Host' + str(i) + '" power="' + str(cpu[0]) + '" core="' + str(numCores[0]) + '" />\n')
 
  
 elif len(numCores) == 1:
 	for i in range(numNodes):
 		rCPU = random.uniform(cpu[0], cpu[1])
-		output.write('\t<host id="MRA-Host ' + str(i) + '" power="' + str(rCPU) + '" core="' + str(numCores[0]) + '" />\n')	
+		output.write('\t<host id="MRA_Host' + str(i) + '" power="' + str(rCPU) + '" core="' + str(numCores[0]) + '" />\n')	
 
 elif len(cpu) == 1:
 	for i in range(numNodes):
 		rCor = random.randrange(numCores[0], numCores[1],2)
-		output.write('\t<host id="MRA-Host ' + str(i) + '" power="' + str(cpu[0]) + '" core="' + str(rCor) + '" />\n')	
+		output.write('\t<host id="MRA_Host' + str(i) + '" power="' + str(cpu[0]) + '" core="' + str(rCor) + '" />\n')	
 
 
 else:
 	for i in range(numNodes):
 		rCPU = random.uniform(cpu[0], cpu[1])
 		rCor = random.randrange(numCores[0], numCores[1], 2)
-		output.write('\t<host id="MRA-Host ' + str(i) + '" power="' + str(rCPU) + '" core="' + str(rCor) + '" />\n')	
+		output.write('\t<host id="MRA_Host' + str(i) + '" power="' + str(rCPU) + '" core="' + str(rCor) + '" />\n')	
 
 
 
@@ -103,7 +103,7 @@ output.write('\n')
 for src in range(numNodes):
 	for dst in range(numNodes):
 		if src != dst:
-			output.write('\t<route src="MRA-Host ' + str(src) + '" dst="MRA-Host ' + str(dst) + '">\n')
+			output.write('\t<route src="MRA_Host' + str(src) + '" dst="MRA_Host' + str(dst) + '">\n')
 			if (src == 0):
 				output.write('\t\t<link_ctn id="l' + str(dst) + '"/>\n')
 			elif (dst == 0):
