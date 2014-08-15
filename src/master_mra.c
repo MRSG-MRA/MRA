@@ -142,7 +142,7 @@ static void print_mra_config (void)
     XBT_INFO ("MRA_maps: %d", config_mra.amount_of_tasks_mra[MRA_MAP]);
     XBT_INFO ("MRA_reduces: %d", config_mra.amount_of_tasks_mra[MRA_REDUCE]);
     XBT_INFO ("grain factor: %d", Fg);
-    XBT_INFO ("MRA_map_output size: %g Bytes", (((config_mra.mra_chunk_size*mra_perc/100)/config_mra.amount_of_tasks_mra[MRA_REDUCE])/Fg));
+    XBT_INFO ("MRA_map_output size: %.0f Bytes", (((config_mra.mra_chunk_size*mra_perc/100)/config_mra.amount_of_tasks_mra[MRA_REDUCE])/Fg));
     XBT_INFO ("MRA_workers: %d", config_mra.mra_number_of_workers);
     XBT_INFO ("MRA_grid power: %g flops", config_mra.grid_cpu_power);
     XBT_INFO ("MRA_average power: %g flops/s", config_mra.grid_average_speed);
