@@ -13,8 +13,10 @@ To run the example, follow these steps:
 
 	Syntax: platform_file.xml num_workers cores_per_node_min[:numCores_max] cpu_min[:cpu_max] latency_min[:latency_max] bw_min[:bw_max]'
 	
+	To create Homogeneous Platforms
 	./create-mra-plat.py platform_file.xml 5 2 1e9 1e-4 1.25e8'
 	
+	To create Heterogeneous Platforms
 	Or: ./create-mra-plat.py platform_file.xml 10 2 4e9:7e9 1e-4 1.25e8
 	Or: ./create-mra-plat.py platform_file.xml 10 2 7e9 1e-4 1.25e6:1.25e8
 	Or: ./create-mra-plat.py platform_file.xml 10 2 7e9 1e-4:1e-2 1.25e8
