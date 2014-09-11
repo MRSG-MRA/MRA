@@ -27,8 +27,8 @@ static void read_mra_config_file (const char* file_name)
     /* Set the default configuration. */
     config_mra.mra_chunk_size = 67108864;
     config_mra.amount_of_tasks_mra[MRA_REDUCE] = 1;
-    Fg=1;
-    mra_perc=100;
+    config_mra.Fg=1;
+    config_mra.mra_perc=100;
 
     /* Read the user configuration file. */
 
@@ -45,11 +45,11 @@ static void read_mra_config_file (const char* file_name)
 			}
 			else if ( strcmp (property, "grain_factor") == 0 )
 			{
-	    fscanf (file, "%d", &Fg);
+	    fscanf (file, "%d", &config_mra.Fg);
 			}
 			else if ( strcmp (property, "mra_intermed_perc") == 0 )
 			{
-	    fscanf (file, "%d", &mra_perc);
+	    fscanf (file, "%lg", &config_mra.mra_perc);
 			}
 			else if ( strcmp (property, "mra_reduces") == 0 )
 			{
@@ -75,7 +75,7 @@ static void read_mra_config_file (const char* file_name)
 int mra_map_mra_output_function (size_t mid, size_t rid)
 {
 
-		return ((config_mra.mra_chunk_size*mra_perc/100)/config_mra.amount_of_tasks_mra[MRA_REDUCE]);
+		return ((config_mra.mra_chunk_size*config_mra.mra_perc/100)/config_mra.amount_of_tasks_mra[MRA_REDUCE]);
 //     return 2*1024*1024;
 }
 
@@ -83,20 +83,20 @@ int mra_map_mra_output_function (size_t mid, size_t rid)
 /**
  * User function that indicates the cost of a task.
  *
- * @param  phase  The execution phase.
+ * @param  mra_phase  The execution phase.
  * @param  tid    The ID of the task.
  * @param  mra_wid    The ID of the worker that received the task.
  * @return The task cost in FLOPs.
  */
-double mra_task_mra_cost_function (enum phase_e phase, size_t tid, size_t mra_wid)
+double mra_task_mra_cost_function (enum mra_phase_e mra_phase, size_t tid, size_t mra_wid)
 {
-    switch (phase)
+    switch (mra_phase)
     {
 	case MRA_MAP:
 	    return 3e+11;
 
 	case MRA_REDUCE:
-	    return (3e+11/Fg);
+	    return (3e+11/config_mra.Fg);
     }
 }
 
@@ -110,8 +110,11 @@ int main (int argc, char* argv[])
     MRA_set_map_mra_output_f (mra_map_mra_output_function);
     /* Run the simulation. */
     MRA_main ("mra-plat15-10M.xml", "d-mra-plat15-10M.xml", "mra15.conf");
-    //MRA_main ("mra-plat11-10M.xml", "d-mra-plat11-10M.xml", "mra11.conf");
-
+    //MRA_main ("mra-plat10-net_var.xml", "d-mra-plat10-net_var.xml", "mra10.conf");
+    //MRA_main ("mra-plat32-10M.xml", "d-mra-plat32-10M.xml", "mra32.conf");
+    //MRA_main ("mra-plat64-10M.xml", "d-mra-plat64-10M.xml", "mra64.conf");
+    //MRA_main ("mra-plat128-1G.xml", "d-mra-plat128-1G.xml", "mra128.conf"); 
+    //MRA_main ("mra-plat256-10M.xml", "d-mra-plat256-10M.xml", "mra256.conf");
     return 0;
 }
 

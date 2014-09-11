@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -g3
 
-INSTALL_PATH = $$HOME/simgrid-3.11
+INSTALL_PATH = $$HOME/simgrid-3.11.1
 INCLUDES = -Iinclude -I$(INSTALL_PATH)/include
 DEFS = -L$(INSTALL_PATH)/lib
 LDADD = -lm -lsimgrid

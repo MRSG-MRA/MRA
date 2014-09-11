@@ -97,11 +97,11 @@ static int listen_mra (int argc, char* argv[])
 	msg = NULL;
 	status = receive (&msg, mailbox);
 
-	if (status == MSG_OK && message_is (msg, SMS_TASK_MRSG))
+	if (status == MSG_OK && mra_message_is (msg, SMS_TASK_MRA))
 	{
 	    MSG_process_create ("compute_mra", compute_mra, msg, me);
 	}
-	else if (message_is (msg, SMS_FINISH_MRA))
+	else if (mra_message_is (msg, SMS_FINISH_MRA))
 	{
 	    MSG_task_destroy (msg);
 	    break;
@@ -125,7 +125,7 @@ static int compute_mra (int argc, char* argv[])
     ti = (mra_task_info_t) MSG_task_get_data (mra_task);
     ti->mra_pid = MSG_process_self_PID ();
 
-    switch (ti->phase)
+    switch (ti->mra_phase)
     {
 	case MRA_MAP:
 	    get_mra_chunk (ti);
@@ -136,13 +136,13 @@ static int compute_mra (int argc, char* argv[])
 	    break;
     }
 
-    if (job_mra.task_status[ti->phase][ti->mra_tid] != T_STATUS_MRA_DONE)
+    if (job_mra.task_status[ti->mra_phase][ti->mra_tid] != T_STATUS_MRA_DONE)
     {
 	TRY
 	{
 	    status = MSG_task_execute (mra_task);
 
-	    if (ti->phase == MRA_MAP && status == MSG_OK)
+	    if (ti->mra_phase == MRA_MAP && status == MSG_OK)
 		update_mra_map_output (MSG_host_self (), ti->mra_tid);
 	}
 	CATCH (e)
@@ -152,10 +152,10 @@ static int compute_mra (int argc, char* argv[])
 	}
     }
 
-    job_mra.mra_heartbeats[ti->mra_wid].slots_av[ti->phase]++;
+    job_mra.mra_heartbeats[ti->mra_wid].slots_av[ti->mra_phase]++;
     
     if (!job_mra.finished)
-	send (SMS_TASK_MRSG_DONE, 0.0, 0.0, ti, MASTER_MRA_MAILBOX);
+	send (SMS_TASK_MRA_DONE, 0.0, 0.0, ti, MASTER_MRA_MAILBOX);
 
     return 0;
 }
@@ -241,7 +241,7 @@ static void get_mra_map_output (mra_task_info_t ti)
 	    		if (job_mra.map_output[mra_wid][ti->mra_tid] > data_copied[mra_wid])
 	    			{
 							sprintf (mailbox, DATANODE_MRA_MAILBOX, mra_wid);
-							status = send (SMS_GET_INTER_MRSG_PAIRS, 0.0, 0.0, ti, mailbox);
+							status = send (SMS_GET_INTER_MRA_PAIRS, 0.0, 0.0, ti, mailbox);
 							if (status == MSG_OK)
 								{
 		    					sprintf (mailbox, TASK_MRA_MAILBOX, my_id, MSG_process_self_PID ());

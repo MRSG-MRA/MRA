@@ -1,4 +1,4 @@
-/* Copyright (c) 2010-2014. MRA Team. All rights reserved. */
+/* Copyright (c) 2010-2014. MRA Team. All rights res_mraerved. */
 
 /* This file is part of MRSG and MRA++.
 
@@ -24,13 +24,20 @@ along with MRSG and MRA++.  If not, see <http://www.gnu.org/licenses/>. */
 #include "dfs_mra.h"
 #include "mra.h"
 
+
+
 XBT_LOG_NEW_DEFAULT_CATEGORY (msg_test, "MRA");
+//XBT_LOG_EXTERNAL_DEFAULT_CATEGORY (msg_test);
 
 #define MAX_LINE_SIZE 256
 
+//int argc;
+//char argv;
 
 int master_mra (int argc, char *argv[]);
 int worker_mra (int argc, char *argv[]);
+
+
 
 static void check_config_mra (void);
 static msg_error_t run_mra_simulation (const char* platform_file, const char* deploy_file, const char* mra_config_file);
@@ -46,25 +53,25 @@ int MRA_main (const char* plat, const char* depl, const char* conf)
     int argc = 8;
     char* argv[] = {
 	"mra",
-	"--cfg=tracing:1",
-	"--cfg=tracing/buffer:1",
-	"--cfg=tracing/filename:tracefile.trace",
-	"--cfg=tracing/categorized:1",
-	"--cfg=tracing/uncategorized:1",
-	"--cfg=viva/categorized:cat.plist",
-	"--cfg=viva/uncategorized:uncat.plist"
+	"--cconfig_mra.Fg=tracing:1",
+	"--cconfig_mra.Fg=tracing/buffer:1",
+	"--cconfig_mra.Fg=tracing/filename:tracefile.trace",
+	"--cconfig_mra.Fg=tracing/categorized:1",
+	"--cconfig_mra.Fg=tracing/uncategorized:1",
+	"--cconfig_mra.Fg=viva/categorized:cat.plist",
+	"--cconfig_mra.Fg=viva/uncategorized:uncat.plist"
     };
 
-    msg_error_t  res = MSG_OK;
+    msg_error_t  res_mra = MSG_OK;
 
     config_mra.initialized = 0;
 
     check_config_mra ();
 
     MSG_init (&argc, argv);
-    res = run_mra_simulation (plat, depl, conf);
+    res_mra = run_mra_simulation (plat, depl, conf);
 
-    if (res == MSG_OK)
+    if (res_mra == MSG_OK)
 	return 0;
     else
 	return 1;
@@ -86,7 +93,7 @@ static void check_config_mra (void)
  */
 static msg_error_t run_mra_simulation (const char* platform_file, const char* deploy_file, const char* mra_config_file)
 {
-    msg_error_t  res = MSG_OK;
+    msg_error_t  res_mra = MSG_OK;
 
     read_mra_config_file (mra_config_file);
 
@@ -102,11 +109,11 @@ static msg_error_t run_mra_simulation (const char* platform_file, const char* de
 
     init_mr_mra_config (mra_config_file);
 
-    res = MSG_main ();
+    res_mra = MSG_main ();
 
     free_mra_global_mem ();
 
-    return res;
+    return res_mra;
 }
 
 /**
@@ -138,8 +145,8 @@ static void read_mra_config_file (const char* file_name)
     config_mra.mra_slots[MRA_MAP] = 2;
     config_mra.amount_of_tasks_mra[MRA_REDUCE] = 1;
     config_mra.mra_slots[MRA_REDUCE] = 2;
-    Fg=1;
-    mra_perc=100;
+    config_mra.Fg=1;
+    config_mra.mra_perc=100;
 
     /* Read the user configuration file. */
 
@@ -168,11 +175,11 @@ static void read_mra_config_file (const char* file_name)
 	}
 	else if ( strcmp (property, "grain_factor") == 0 )
 	{
-	    fscanf (file, "%d", &Fg);
+	    fscanf (file, "%d", &config_mra.Fg);
 	}
 		else if ( strcmp (property, "mra_intermed_perc") == 0 )
 	{
-	    fscanf (file, "%d", &mra_perc);
+	    fscanf (file, "%lg", &config_mra.mra_perc);
 	}
 		else if ( strcmp (property, "mra_reduces") == 0 )
 	{
@@ -238,7 +245,7 @@ static void init_mra_config (void)
 	{
 	    config_mra.workers_mra[mra_wid] = host;
 	    /* Set the worker ID as its data. */
-	    wi = xbt_new (struct w_info_s, 1);
+	    wi = xbt_new (struct mra_w_info_s, 1);
 	    wi->mra_wid = mra_wid;
 	    MSG_host_set_data (host, (void*)wi);
 	    /* Add the worker's cpu power to the grid total. */
@@ -249,7 +256,7 @@ static void init_mra_config (void)
     config_mra.grid_average_speed = config_mra.grid_cpu_power / config_mra.mra_number_of_workers;
     /* Cpu_require_map nao tem na versao nova - estudar o codigo*/
     //config_mra.cpu_required_map *= config_mra.mra_chunk_size; 
-    config_mra.mra_heartbeat_interval = maxval (MRA_HEARTBEAT_MIN_INTERVAL, config_mra.mra_number_of_workers / 100);
+    config_mra.mra_heartbeat_interval = mra_maxval (MRA_HEARTBEAT_MIN_INTERVAL, config_mra.mra_number_of_workers / 100);
     config_mra.amount_of_tasks_mra[MRA_MAP] = config_mra.mra_chunk_count;
     config_mra.initialized = 1;
 }
@@ -281,7 +288,7 @@ static void init_job_mra (void)
 	  job_mra.task_list[MRA_MAP][i] = xbt_new0 (msg_task_t, MAX_SPECULATIVE_COPIES);
 	  
     // Configuracao dos Reduces Inicia aqui 
-    config_mra.amount_of_tasks_mra[MRA_REDUCE] = Fg * config_mra.mra_number_of_workers;
+    config_mra.amount_of_tasks_mra[MRA_REDUCE] = config_mra.Fg * config_mra.mra_number_of_workers;
     
     job_mra.map_output = xbt_new (size_t*, config_mra.mra_number_of_workers);
     for (i = 0; i < config_mra.mra_number_of_workers; i++)

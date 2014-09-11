@@ -17,8 +17,6 @@ along with MRSG and MRA++.  If not, see <http://www.gnu.org/licenses/>. */
 
 #include "common_mra.h"
 
-
-
 XBT_LOG_EXTERNAL_DEFAULT_CATEGORY (msg_test);
 
 msg_error_t send (const char* str, double cpu, double net, void* data, const char* mailbox)
@@ -29,7 +27,7 @@ msg_error_t send (const char* str, double cpu, double net, void* data, const cha
     msg = MSG_task_create (str, cpu, net, data);
 
 #ifdef VERBOSE
-    if (!message_is (msg, SMS_HEARTBEAT_MRA))
+    if (!mra_message_is (msg, SMS_HEARTBEAT_MRA))
 	    XBT_INFO ("TX (%s): %s", mailbox, str);
 #endif
 
@@ -62,7 +60,7 @@ msg_error_t receive (msg_task_t* msg, const char* mailbox)
     return status;
 }
 
-int message_is (msg_task_t msg, const char* str)
+int mra_message_is (msg_task_t msg, const char* str)
 {
     if (strcmp (MSG_task_get_name (msg), str) == 0)
 	return 1;
@@ -70,14 +68,13 @@ int message_is (msg_task_t msg, const char* str)
     return 0;
 }
 
-int maxval (int a, int b)
+int mra_maxval (int a, int b)
 {
     if (b > a)
 	return b;
 
     return a;
 }
-
 
 /**
  * @brief  Return the output size of a map task.
@@ -91,11 +88,11 @@ size_t map_mra_output_size (size_t mid)
     
     for (rid = 0; rid < config_mra.amount_of_tasks_mra[MRA_REDUCE]; rid++)
     {
-	sum += ((user_mra.map_mra_output_f (mid, rid))/Fg);
-	    }
+	sum += ((user_mra.map_mra_output_f (mid, rid))/config_mra.Fg);
+	  }
+	    
     return sum;
 }
-
 
 /**
  * @brief  Return the input size of a reduce task.
@@ -109,10 +106,17 @@ size_t reduce_mra_input_size (size_t rid)
 
     for (mid = 0; mid < config_mra.amount_of_tasks_mra[MRA_MAP]; mid++)
     {
-	sum += ((user_mra.map_mra_output_f (mid, rid))/Fg);
+	sum += ((user_mra.map_mra_output_f (mid, rid))/config_mra.Fg);
     }
   XBT_INFO (" MRA_Reduce task %zu sent %zu Bytes",rid,sum); 
     return sum;
 }
+
+
+
+
+
+
+
 
 

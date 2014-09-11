@@ -30,8 +30,6 @@ int*        dist_bruta;
 double*     task_exec;
 double*     avg_task_exec_map;
 double*     avg_task_exec_reduce;
-int					Fg;
-int         mra_perc;
 
 
 
@@ -41,12 +39,13 @@ int         mra_perc;
 
 
 /* Short message names. */
-#define SMS_GET_MRA_CHUNK "SMS-GC"
-#define SMS_GET_INTER_MRSG_PAIRS "SMS-GIP"
-#define SMS_HEARTBEAT_MRA "SMS-HB"
-#define SMS_TASK_MRSG "SMS-T"
-#define SMS_TASK_MRSG_DONE "SMS-TD"
-#define SMS_FINISH_MRA "SMS-F"
+
+#define SMS_GET_MRA_CHUNK "SMS-MRA-GC"
+#define SMS_GET_INTER_MRA_PAIRS "SMS-MRA-GIP"
+#define SMS_HEARTBEAT_MRA "SMS-MRA-HB"
+#define SMS_TASK_MRA "SMS-MRA-T"
+#define SMS_TASK_MRA_DONE "SMS-MRA-TD"
+#define SMS_FINISH_MRA "SMS-MRA-F"
 
 #define NONE (-1)
 #define MAX_SPECULATIVE_COPIES 3
@@ -54,12 +53,15 @@ int         mra_perc;
 /* Mailbox related. */
 #define MAILBOX_ALIAS_SIZE 256
 #define MASTER_MRA_MAILBOX "MASTER_MRA"
-#define DATANODE_MRA_MAILBOX "%zu:DN"
-#define TASKTRACKER_MRA_MAILBOX "%zu:TT"
+#define DATANODE_MRA_MAILBOX "%zu:MRADN"
+#define TASKTRACKER_MRA_MAILBOX "%zu:MRATT"
 #define TASK_MRA_MAILBOX "%zu:%d"
 
+
+
+
 /** @brief  Possible task status. */
-enum task_status_e {
+enum mra_task_status_e {
     /* The initial status must be the first enum. */
     T_STATUS_MRA_PENDING,
     T_STATUS_MRA_TIP,
@@ -75,7 +77,7 @@ struct mra_heartbeat_s {
 typedef struct mra_heartbeat_s* mra_heartbeat_t;
 
 
-struct config_s {
+struct mra_config_s {
     double         mra_chunk_size;
     double         grid_average_speed;
     double         grid_cpu_power;
@@ -85,12 +87,13 @@ struct config_s {
     int            amount_of_tasks_mra[2];
     int            mra_number_of_workers;
     int            mra_slots[2];
-    int            mra_perc;
+    double         mra_perc;
+    int         Fg;
     int            initialized;
     msg_host_t*    workers_mra;
 } config_mra;
 
-struct job_s {
+struct mra_job_s {
     int           finished;
     int           tasks_pending[2];
     int*          task_instances[2];
@@ -101,8 +104,8 @@ struct job_s {
 } job_mra;
 
 /** @brief  Information sent as the task data. */
-struct task_info_s {
-    enum phase_e  phase;
+struct mra_task_info_s {
+    enum mra_phase_e  mra_phase;
     size_t        mra_tid;
     size_t        mra_src;
     size_t        mra_wid;
@@ -112,9 +115,9 @@ struct task_info_s {
     double        shuffle_mra_end;
 };
 
-typedef struct task_info_s* mra_task_info_t;
+typedef struct mra_task_info_s* mra_task_info_t;
 
-struct stats_s {
+struct mra_stats_s {
     int   map_local_mra;
     int   mra_map_remote;
     int   map_spec_mra_l;
@@ -123,8 +126,8 @@ struct stats_s {
     int   reduce_mra_spec;
 } stats_mra;
 
-struct user_s {
-    double (*task_mra_cost_f)(enum phase_e phase, size_t tid, size_t mra_wid);
+struct mra_user_s {
+    double (*task_mra_cost_f)(enum mra_phase_e mra_phase, size_t tid, size_t mra_wid);
     void (*mra_dfs_f)(char** mra_dfs_matrix, size_t chunks, size_t workers_mra, int replicas);
     int (*map_mra_output_f)(size_t mid, size_t rid);
 } user_mra;
@@ -163,12 +166,12 @@ msg_error_t receive (msg_task_t* msg, const char* mailbox);
  * @param  str  The string to compare with.
  * @return A positive value if matches, zero if doesn't.
  */
-int message_is (msg_task_t msg, const char* str);
+int mra_message_is (msg_task_t msg, const char* str);
 
 /**
  * @brief  Return the maximum of two values.
  */
-int maxval (int a, int b);
+int mra_maxval (int a, int b);
 
 size_t map_mra_output_size (size_t mid);
 

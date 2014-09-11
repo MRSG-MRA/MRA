@@ -514,7 +514,7 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
 			status = receive (&msg, mailbox);
 			if (status == MSG_OK)
 				{
-	    		if (message_is (msg, SMS_FINISH_MRA))
+	    		if (mra_message_is (msg, SMS_FINISH_MRA))
 	    			{
 							MSG_task_destroy (msg);
 							break;
@@ -543,11 +543,11 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
 
     my_id = get_mra_worker_id (MSG_host_self ());
     sprintf (mailbox, TASK_MRA_MAILBOX, get_mra_worker_id (MSG_task_get_source (msg)), MSG_process_get_PID (MSG_task_get_sender (msg)));
-    if (message_is (msg, SMS_GET_MRA_CHUNK))
+    if (mra_message_is (msg, SMS_GET_MRA_CHUNK))
     	{
 				MSG_task_dsend (MSG_task_create ("DATA-C", 0.0, config_mra.mra_chunk_size, NULL), mailbox, NULL);
     	}
-    else if (message_is (msg, SMS_GET_INTER_MRSG_PAIRS))
+    else if (mra_message_is (msg, SMS_GET_INTER_MRA_PAIRS))
     	{
 			ti = (mra_task_info_t) MSG_task_get_data (msg);
 			data_size = job_mra.map_output[my_id][ti->mra_tid] - ti->map_output_copied[my_id];
