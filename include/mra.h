@@ -29,7 +29,7 @@ enum mra_phase_e {
 
 void MRA_init (void);
 
-int MRA_main (const char* plat, const char* depl, const char* conf);
+int MRA_main (const char* plat, const char* depl, const char* conf, const char* trace_cv);
 
 void MRA_set_task_mra_cost_f ( double (*f)(enum mra_phase_e mra_phase, size_t tid, size_t mra_wid) );
 

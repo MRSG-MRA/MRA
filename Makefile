@@ -1,5 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -g3
+#CFLAGS = -Wall -g3 -O3
 
 INSTALL_PATH = $$HOME/simgrid-3.11.1
 INCLUDES = -Iinclude -I$(INSTALL_PATH)/include
@@ -7,7 +8,7 @@ DEFS = -L$(INSTALL_PATH)/lib
 LDADD = -lm -lsimgrid
 
 BIN = libmra.a
-OBJ = common_mra.o simcore_mra.o dfs_mra.o master_mra.o worker_mra.o user_mra.o
+OBJ = common_mra.o simcore_mra.o dfs_mra.o master_mra.o worker_mra.o user_mra.o 
 
 all: $(BIN)
 

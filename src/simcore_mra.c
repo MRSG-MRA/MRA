@@ -15,15 +15,18 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with MRSG and MRA++.  If not, see <http://www.gnu.org/licenses/>. */
 
+
 #include <msg/msg.h>
 #include <xbt/sysdep.h>
 #include <xbt/log.h>
 #include <xbt/asserts.h>
+#include <stdio.h> 
+#include <stdlib.h>
 #include "common_mra.h"
 #include "worker_mra.h"
 #include "dfs_mra.h"
 #include "mra.h"
-
+#include "mra_cv.h"
 
 
 XBT_LOG_NEW_DEFAULT_CATEGORY (msg_test, "MRA");
@@ -31,24 +34,27 @@ XBT_LOG_NEW_DEFAULT_CATEGORY (msg_test, "MRA");
 
 #define MAX_LINE_SIZE 256
 
-//int argc;
-//char argv;
-
 int master_mra (int argc, char *argv[]);
 int worker_mra (int argc, char *argv[]);
 
-
-
 static void check_config_mra (void);
-static msg_error_t run_mra_simulation (const char* platform_file, const char* deploy_file, const char* mra_config_file);
+static msg_error_t run_mra_simulation (const char* platform_file, const char* deploy_file, const char* mra_config_file, const char* vc_file_name);
 static void init_mr_mra_config (const char* mra_config_file);
+//Initialize VC
+static void init_mra_vc (const char* vc_file_name);
+static int mra_vc_prep_traces (const char* vc_file_name);
+static int read_mra_vc_config_file (const char* vc_file_name, int n_line);
+//End VC
 static void read_mra_config_file (const char* file_name);
 static void init_mra_config (void);
 static void init_job_mra (void);
 static void init_mra_stats (void);
 static void free_mra_global_mem (void);
 
-int MRA_main (const char* plat, const char* depl, const char* conf)
+
+
+
+int MRA_main (const char* plat, const char* depl, const char* conf, const char* trace_vc)
 {
     int argc = 8;
     char* argv[] = {
@@ -69,13 +75,17 @@ int MRA_main (const char* plat, const char* depl, const char* conf)
     check_config_mra ();
 
     MSG_init (&argc, argv);
-    res_mra = run_mra_simulation (plat, depl, conf);
-
+        
+    res_mra = run_mra_simulation (plat, depl, conf, trace_vc);
+        
     if (res_mra == MSG_OK)
 	return 0;
     else
 	return 1;
 }
+
+
+
 
 /**
  * @brief Check if the user configuration is sound.
@@ -90,14 +100,17 @@ static void check_config_mra (void)
  * @param  platform_file   The path/name of the platform file.
  * @param  deploy_file     The path/name of the deploy file.
  * @param  mra_config_file  The path/name of the configuration file.
+ * @param  vc_file_name   The volunteer computing configuration file.
  */
-static msg_error_t run_mra_simulation (const char* platform_file, const char* deploy_file, const char* mra_config_file)
+static msg_error_t run_mra_simulation (const char* platform_file, const char* deploy_file, const char* mra_config_file, const char* vc_file_name)
 {
     msg_error_t  res_mra = MSG_OK;
 
     read_mra_config_file (mra_config_file);
 
     MSG_create_environment (platform_file);
+    
+    init_mra_vc (vc_file_name);
 
     // for tracing purposes..
     TRACE_category_with_color ("MRA_MAP", "1 0 0");
@@ -128,6 +141,88 @@ static void init_mr_mra_config (const char* mra_config_file)
     init_job_mra ();
     distribute_data_mra ();
 }
+
+/** 
+ * @brief Initialize the Volunteer Computing Traces. 
+ * @param vc_file_name
+ * 
+ */
+
+static void init_mra_vc (const char* vc_file_name){
+     
+    int n_line;
+    n_line = mra_vc_prep_traces (vc_file_name);
+    read_mra_vc_config_file (vc_file_name, n_line);    
+}
+
+/*
+* @brief Reads config file and creates a vector to each node with the availability type, and start and end times. 
+*/
+static int read_mra_vc_config_file (const char* vc_file_name, int n_line)
+{	
+    int   i;
+    /* Allocate memory for the volunteer computing matrix. */     
+   	vc_node = xbt_new(int*, (n_line * sizeof (int)));
+   	vc_type = xbt_new(int*, (n_line * sizeof (int)));
+   	vc_start = xbt_new(long double*, (n_line * sizeof (long double)));
+   	vc_end = xbt_new(long double*, (n_line * sizeof (long double)));
+   	/* Allocate memory for the elements of volunteer computing matrix. */   
+    for (i = 0; i < (n_line + 1); i++)
+    {
+     		vc_node[i] = xbt_new(int, (sizeof (int)));
+     		vc_type[i] = xbt_new(int, (sizeof (int)));
+     		vc_start[i] = xbt_new(long double, (sizeof (long double)));
+     		vc_end[i] = xbt_new(long double, (sizeof (long double)));
+    }
+     
+    VC_TRACE *ptr_one;
+    FILE* vc_file;
+       
+    ptr_one = (VC_TRACE *) malloc(n_line * sizeof(VC_TRACE)); 
+    vc_file = fopen (vc_file_name, "r");
+ 
+    i=0;
+    while(!feof(vc_file))
+    {
+        fscanf(vc_file, "%d,%d,%Lf,%Lf", &ptr_one->mra_vc_node_id, &ptr_one->mra_vc_status_type,
+                                  &ptr_one->mra_vc_start, &ptr_one->mra_vc_end);
+                                 
+        vc_node[i][0] = ptr_one->mra_vc_node_id;
+        vc_type[i][0] = ptr_one->mra_vc_status_type;
+        vc_start[i][0] = ptr_one->mra_vc_start;
+        vc_end[i][0]= ptr_one->mra_vc_end;        
+    		i++; 		
+    }
+
+    return 0;
+    
+    fclose(vc_file);
+}
+
+/* @brief Return the number of lines on vc_file
+*  @param vc_file_name
+*  @return n_line
+*/
+static int mra_vc_prep_traces (const char* vc_file_name)
+{
+
+    int n_line = 0;  
+    char c;  
+    FILE* file;  
+    /* Read the user configuration file. */
+    file = fopen (vc_file_name, "r");
+ 
+    // Extract characters from file and store in character n_line
+    for (c = getc(file); c != EOF; c = getc(file)){
+        if (c == '\n') 
+            n_line++;
+  			}
+        fclose(file);
+   /*Array element with number lines of vc_fine_name. The result is saved on element array config_mra_vc_file_line[0] */
+    config_mra_vc_file_line[0] = n_line;
+    return n_line;
+}
+
 
 /**
  * @brief  Read the MapReduce configuration file.
@@ -184,6 +279,14 @@ static void read_mra_config_file (const char* file_name)
 		else if ( strcmp (property, "mra_reduces") == 0 )
 	{
 	    fscanf (file, "%d", &config_mra.amount_of_tasks_mra[MRA_REDUCE]);
+	}
+		else if ( strcmp (property, "perc_num_volatile_node") == 0 )
+	{
+	    fscanf (file, "%lg", &config_mra.perc_vc_node);
+	}
+		else if ( strcmp (property, "failure_timeout") == 0 )
+	{
+	    fscanf (file, "%lg", &config_mra.failure_timeout_conf);
 	}
 	else if ( strcmp (property, "mra_reduce_slots") == 0 )
 	{
@@ -254,8 +357,7 @@ static void init_mra_config (void)
 	}
     }
     config_mra.grid_average_speed = config_mra.grid_cpu_power / config_mra.mra_number_of_workers;
-    /* Cpu_require_map nao tem na versao nova - estudar o codigo*/
-    //config_mra.cpu_required_map *= config_mra.mra_chunk_size; 
+ 
     config_mra.mra_heartbeat_interval = mra_maxval (MRA_HEARTBEAT_MIN_INTERVAL, config_mra.mra_number_of_workers / 100);
     config_mra.amount_of_tasks_mra[MRA_MAP] = config_mra.mra_chunk_count;
     config_mra.initialized = 1;
@@ -275,8 +377,9 @@ static void init_job_mra (void)
     job_mra.mra_heartbeats = xbt_new (struct mra_heartbeat_s, config_mra.mra_number_of_workers);
     for (mra_wid = 0; mra_wid < config_mra.mra_number_of_workers; mra_wid++)
     {
-	job_mra.mra_heartbeats[mra_wid].slots_av[MRA_MAP] = config_mra.mra_slots[MRA_MAP];
-	job_mra.mra_heartbeats[mra_wid].slots_av[MRA_REDUCE] = config_mra.mra_slots[MRA_REDUCE];
+			job_mra.mra_heartbeats[mra_wid].slots_av[MRA_MAP] = config_mra.mra_slots[MRA_MAP];
+			job_mra.mra_heartbeats[mra_wid].slots_av[MRA_REDUCE] = config_mra.mra_slots[MRA_REDUCE];
+			job_mra.mra_heartbeats[mra_wid].wid_timestamp = sizeof(long double);
     }
 
     /* Initialize map information. */
@@ -313,12 +416,14 @@ static void init_mra_stats (void)
 {
     xbt_assert (config_mra.initialized, "init_mra_config has to be called before init_mra_stats");
 
-    stats_mra.map_local_mra = 0;
-    stats_mra.mra_map_remote = 0;
-    stats_mra.map_spec_mra_l = 0;
-    stats_mra.map_spec_mra_r = 0;
+    stats_mra.map_local_mra 		= 0;
+    stats_mra.mra_map_remote 		= 0;
+    stats_mra.map_spec_mra_l 		= 0;
+    stats_mra.map_spec_mra_r 		= 0;
     stats_mra.reduce_mra_normal = 0;
-    stats_mra.reduce_mra_spec = 0;
+    stats_mra.reduce_mra_spec 	= 0;
+    stats_mra.mra_map_recovery 	= 0;
+    stats_mra.mra_reduce_recovery = 0;
 }
 
 /**

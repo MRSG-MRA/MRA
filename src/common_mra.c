@@ -41,10 +41,12 @@ msg_error_t send (const char* str, double cpu, double net, void* data, const cha
     return status;
 }
 
+
 msg_error_t send_mra_sms (const char* str, const char* mailbox)
 {
     return send (str, 0.0, 0.0, NULL, mailbox);
 }
+
 
 msg_error_t receive (msg_task_t* msg, const char* mailbox)
 {
@@ -88,7 +90,7 @@ size_t map_mra_output_size (size_t mid)
     
     for (rid = 0; rid < config_mra.amount_of_tasks_mra[MRA_REDUCE]; rid++)
     {
-	sum += ((user_mra.map_mra_output_f (mid, rid))/config_mra.Fg);
+	sum += (user_mra.map_mra_output_f (mid, rid));
 	  }
 	    
     return sum;
@@ -106,9 +108,9 @@ size_t reduce_mra_input_size (size_t rid)
 
     for (mid = 0; mid < config_mra.amount_of_tasks_mra[MRA_MAP]; mid++)
     {
-	sum += ((user_mra.map_mra_output_f (mid, rid))/config_mra.Fg);
+	sum += (user_mra.map_mra_output_f (mid, rid));
     }
-  XBT_INFO (" MRA_Reduce task %zu sent %zu Bytes",rid,sum); 
+  XBT_INFO (" MRA_Reduce task %zu sent %zu Bytes", rid,sum); 
     return sum;
 }
 

@@ -27,15 +27,17 @@ along with MRSG and MRA++.  If not, see <http://www.gnu.org/licenses/>. */
 /** @brief  Initialize dist_bruta, task_exec, avg_task_exec. */
 
 int*        dist_bruta;
-double*     task_exec;
 double*     avg_task_exec_map;
 double*     avg_task_exec_reduce;
+
+
 
 
 
 /* Hearbeat parameters. */
 #define MRA_HEARTBEAT_MIN_INTERVAL 3
 #define MRA_HEARTBEAT_TIMEOUT 600
+
 
 
 /* Short message names. */
@@ -66,12 +68,23 @@ enum mra_task_status_e {
     T_STATUS_MRA_PENDING,
     T_STATUS_MRA_TIP,
     T_STATUS_MRA_TIP_SLOW,
-    T_STATUS_MRA_DONE
+    T_STATUS_MRA_DONE,
+    T_STATUS_MRA_DISP,
+    T_STATUS_MRA_FAILURE
 };
+
+/** @brief  Information about dist_bruta. */
+struct mra_dist_mang_s {
+			 int min_tot_dist; 
+       int max_tot_dist;
+} mra_dist_manage;
+
+
 
 /** @brief  Information sent by the workers with every heartbeat. */
 struct mra_heartbeat_s {
     int  slots_av[2];
+    long double wid_timestamp; 
 };
 
 typedef struct mra_heartbeat_s* mra_heartbeat_t;
@@ -88,7 +101,9 @@ struct mra_config_s {
     int            mra_number_of_workers;
     int            mra_slots[2];
     double         mra_perc;
-    int         Fg;
+    int         	 Fg;
+    double				 perc_vc_node;
+    double         failure_timeout_conf;
     int            initialized;
     msg_host_t*    workers_mra;
 } config_mra;
@@ -101,6 +116,7 @@ struct mra_job_s {
     msg_task_t**  task_list[2];
     size_t**      map_output;
     mra_heartbeat_t   mra_heartbeats;
+    long double   wid_timestamp;
 } job_mra;
 
 /** @brief  Information sent as the task data. */
@@ -118,10 +134,13 @@ struct mra_task_info_s {
 typedef struct mra_task_info_s* mra_task_info_t;
 
 struct mra_stats_s {
+    enum mra_phase_e  mra_phase;
     int   map_local_mra;
     int   mra_map_remote;
     int   map_spec_mra_l;
     int   map_spec_mra_r;
+    int   mra_map_recovery;
+    int		mra_reduce_recovery;
     int   reduce_mra_normal;
     int   reduce_mra_spec;
 } stats_mra;
@@ -135,11 +154,11 @@ struct mra_user_s {
 
 /** 
  * @brief  Send a message/task.
- * @param  str      The message.
- * @param  cpu      The amount of cpu required by the task.
- * @param  net      The message size in bytes.
- * @param  data     Any data to attatch to the message.
- * @param  mailbox  The destination mailbox alias.
+ * @param  str      	The message.
+ * @param  cpu      	The amount of cpu required by the task.
+ * @param  net      	The message size in bytes.
+ * @param  data     	Any data to attatch to the message.
+ * @param  mailbox  	The destination mailbox alias.
  * @return The MSG status of the operation.
  */
 msg_error_t send (const char* str, double cpu, double net, void* data, const char* mailbox);
@@ -176,5 +195,6 @@ int mra_maxval (int a, int b);
 size_t map_mra_output_size (size_t mid);
 
 size_t reduce_mra_input_size (size_t rid);
+
 
 #endif /* !MRA_COMMON_H */

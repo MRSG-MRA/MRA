@@ -16,8 +16,10 @@ You should have received a copy of the GNU General Public License
 along with MRSG and MRA++.  If not, see <http://www.gnu.org/licenses/>. */
 
 #include "common_mra.h"
+#include "mra_cv.h"
 #include <mra.h>
 
+//static int MRA_init_mra_cv (const char* cv_file_name);
 
 static void read_mra_config_file (const char* file_name)
 {
@@ -75,7 +77,7 @@ static void read_mra_config_file (const char* file_name)
 int mra_map_mra_output_function (size_t mid, size_t rid)
 {
 
-		return ((config_mra.mra_chunk_size*config_mra.mra_perc/100)/config_mra.amount_of_tasks_mra[MRA_REDUCE]);
+		return ((config_mra.mra_chunk_size*(config_mra.mra_perc/100))/config_mra.amount_of_tasks_mra[MRA_REDUCE]);
 //     return 2*1024*1024;
 }
 
@@ -108,8 +110,10 @@ int main (int argc, char* argv[])
     MRA_set_task_mra_cost_f (mra_task_mra_cost_function);
     /* Set the map output function. */
     MRA_set_map_mra_output_f (mra_map_mra_output_function);
+    /* Initialize volatility traces */
+   // MRA_init_mra_cv ("parse-boinc.txt");
     /* Run the simulation. */
-    MRA_main ("mra-plat15-10M.xml", "d-mra-plat15-10M.xml", "mra15.conf");
+    MRA_main ("mra-plat15-10M.xml", "d-mra-plat15-10M.xml", "mra15.conf", "parse-boinc.txt");
     //MRA_main ("mra-plat10-net_var.xml", "d-mra-plat10-net_var.xml", "mra10.conf");
     //MRA_main ("mra-plat32-10M.xml", "d-mra-plat32-10M.xml", "mra32.conf");
     //MRA_main ("mra-plat64-10M.xml", "d-mra-plat64-10M.xml", "mra64.conf");
@@ -117,4 +121,6 @@ int main (int argc, char* argv[])
     //MRA_main ("mra-plat256-10M.xml", "d-mra-plat256-10M.xml", "mra256.conf");
     return 0;
 }
+
+
 
