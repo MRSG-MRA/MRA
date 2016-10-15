@@ -14,6 +14,10 @@ if len(sys.argv) < 7:
 	print 'Or  Heterogeneous:', sys.argv[0], 'plat-ALL_var.xml 10 2 4e9:7e9 1e-4:1e-2 1.25e6:1.25e8'
 #	print 'Distribution_name',, sys.argv[0], 'uniform, beta, expo, gamma, gauss, logn, weibull'
 	sys.exit(1)
+#python create-mra-plat.py mra-plat256-logn.xml 256 2 2e+9:5e+9 1e-4:1e-4 1250000.0:1250000.0
+#python create-mra-plat.py d-mra-plat256-76M.xml 256 2 2e+9:5e+9 1e-4:1e-4 80000000.0:80000000.0
+#python create-mra-plat.py mra-plat100-10M.xml 100 4 1.7e+9:2e+9 1e-4:1e-4 1250000.0:1250000.0
+#python create-mra-plat.py mra-plat15.xml 15 2 1.7e+9:2e+9 1e-4:1e-4 1250000.0:1250000.0
 
 # Command line arguments.
 outFileName = sys.argv[1]

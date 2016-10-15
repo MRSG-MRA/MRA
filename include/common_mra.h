@@ -26,7 +26,6 @@ along with MRSG and MRA++.  If not, see <http://www.gnu.org/licenses/>. */
 
 /** @brief  Initialize dist_bruta, task_exec, avg_task_exec. */
 
-int*        dist_bruta;
 double*     avg_task_exec_map;
 double*     avg_task_exec_reduce;
 
@@ -60,8 +59,6 @@ double*     avg_task_exec_reduce;
 #define TASK_MRA_MAILBOX "%zu:%d"
 
 
-
-
 /** @brief  Possible task status. */
 enum mra_task_status_e {
     /* The initial status must be the first enum. */
@@ -78,7 +75,6 @@ struct mra_dist_mang_s {
 			 int min_tot_dist; 
        int max_tot_dist;
 } mra_dist_manage;
-
 
 
 /** @brief  Information sent by the workers with every heartbeat. */
@@ -102,7 +98,7 @@ struct mra_config_s {
     int            mra_slots[2];
     double         mra_perc;
     int         	 Fg;
-    double				 perc_vc_node;
+    double				 perc_vc_node;//atributo de configuracao da volatilidade
     double         failure_timeout_conf;
     int            initialized;
     msg_host_t*    workers_mra;
@@ -143,6 +139,8 @@ struct mra_stats_s {
     int		mra_reduce_recovery;
     int   reduce_mra_normal;
     int   reduce_mra_spec;
+    double map_time;
+    double reduce_time;
 } stats_mra;
 
 struct mra_user_s {

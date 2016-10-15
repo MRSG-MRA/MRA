@@ -25,6 +25,19 @@ typedef struct mra_w_info_s {
 	size_t  mra_wid;
 }* w_mra_info_t ;
 
+enum	mra_work_stat_e {
+        ACTIVE,
+        INACTIVE
+};
+
+/** @brief  Information of status worker. */
+struct mra_work_stat_s {
+    enum mra_work_stat_e		mra_work_status;
+    
+} mra_work_stat_f;
+
+struct mra_work_stat_s *mra_w_stat_f;
+
 /**
  * @brief  Get the ID of a worker.
  * @param  worker  The worker node.

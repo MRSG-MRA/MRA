@@ -8,6 +8,8 @@ import string
 class PlatformHandler(ContentHandler):
 	def __init__(self, outFileName):
 		self.master = True
+		self.mrsg = False
+		self.mrsg_master = True
 		self.outFileName = outFileName
 	def startDocument(self):
 		self.output = open(self.outFileName,'w')
@@ -15,6 +17,8 @@ class PlatformHandler(ContentHandler):
 		self.output.write('<!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid.dtd">\n')
 		self.output.write('<platform version="3">\n')
 	def startElement(self, name, attrs):
+		if name== 'host' and ("MRSG_Host" in attrs.get('id')):
+			self.mrsg = True
 		if name == 'host':
 			self.printToFile(attrs.get('id'))
 		elif name == 'cluster':
@@ -24,11 +28,18 @@ class PlatformHandler(ContentHandler):
 			for i in range(int(radical[0]),int(radical[1])):
 				self.printToFile(prefix + str(i) + suffix)
 	def printToFile(self,hostID):
-		if self.master:
-			self.output.write('\t<process host="' + hostID + '" function="master_mra"/>\n')
-			self.master = False
+		if self.mrsg==False:
+			if self.master:
+				self.output.write('\t<process host="' + hostID + '" function="master_mra"/>\n')
+				self.master = False
+			else:
+				self.output.write('\t<process host="' + hostID + '" function="worker_mra"/>\n')
 		else:
-			self.output.write('\t<process host="' + hostID + '" function="worker_mra"/>\n')
+			if self.mrsg_master:
+				self.output.write('\t<process host="' + hostID + '" function="master_mra"/>\n')
+				self.mrsg_master = False
+			else:
+				self.output.write('\t<process host="' + hostID + '" function="worker_mra"/>\n')
 	def endDocument(self):
 		self.output.write('</platform>\n')
 		self.output.close()

@@ -195,7 +195,7 @@ static int read_mra_vc_config_file (const char* vc_file_name, int n_line)
     }
 
     return 0;
-    
+       
     fclose(vc_file);
 }
 

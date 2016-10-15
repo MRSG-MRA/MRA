@@ -38,6 +38,7 @@ static void get_mra_chunk (mra_task_info_t ti);
 static void get_mra_map_output (mra_task_info_t ti);
 
 
+
 size_t get_mra_worker_id (msg_host_t worker)
 {
     w_mra_info_t  wi;
@@ -45,6 +46,8 @@ size_t get_mra_worker_id (msg_host_t worker)
     wi = (w_mra_info_t) MSG_host_get_data (worker);
     return wi->mra_wid;
 }
+
+
 
 
 /**
@@ -55,12 +58,18 @@ size_t get_mra_worker_id (msg_host_t worker)
  */
 int worker_mra (int argc, char* argv[])
 {
-    char           mailbox[MAILBOX_ALIAS_SIZE];
-    msg_host_t     me;
-    
+    char          mailbox[MAILBOX_ALIAS_SIZE];
+    msg_host_t    me;
+    int       		i=0;
     
     me = MSG_host_self ();
 
+		mra_w_stat_f = (struct mra_work_stat_s*)xbt_new(struct mra_work_stat_s*, (config_mra.mra_number_of_workers * (sizeof (struct mra_work_stat_s))));
+
+    for (i=0; i < config_mra.mra_number_of_workers; i++ )
+		{ 
+		  mra_w_stat_f[i].mra_work_status = 0;
+		}
     
     /* Spawn a process that listens for tasks. */
     MSG_process_create ("listen_mra", listen_mra, NULL, me);
@@ -87,14 +96,21 @@ static void mra_heartbeat (void)
     size_t       my_id;
   
     my_id = get_mra_worker_id (MSG_host_self ());
+    
+    
     //XBT_INFO ("Work_ID %zd \n", my_id);																			
     while (!job_mra.finished)
     {	
-    
-      send_mra_sms (SMS_HEARTBEAT_MRA, MASTER_MRA_MAILBOX);
-			mra_vc_sleep_f (my_id, MSG_get_clock ());
+     	mra_vc_sleep_f (my_id, MSG_get_clock ());
 			vc_time_sleep = vc_traces_time;
-			MSG_process_sleep (vc_time_sleep);				
+      
+      /*Sends a SMS, if machine is active in initial time.*/
+      if (mra_w_stat_f[my_id].mra_work_status == ACTIVE)
+      {
+      	send_mra_sms (SMS_HEARTBEAT_MRA, MASTER_MRA_MAILBOX);
+      }
+			MSG_process_sleep (vc_time_sleep);	
+						
     } 
 
 /*  loop
@@ -139,25 +155,30 @@ static int mra_vc_sleep_f (size_t my_id, double vc_time_stamp)
         	    	  	j=i;
                   	while ((j < config_mra_vc_file_line[0] )) 
                   	{
-                      if (vc_time_stamp >= vc_start[j][0] && vc_time_stamp <= vc_end[j][0])
+                      if (vc_time_stamp >= vc_start[j][0] && vc_time_stamp < vc_end[j][0])
                     		{
                       		if (vc_type[j][0] == 1)
                       			{
                         			vc_traces_time = config_mra.mra_heartbeat_interval;
                         		
                         			job_mra.mra_heartbeats[my_id].wid_timestamp = MSG_get_clock ();
-                        		//XBT_INFO (" Volat_node %zd ON - Traces_time %g, Hearbeat %Lg \n",my_id,vc_traces_time, job_mra.mra_heartbeats[my_id].wid_timestamp);             				
+                        			if (mra_w_stat_f[my_id].mra_work_status == INACTIVE) {
+                        	// XBT_INFO (" Volat_node %zd ON - Traces_time %Lg, Hearbeat %Lg \n",my_id,vc_traces_time, job_mra.mra_heartbeats[my_id].wid_timestamp);       
+                        	    }
+		  												mra_w_stat_f[my_id].mra_work_status = ACTIVE;			
                         			return vc_traces_time;
                         			break;
                       			}
                       		else
                       			{
-                       				vc_traces_time = (vc_end[j][0] - vc_time_stamp);
-                       				if (config_mra.mra_heartbeat_interval < vc_traces_time) 
+                      			  vc_traces_time = (vc_end[j][0] - vc_time_stamp);
+                       				if ((config_mra.mra_heartbeat_interval < vc_traces_time) && mra_w_stat_f[my_id].mra_work_status != INACTIVE) 
                        					{
                        						job_mra.mra_heartbeats[my_id].wid_timestamp = MSG_get_clock ();
-                                }         
-                       				//XBT_INFO (" Volat_node %zd OFF - Traces_time %g, Hearbeat %Lg \n", my_id,vc_traces_time, job_mra.mra_heartbeats[my_id].wid_timestamp);	
+                                			}         
+                       			   // XBT_INFO (" Volat_node %zd OFF - Traces_time %Lg, Hearbeat %Lg, EOL %f  \n", my_id,vc_traces_time, job_mra.mra_heartbeats[my_id].wid_timestamp,(double)vc_end[j][0]);
+                       			    //XBT_INFO (" Volat_node %zd OFF - Traces_time %Lg, Hearbeat %Lg  \n", my_id,vc_traces_time, job_mra.mra_heartbeats[my_id].wid_timestamp);
+						mra_w_stat_f[my_id].mra_work_status = INACTIVE;
                        				return vc_traces_time;
                        				break;
                       			}
@@ -222,12 +243,11 @@ static int compute_mra (int argc, char* argv[])
     msg_task_t   mra_task;
     mra_task_info_t  ti;
     xbt_ex_t     e;
-
+     
     mra_task = (msg_task_t) MSG_process_get_data (MSG_process_self ());
     ti = (mra_task_info_t) MSG_task_get_data (mra_task);
     ti->mra_pid = MSG_process_self_PID ();
-		
-		
+
     switch (ti->mra_phase)
     {
 	case MRA_MAP:
@@ -243,20 +263,22 @@ static int compute_mra (int argc, char* argv[])
 	    break;
     }
 
-    if (job_mra.task_status[ti->mra_phase][ti->mra_tid] != T_STATUS_MRA_DONE)
+    if (job_mra.task_status[ti->mra_phase][ti->mra_tid] != T_STATUS_MRA_DONE 
+)//     && mra_task_ftm[ti->mra_tid].mra_ft_wid == ti->mra_wid)
     {
-	TRY
-	{
+ 	TRY
+ 	{
 	    status = MSG_task_execute (mra_task);
 
 	    if (ti->mra_phase == MRA_MAP && status == MSG_OK)
 		update_mra_map_output (MSG_host_self (), ti->mra_tid);
-	}
-	CATCH (e)
-	{
-	    xbt_assert (e.category == cancel_error, "%s", e.msg);
-	    xbt_ex_free (e);
-	}
+
+  	}
+	 CATCH (e)
+ 	{
+   	    xbt_assert (e.category == cancel_error, "%s", e.msg);
+ 	    xbt_ex_free (e);
+ 	}
     }
 
     job_mra.mra_heartbeats[ti->mra_wid].slots_av[ti->mra_phase]++;
@@ -308,7 +330,8 @@ static void get_mra_chunk (mra_task_info_t ti)
 	    if (status == MSG_OK)
 		MSG_task_destroy (data);
 	}
-    }
+	
+    } 
 }
 
 /**
