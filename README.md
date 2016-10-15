@@ -2,6 +2,7 @@ MRA++
 ===
 
 MapReduce with Adapted Algorithms to Heterogeneous Environments, is based on MRSG Project.
+On September 2016 was concluded the update of MRA++ to the volatile environment, adding failure-recovery mechanisms.
 
 To run the example, follow these steps:
 
