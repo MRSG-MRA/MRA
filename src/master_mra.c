@@ -927,7 +927,7 @@ static void send_map_to_mra_worker (msg_host_t dest)
     size_t  sid = NONE; // chunk owner
     size_t  tid = NONE;// task id
     size_t  mra_wid;
-    double  mra_bandwidth;
+ 
 
     if (job_mra.tasks_pending[MRA_MAP] <= 0)
         return;
@@ -966,13 +966,14 @@ static void send_map_to_mra_worker (msg_host_t dest)
                 }
                 else
                 {
-                    //FIXME find a simgrid function to mra_bandwidth
-//            mra_bandwidth = 1250000.0; ORIGINAL BANDWIDTH
-                    mra_bandwidth = 80000000.0;
+                    /*FIXME find a simgrid function to mra_bandwidth
+	                   mra_bandwidth = double SD_route_get_current_bandwidth(SD_workstation_t sid, SD_workstation_t mra_wid);
+ 				          mra_bandwidth = 1250000.0; ORIGINAL BANDWIDTH
+ 							*/
                     sid = find_random_mra_chunk_owner (chunk);
-                    //mra_bandwidth = double SD_route_get_current_bandwidth(SD_workstation_t sid, SD_workstation_t mra_wid);
 
-                    if ( mra_dfs_dist[mra_wid].prev_exec[MRA_MAP] > (mra_dfs_dist[sid].prev_exec[MRA_MAP] + (config_mra.mra_chunk_size/ mra_bandwidth)))
+
+                    if ( mra_dfs_dist[mra_wid].prev_exec[MRA_MAP] > (mra_dfs_dist[sid].prev_exec[MRA_MAP] + (config_mra.mra_chunk_size/ config_mra.mra_bandwidth)))
                     {
                         task_type = REMOTE;
                         tid = chunk;

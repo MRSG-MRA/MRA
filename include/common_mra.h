@@ -102,6 +102,7 @@ struct mra_config_s {
     double         failure_timeout_conf;
     int            initialized;
     msg_host_t*    workers_mra;
+    double 			mra_bandwidth;
 } config_mra;
 
 struct mra_job_s {
@@ -194,5 +195,6 @@ size_t map_mra_output_size (size_t mid);
 
 size_t reduce_mra_input_size (size_t rid);
 
+void read_bandwidth(const char* plat);
 
 #endif /* !MRA_COMMON_H */

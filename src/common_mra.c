@@ -114,11 +114,28 @@ size_t reduce_mra_input_size (size_t rid)
     return sum;
 }
 
+/* @brief - reads the plataform bandwidth
+*  @param plat file name
+*/
+void read_bandwidth(const char* plat)
+{
+		FILE * xml = fopen(plat,"r");
+	char buff[255];
+	char * token;
 
+	const char s[2]= {'"','\0'};
+	do{
+		 fscanf(xml, "%s", buff);
+   	 token = strtok(buff,"=");
+   	 if(!strcmp(token,"bandwidth"))
+   	 {
 
-
-
-
-
-
-
+		 	token = strtok(NULL,"=");
+		 	token = strtok(token,s);
+		 	 sscanf(token, "%lf", &config_mra.mra_bandwidth);	
+ 		 	break;
+		 }
+	}while(fgetc(xml)!=EOF);
+	fclose(xml);
+//	printf("\n\nBandwidth:%f\n\n",config_mra.mra_bandwidth);
+}

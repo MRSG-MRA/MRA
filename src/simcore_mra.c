@@ -67,7 +67,8 @@ int MRA_main (const char* plat, const char* depl, const char* conf, const char* 
 	"--cconfig_mra.Fg=viva/categorized:cat.plist",
 	"--cconfig_mra.Fg=viva/uncategorized:uncat.plist"
     };
-
+	 
+	 read_bandwidth(plat);
     msg_error_t  res_mra = MSG_OK;
 
     config_mra.initialized = 0;
@@ -198,6 +199,10 @@ static int read_mra_vc_config_file (const char* vc_file_name, int n_line)
        
     fclose(vc_file);
 }
+
+
+
+
 
 /* @brief Return the number of lines on vc_file
 *  @param vc_file_name
