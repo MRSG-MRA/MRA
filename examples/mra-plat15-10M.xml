@@ -20,21 +20,21 @@
 	<host id="MRA_Host 14" power="3273318350.08" core="2" />
 	<host id="MRA_Host 15" power="2855628483.54" core="2" />
 
-	<link id="l1" bandwidth="1250000.0" latency="1e-4" />
-	<link id="l2" bandwidth="1250000.0" latency="1e-4" />
-	<link id="l3" bandwidth="1250000.0" latency="1e-4" />
-	<link id="l4" bandwidth="1250000.0" latency="1e-4" />
-	<link id="l5" bandwidth="1250000.0" latency="1e-4" />
-	<link id="l6" bandwidth="1250000.0" latency="1e-4" />
-	<link id="l7" bandwidth="1250000.0" latency="1e-4" />
-	<link id="l8" bandwidth="1250000.0" latency="1e-4" />
-	<link id="l9" bandwidth="1250000.0" latency="1e-4" />
-	<link id="l10" bandwidth="1250000.0" latency="1e-4" />
-	<link id="l11" bandwidth="1250000.0" latency="1e-4" />
-	<link id="l12" bandwidth="1250000.0" latency="1e-4" />
-	<link id="l13" bandwidth="1250000.0" latency="1e-4" />
-	<link id="l14" bandwidth="1250000.0" latency="1e-4" />
-	<link id="l15" bandwidth="1250000.0" latency="1e-4" />
+	<link id="l1" bandwidth="125000.0" latency="1e-4" />
+	<link id="l2" bandwidth="125000.0" latency="1e-4" />
+	<link id="l3" bandwidth="125000.0" latency="1e-4" />
+	<link id="l4" bandwidth="125000.0" latency="1e-4" />
+	<link id="l5" bandwidth="125000.0" latency="1e-4" />
+	<link id="l6" bandwidth="125000.0" latency="1e-4" />
+	<link id="l7" bandwidth="125000.0" latency="1e-4" />
+	<link id="l8" bandwidth="125000.0" latency="1e-4" />
+	<link id="l9" bandwidth="125000.0" latency="1e-4" />
+	<link id="l10" bandwidth="125000.0" latency="1e-4" />
+	<link id="l11" bandwidth="125000.0" latency="1e-4" />
+	<link id="l12" bandwidth="125000.0" latency="1e-4" />
+	<link id="l13" bandwidth="125000.0" latency="1e-4" />
+	<link id="l14" bandwidth="125000.0" latency="1e-4" />
+	<link id="l15" bandwidth="125000.0" latency="1e-4" />
 
 	<route src="MRA_Host 0" dst="MRA_Host 1">
 		<link_ctn id="l1"/>
