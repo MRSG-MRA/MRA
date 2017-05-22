@@ -28,8 +28,7 @@ along with MRSG and MRA++.  If not, see <http://www.gnu.org/licenses/>. */
 
 XBT_LOG_EXTERNAL_DEFAULT_CATEGORY (msg_test);
 
-static void send_mra_data (msg_task_t msg);
-
+static void send_mra_data (msg_task_t msg_mra);
 
 void distribute_data_mra (void)
 {
@@ -52,7 +51,7 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
     FILE*    log_avg;
 
     int*     tasks_reduce = NULL;
-    int*     total_dist;
+   // int*     total_dist;
     double*  prev_exec_reduce=NULL;
     int      counter, i;
     int      tot_tasks_reduce=0;
@@ -100,6 +99,7 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
         mra_dfs_dist[owner].mra_dist_fail[MRA_MAP]		= 0;
         mra_dfs_dist[owner].mra_dist_fail[MRA_REDUCE]	= 0;
         mra_dfs_dist[owner].mra_calc_dist							= 0;
+        
     }
 
 //    dist_bruta 		= xbt_new (int, 		(config_mra.mra_number_of_workers * sizeof (int)));
@@ -146,7 +146,7 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
         mra_dfs_dist->prev_exec[MRA_MAP] = ((mra_dfs_dist[owner].dist_bruta*mra_dfs_dist[owner].task_exec[MRA_MAP])/config_mra.mra_slots[MRA_MAP]);
         mra_dfs_dist[owner].prev_exec[MRA_MAP] = mra_dfs_dist->prev_exec[MRA_MAP];
 
-        /* Calculates a offset error preview for a worker*/
+        /* Calculates an offset error preview for a worker*/
         mra_dfs_dist->temp_corr[MRA_MAP] = mra_dfs_dist[owner].prev_exec[MRA_MAP] + mra_dfs_dist[owner].task_exec[MRA_MAP];
         mra_dfs_dist[owner].temp_corr[MRA_MAP] = mra_dfs_dist->temp_corr[MRA_MAP];
 
@@ -169,6 +169,9 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
     log_avg = fopen ("avg_tasks_map.log", "w");
     for (owner = 0; owner < config_mra.mra_number_of_workers; owner++)
     {
+    
+       // mra_dfs_dist[owner].mra_dist_data[MRA_MAP] = mra_dfs_dist[owner].dist_bruta;
+    
         for (mra_tid=0; mra_tid < config_mra.mra_number_of_workers; mra_tid++)
         {
             if (mra_dfs_dist[owner].dist_bruta == mra_dfs_dist[mra_tid].dist_bruta )
@@ -253,26 +256,29 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
             mra_dist_manage.min_tot_dist = min_dist;
             //printf ("Min_dist: %d \n", min_dist );
         }
+        mra_dfs_het_f.max_dist = mra_dist_manage.max_tot_dist;
+        mra_dfs_het_f.min_dist = mra_dist_manage.min_tot_dist;
     }
-
-    total_dist = xbt_new (int, ((max_dist + 1) * sizeof (int)));
-    for (i=0; i < (max_dist + 1); i++)
+    
+    
+    mra_dist_manage.total_dist = xbt_new (int, ((mra_dist_manage.max_tot_dist + 1) * sizeof (int)));
+    for (i=0; i < (mra_dist_manage.max_tot_dist + 1); i++)
     {
-        total_dist[i]=0;
+        mra_dist_manage.total_dist[i]=0;
     }
     log = fopen ("total_dist.log", "w");
 
-    while (tot_dist < max_dist + 1 )
+    while (tot_dist < mra_dist_manage.max_tot_dist + 1 )
     {
         rep_wid = 1;
         for (owner = 0; owner < config_mra.mra_number_of_workers; owner++)
         {
             if ( tot_dist == mra_dfs_dist[owner].dist_bruta )
             {
-                total_dist [tot_dist] = rep_wid++;
+                mra_dist_manage.total_dist [tot_dist] = rep_wid++;
             }
         }
-        fprintf(log,"Machine Numb. Dist %u : %u \n ", tot_dist, total_dist [tot_dist]);
+        fprintf(log,"Machine Numb. Dist %u : %u \n ", tot_dist, mra_dist_manage.total_dist [tot_dist]);
         tot_dist++;
     }
     fclose (log);
@@ -287,22 +293,23 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
     log = fopen ("map_chunk.log", "w");
     for (owner = 0; owner < config_mra.mra_number_of_workers; owner++) //for each owner in machine
     {
-        dist=0;
         total_chunk=0;
-        while (dist < mra_dfs_dist[owner].dist_bruta) // while group number < owner group number
+        for (dist=0; dist < mra_dfs_dist[owner].dist_bruta; dist++) // while group number < owner group number
         {
             while ( total_chunk < mra_dfs_dist[owner].dist_bruta) // while total chunks < owner group number
             {
-                if (mra_dfs_dist[owner].dist_bruta>0)
+                if (mra_dfs_dist[owner].dist_bruta >0 && chunk < config_mra.mra_chunk_count)
                 {
                     chunk_owner_mra[chunk][owner] = 1;
+                    job_mra.mra_task_dist[MRA_MAP][owner][total_chunk] = chunk;
                     chunk++;
+
+                    
 //                    fprintf (log,"dist: %u \t dist_b:%u \t ID: %zu \t chunk: %zu \t total_chunk: %u \n",dist, mra_dfs_dist[owner].dist_bruta, owner, chunk, total_chunk);
 			fprintf (log,"dist: %u \t dist_b:%u \t ID: %zu \t chunk: %zu  \n",dist, mra_dfs_dist[owner].dist_bruta, owner, chunk);
                 }
                 total_chunk++;
             }
-            dist++;
         }
         fprintf(log,"ID : %zu total_Chunk: %u dist_b: %u \n", owner, total_chunk,mra_dfs_dist[owner].dist_bruta);
         totalOwnedChunks[owner]=total_chunk;
@@ -355,16 +362,27 @@ void mra_replica_f (int *totalOwnedChunks)
 {
     size_t 			owner;
     size_t 			chunk;
-    int  j,i = 0, k = 0;
-    FILE*    log;
+    int         j,i = 0, k = 0, dist_test = 0;
+    FILE*       log;
 
     log = fopen ("replicas.log", "w");
     // Affinity test - Begin
-    for (k = 0; k < config_mra.mra_chunk_count; k++)
+    for (k = 0; k < config_mra.mra_chunk_count - 1; k++)
     {
         mra_affinity_f(k);
     }
     // Affinity test - End
+    // Test total dist 
+    for (i=0; i < (mra_dist_manage.max_tot_dist + 1); i++)
+    {   
+        if (mra_dist_manage.total_dist[i] == config_mra.amount_of_tasks_mra[MRA_MAP])
+        {
+          dist_test = 1;
+        }
+    }
+    
+    
+    
     /** @brief Creates a data replica from owner in a same group */
 
     for (owner = 0; owner < config_mra.mra_number_of_workers  ; owner++)
@@ -400,7 +418,7 @@ void mra_replica_f (int *totalOwnedChunks)
     {
         for (chunk = 0; (chunk < config_mra.mra_chunk_count) ; chunk++)
         {
-            if (chunk_owner_mra[chunk][owner] == 1 && mra_dfs_dist[owner].dist_bruta !=0)
+            if (chunk_owner_mra[chunk][owner] == 1 && mra_dfs_dist[owner].dist_bruta !=0 && dist_test != 1) 
             {
                 while (mra_affinity[chunk] < config_mra.mra_chunk_replicas)
                 {
@@ -623,39 +641,82 @@ void mra_affinity_f (size_t chunk)
     mra_affinity[chunk] = rpl;
 }
 
-/** @brief Clean all chunks already assigned to worker */
-void mra_vc_clean_rpl (size_t owner)
-{
-    size_t 			chunk;
-    FILE*    		log;
-    int         counter;
 
+/** @brief ftm_mra_affinity: recovery a replica factor for a chunk.
+*
+*/
+
+void ftm_mra_affinity_f (int mra_id_task, size_t mra_ftm_vc_wid)
+{
+    int rpl=0, chunk, i=0;
+    size_t  mra_wid = mra_ftm_vc_wid;
+    
+    chunk = job_mra.mra_task_dist[MRA_MAP][mra_ftm_vc_wid][mra_id_task];
+    
+    while(i < config_mra.mra_number_of_workers )
+    {
+        if (chunk_owner_mra[chunk][i] == 1 && (mra_ftm_done_s[i].mra_ft_vcstat != VC_FAILURE))
+        {
+            rpl++;
+        }        
+        i++;
+    }
+    i=0;
+    for (i=0; i < config_mra.mra_number_of_workers; i++ )
+    {
+    if ((mra_dfs_dist[mra_wid].dist_bruta == mra_dfs_dist[i].dist_bruta ) && rpl < mra_affinity[chunk] && (mra_ftm_done_s[i].mra_ft_vcstat != VC_FAILURE))
+    {
+       chunk_owner_mra[chunk][i] = 1 ;
+       //XBT_INFO ("FTM chunk_owner %d and i %d",chunk, i);
+       rpl++;  
+    }
+    else if ((mra_dfs_dist[mra_wid].dist_bruta + 1 == mra_dfs_dist[i].dist_bruta ) && rpl < mra_affinity[chunk] && (mra_ftm_done_s[i].mra_ft_vcstat != VC_FAILURE))
+     {
+        chunk_owner_mra[chunk][i] = 1 ;
+        rpl++;
+     }
+    else if ((mra_dfs_dist[mra_wid].dist_bruta - 1 == mra_dfs_dist[i].dist_bruta ) && rpl < mra_affinity[chunk] && (mra_ftm_done_s[i].mra_ft_vcstat != VC_FAILURE))
+     {
+        chunk_owner_mra[chunk][i] = 1 ;
+        rpl++;
+     }
+     }
+    mra_affinity[chunk] = rpl;
+    //XBT_INFO ("\n FTM Chunk Replica %d : %d restored \n", chunk, mra_affinity[chunk]);
+      
+}
+
+/**
+ * @brief  Adjust Replica function.
+ *
+ * Replica increment in the fault case.
+ */
+void ftm_adjust_replica ()
+{
+    int chunk, mra_wid;
+    
     for (chunk = 0; (chunk < config_mra.mra_chunk_count) ; chunk++)
     {
-        chunk_owner_mra[chunk][owner] = 0;
+      
+    while (mra_affinity[chunk] < config_mra.mra_chunk_replicas) 
+      {
+         mra_wid = rand () % config_mra.mra_number_of_workers;
+         
+         while (((mra_ftm_done_s[mra_wid].mra_ft_vcstat == VC_FAILURE ) || (chunk_owner_mra[chunk][mra_wid] == 1)) || mra_dfs_dist[mra_wid].dist_bruta == 0) 
+         {
+           mra_wid = rand () % config_mra.mra_number_of_workers;
+         }
+             
+          chunk_owner_mra[chunk][mra_wid] = 1; 
+          mra_affinity[chunk]++;  
+          //XBT_INFO ("FTM Chunk Replica %d : %d restored on mra_wid %d \n", chunk, mra_affinity[chunk], mra_wid);  
+       }
+     
     }
-
-
-    log = fopen ("new_chunks.log", "w");
-    xbt_assert (log != NULL, "Error creating log file.");
-    for (owner = 0; owner < config_mra.mra_number_of_workers; owner++)
-    {
-        fprintf (log, "worker %06zu | ", owner);
-        counter = 0;
-        for (chunk = 0; chunk < config_mra.mra_chunk_count; chunk++)
-        {
-            fprintf (log, "%d", chunk_owner_mra[chunk][owner]);
-            if (chunk_owner_mra[chunk][owner])
-            {
-                counter++;
-            }
-        }
-        fprintf (log, " | chunks owned: %d Dist Bruta: %d \n", counter,mra_dfs_dist[owner].dist_bruta);
-    }
-
-    fclose (log);
-
 }
+
+
+
 
 /** @brief Assign a map task recovery to worker has been late. */
 void mra_vc_task_assing (size_t owner, size_t chunk)
@@ -703,29 +764,26 @@ size_t find_random_mra_chunk_owner (int cid)
     replica = rand () % config_mra.mra_chunk_replicas;
     for (mra_wid = 0; mra_wid < config_mra.mra_number_of_workers ; mra_wid++)
     {
-        if (chunk_owner_mra[cid][mra_wid] && behavior[mra_wid] != VC_FAILURE )
+        if (chunk_owner_mra[cid][mra_wid] && (mra_ftm_done_s[mra_wid].mra_ft_vcstat != VC_FAILURE))
         {
             owner = mra_wid;
-
+            
             if (replica == 0)
-            {
-                break;
-            }
+          break;
             else
-            {
-                replica--;
-            }
-        }
+            replica--;
+       }
     }
-    if(behavior[mra_wid]==NEW_WID) // NEW_WID){
+   /* if(behavior[mra_wid]== NEW_WID) 
     {
         xbt_assert (owner != NONE, "MRA_Aborted: chunk %d is missing.", cid);
     }
     else
-    {
-        xbt_assert (owner != NONE, "MRA_Aborted: chunk %d is missing", cid);
-    }
-    return owner;
+    { */
+  
+   xbt_assert (owner != NONE, "MRA_Aborted: chunk %d is missing", cid);
+   
+   return owner;
 }
 
 /** @brief  DataNode main function. */
@@ -733,24 +791,24 @@ size_t find_random_mra_chunk_owner (int cid)
 int data_node_mra (int argc, char* argv[])
 {
     char         mailbox[MAILBOX_ALIAS_SIZE];
-    msg_error_t  status;
-    msg_task_t   msg = NULL;
+    msg_error_t  status_mra;
+    msg_task_t   msg_mra = NULL;
     sprintf (mailbox, DATANODE_MRA_MAILBOX, get_mra_worker_id (MSG_host_self ()));
 
     while (!job_mra.finished)
     {
-        msg = NULL;
-        status = receive (&msg, mailbox);
-        if (status == MSG_OK)
+        msg_mra = NULL;
+        status_mra = mra_receive (&msg_mra, mailbox);
+        if (status_mra == MSG_OK)
         {
-            if (mra_message_is (msg, SMS_FINISH_MRA))
+            if (mra_message_is (msg_mra, SMS_FINISH_MRA))
             {
-                MSG_task_destroy (msg);
+                MSG_task_destroy (msg_mra);
                 break;
             }
             else
             {
-                send_mra_data (msg);
+                send_mra_data (msg_mra);
             }
         }
     }
@@ -762,7 +820,7 @@ int data_node_mra (int argc, char* argv[])
 * @brief  Process that responds to data requests.
 */
 
-static void send_mra_data (msg_task_t msg)
+static void send_mra_data (msg_task_t msg_mra)
 {
     char         mailbox[MAILBOX_ALIAS_SIZE];
     double       data_size;
@@ -771,18 +829,18 @@ static void send_mra_data (msg_task_t msg)
 
 
     my_id = get_mra_worker_id (MSG_host_self ());
-    sprintf (mailbox, TASK_MRA_MAILBOX, get_mra_worker_id (MSG_task_get_source (msg)), MSG_process_get_PID (MSG_task_get_sender (msg)));
-    if (mra_message_is (msg, SMS_GET_MRA_CHUNK))
+    sprintf (mailbox, TASK_MRA_MAILBOX, get_mra_worker_id (MSG_task_get_source (msg_mra)), MSG_process_get_PID (MSG_task_get_sender (msg_mra)));
+    if (mra_message_is (msg_mra, SMS_GET_MRA_CHUNK))
     {
         MSG_task_dsend (MSG_task_create ("DATA-C", 0.0, config_mra.mra_chunk_size, NULL), mailbox, NULL);
     }
-    else if (mra_message_is (msg, SMS_GET_INTER_MRA_PAIRS))
+    else if (mra_message_is (msg_mra, SMS_GET_INTER_MRA_PAIRS))
     {
-        ti = (mra_task_info_t) MSG_task_get_data (msg);
+        ti = (mra_task_info_t) MSG_task_get_data (msg_mra);
         data_size = job_mra.map_output[my_id][ti->mra_tid] - ti->map_output_copied[my_id];
         MSG_task_dsend (MSG_task_create ("DATA-IP", 0.0, data_size, NULL), mailbox, NULL);
-
     }
 
-    MSG_task_destroy (msg);
+    MSG_task_destroy (msg_mra);
 }
+

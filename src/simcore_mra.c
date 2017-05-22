@@ -1,6 +1,6 @@
 /* Copyright (c) 2010-2014. MRA Team. All rights res_mraerved. */
 
-/* This file is part of MRSG and MRA++.
+/* This file is part of MRSG and MRA++. 
 
 MRSG and MRA++ are free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -32,7 +32,7 @@ along with MRSG and MRA++.  If not, see <http://www.gnu.org/licenses/>. */
 XBT_LOG_NEW_DEFAULT_CATEGORY (msg_test, "MRA");
 //XBT_LOG_EXTERNAL_DEFAULT_CATEGORY (msg_test);
 
-#define MAX_LINE_SIZE 256
+#define MAX_LINE_SIZE 512
 
 int master_mra (int argc, char *argv[]);
 int worker_mra (int argc, char *argv[]);
@@ -59,16 +59,15 @@ int MRA_main (const char* plat, const char* depl, const char* conf, const char* 
     int argc = 8;
     char* argv[] = {
 	"mra",
-	"--cconfig_mra.Fg=tracing:1",
-	"--cconfig_mra.Fg=tracing/buffer:1",
-	"--cconfig_mra.Fg=tracing/filename:tracefile.trace",
-	"--cconfig_mra.Fg=tracing/categorized:1",
-	"--cconfig_mra.Fg=tracing/uncategorized:1",
-	"--cconfig_mra.Fg=viva/categorized:cat.plist",
-	"--cconfig_mra.Fg=viva/uncategorized:uncat.plist"
+	"--cfg=tracing:1",
+	"--cfg=tracing/buffer:1",
+	"--cfg=tracing/filename:tracefile.trace",
+	"--cfg=tracing/categorized:1",
+	"--cfg=tracing/uncategorized:1",
+	"--cfg=viva/categorized:cat.plist",
+	"--cfg=viva/uncategorized:uncat.plist"
     };
-	 
-	 read_bandwidth(plat);
+
     msg_error_t  res_mra = MSG_OK;
 
     config_mra.initialized = 0;
@@ -110,6 +109,8 @@ static msg_error_t run_mra_simulation (const char* platform_file, const char* de
     read_mra_config_file (mra_config_file);
 
     MSG_create_environment (platform_file);
+    
+    read_bandwidth (platform_file);
     
     init_mra_vc (vc_file_name);
 
@@ -200,10 +201,6 @@ static int read_mra_vc_config_file (const char* vc_file_name, int n_line)
     fclose(vc_file);
 }
 
-
-
-
-
 /* @brief Return the number of lines on vc_file
 *  @param vc_file_name
 *  @return n_line
@@ -225,6 +222,7 @@ static int mra_vc_prep_traces (const char* vc_file_name)
         fclose(file);
    /*Array element with number lines of vc_fine_name. The result is saved on element array config_mra_vc_file_line[0] */
     config_mra_vc_file_line[0] = n_line;
+    //XBT_INFO ("Line number %d, @ in %s \n", n_line, vc_file_name );
     return n_line;
 }
 
@@ -277,7 +275,15 @@ static void read_mra_config_file (const char* file_name)
 	{
 	    fscanf (file, "%d", &config_mra.Fg);
 	}
-		else if ( strcmp (property, "mra_intermed_perc") == 0 )
+	else if ( strcmp (property, "mra_map_task_cost") == 0 )
+	{
+	    fscanf (file, "%lg", &config_mra.map_task_cost_mra);
+	}
+	else if ( strcmp (property, "mra_reduce_task_cost") == 0 )
+	{
+	    fscanf (file, "%lg", &config_mra.reduce_task_cost_mra);
+	}
+	else if ( strcmp (property, "mra_intermed_perc") == 0 )
 	{
 	    fscanf (file, "%lg", &config_mra.mra_perc);
 	}
@@ -362,7 +368,6 @@ static void init_mra_config (void)
 	}
     }
     config_mra.grid_average_speed = config_mra.grid_cpu_power / config_mra.mra_number_of_workers;
- 
     config_mra.mra_heartbeat_interval = mra_maxval (MRA_HEARTBEAT_MIN_INTERVAL, config_mra.mra_number_of_workers / 100);
     config_mra.amount_of_tasks_mra[MRA_MAP] = config_mra.mra_chunk_count;
     config_mra.initialized = 1;
@@ -392,11 +397,21 @@ static void init_job_mra (void)
     job_mra.task_status[MRA_MAP] = xbt_new0 (int, config_mra.amount_of_tasks_mra[MRA_MAP]);
     job_mra.task_instances[MRA_MAP] = xbt_new0 (int, config_mra.amount_of_tasks_mra[MRA_MAP]);
     job_mra.task_list[MRA_MAP] = xbt_new0 (msg_task_t*, config_mra.amount_of_tasks_mra[MRA_MAP]);
-    for (i = 0; i < config_mra.amount_of_tasks_mra[MRA_MAP]; i++)
+    job_mra.mra_task_dist[MRA_MAP] = xbt_new (int*, (config_mra.mra_number_of_workers * config_mra.amount_of_tasks_mra[MRA_MAP]) * (sizeof (int)));
+    for (i = 0; i < config_mra.amount_of_tasks_mra[MRA_MAP] ; i++)
+    {
 	  job_mra.task_list[MRA_MAP][i] = xbt_new0 (msg_task_t, MAX_SPECULATIVE_COPIES);
-	  
+    }
+    for (i = 0; i < config_mra.mra_number_of_workers; i++)
+    {
+    job_mra.mra_task_dist[MRA_MAP][i] = xbt_new0 (int, (config_mra.mra_number_of_workers * config_mra.amount_of_tasks_mra[MRA_MAP]) * (sizeof (int)));	  
+    }
     // Configuracao dos Reduces Inicia aqui 
-    config_mra.amount_of_tasks_mra[MRA_REDUCE] = config_mra.Fg * config_mra.mra_number_of_workers;
+     if (config_mra.Fg > 1)
+ 			{
+   			config_mra.amount_of_tasks_mra[MRA_REDUCE] = config_mra.Fg * config_mra.mra_number_of_workers;
+   		//	config_mra.cpu_required_reduce_mra *= ((config_mra.mra_chunk_size*config_mra.mra_perc/100)/config_mra.amount_of_tasks_mra[MRA_REDUCE]);
+ 			}
     
     job_mra.map_output = xbt_new (size_t*, config_mra.mra_number_of_workers);
     for (i = 0; i < config_mra.mra_number_of_workers; i++)
@@ -408,8 +423,17 @@ static void init_job_mra (void)
     job_mra.task_status[MRA_REDUCE] = xbt_new0 (int, config_mra.amount_of_tasks_mra[MRA_REDUCE]);
     job_mra.task_instances[MRA_REDUCE] = xbt_new0 (int, config_mra.amount_of_tasks_mra[MRA_REDUCE]);
     job_mra.task_list[MRA_REDUCE] = xbt_new0 (msg_task_t*, config_mra.amount_of_tasks_mra[MRA_REDUCE]);
+    job_mra.mra_task_dist[MRA_REDUCE] = xbt_new (int*,  config_mra.amount_of_tasks_mra[MRA_REDUCE] * (sizeof (int)));
     for (i = 0; i < config_mra.amount_of_tasks_mra[MRA_REDUCE]; i++)
+    {
 	  job_mra.task_list[MRA_REDUCE][i] = xbt_new0 (msg_task_t, MAX_SPECULATIVE_COPIES);
+	  }
+	  for (i = 0; i < config_mra.mra_number_of_workers ; i++)
+    {
+	  job_mra.mra_task_dist[MRA_REDUCE][i] = xbt_new0 (int, (config_mra.mra_number_of_workers * config_mra.amount_of_tasks_mra[MRA_REDUCE]) * (sizeof (int)));
+	  }
+	  
+	  
 	 // Configuracao dos Reduces Termina aqui */
 
 }
@@ -454,5 +478,10 @@ static void free_mra_global_mem (void)
     for (i = 0; i < config_mra.amount_of_tasks_mra[MRA_REDUCE]; i++)
 	xbt_free_ref (&job_mra.task_list[MRA_REDUCE][i]);
     xbt_free_ref (&job_mra.task_list[MRA_REDUCE]);
+    for (i = 0; i < config_mra.mra_number_of_workers; i++)
+    {
+      xbt_free_ref (&job_mra.mra_task_dist[MRA_REDUCE][i]);
+      xbt_free_ref (&job_mra.mra_task_dist[MRA_MAP][i]);
+    }
 }
 

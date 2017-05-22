@@ -34,10 +34,15 @@ struct mra_dfs_het_s {
 		int 									dist_bruta;
 		double								speed;
 		int 									adjust;
+		int                   offset_dist;
+		int                   min_dist;
+		int 									max_dist;
+		
 
 } mra_dfs_het_f;
 
 struct mra_dfs_het_s *mra_dfs_dist;
+
 
 
 
@@ -58,13 +63,14 @@ void default_mra_dfs_f (char** mra_dfs_matrix, size_t chunks, size_t workers_mra
 *  @brief Affinity and replica funcions.
 */
 void mra_affinity_f (size_t chunk);
+
 void mra_replica_f (int *totalOwnedChunks);
 
 /** @brief Reset dfs structure for a node delay*/
 void mra_vc_clean_rpl (size_t owner);
 
 /** @brief Assign a task recovery to worker has been late. */
-void mra_vc_task_assing (size_t owner, size_t chunk);
+//void mra_vc_task_assing (size_t owner, size_t chunk);
 
 
 /**@brief Min_max algorithm */
@@ -84,7 +90,12 @@ size_t find_random_mra_chunk_owner (int cid);
  */
 int data_node_mra (int argc, char *argv[]);
 
-
+/**
+ * @brief  Adjust Replica function.
+ *
+ * Replica increment in the fault case.
+ */
+void ftm_adjust_replica ();
 
 
 

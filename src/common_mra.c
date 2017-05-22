@@ -19,52 +19,52 @@ along with MRSG and MRA++.  If not, see <http://www.gnu.org/licenses/>. */
 
 XBT_LOG_EXTERNAL_DEFAULT_CATEGORY (msg_test);
 
-msg_error_t send (const char* str, double cpu, double net, void* data, const char* mailbox)
+msg_error_t mra_send (const char* str, double cpu, double net, void* data, const char* mailbox)
 {
-    msg_error_t  status;
-    msg_task_t   msg = NULL;
+    msg_error_t  status_mra;
+    msg_task_t   msg_mra = NULL;
 
-    msg = MSG_task_create (str, cpu, net, data);
+    msg_mra = MSG_task_create (str, cpu, net, data);
 
 #ifdef VERBOSE
-    if (!mra_message_is (msg, SMS_HEARTBEAT_MRA))
+    if (!mra_message_is (msg_mra, SMS_HEARTBEAT_MRA))
 	    XBT_INFO ("TX (%s): %s", mailbox, str);
 #endif
 
-    status = MSG_task_send (msg, mailbox);
+    status_mra = MSG_task_send (msg_mra, mailbox);
 
 #ifdef VERBOSE
-    if (status != MSG_OK)
-	XBT_INFO ("ERROR %d MRA_SENDING MESSAGE: %s", status, str);
+    if (status_mra != MSG_OK)
+	XBT_INFO ("ERROR %d MRA_SENDING MESSAGE: %s", status_mra, str);
 #endif
 
-    return status;
+    return status_mra;
 }
 
 
 msg_error_t send_mra_sms (const char* str, const char* mailbox)
 {
-    return send (str, 0.0, 0.0, NULL, mailbox);
+    return mra_send (str, 0.0, 0.0, NULL, mailbox);
 }
 
 
-msg_error_t receive (msg_task_t* msg, const char* mailbox)
+msg_error_t mra_receive (msg_task_t* msg_mra, const char* mailbox)
 {
-    msg_error_t  status;
+    msg_error_t  status_mra;
 
-    status = MSG_task_receive (msg, mailbox);
+    status_mra = MSG_task_receive (msg_mra, mailbox);
 
 #ifdef VERBOSE
-    if (status != MSG_OK)
-	XBT_INFO ("ERROR %d MRA_RECEIVING MESSAGE", status);
+    if (status_mra != MSG_OK)
+	XBT_INFO ("ERROR %d MRA_RECEIVING MESSAGE", status_mra);
 #endif
 
-    return status;
+    return status_mra;
 }
 
-int mra_message_is (msg_task_t msg, const char* str)
+int mra_message_is (msg_task_t msg_mra, const char* str)
 {
-    if (strcmp (MSG_task_get_name (msg), str) == 0)
+    if (strcmp (MSG_task_get_name (msg_mra), str) == 0)
 	return 1;
 
     return 0;
@@ -110,7 +110,7 @@ size_t reduce_mra_input_size (size_t rid)
     {
 	sum += (user_mra.map_mra_output_f (mid, rid));
     }
-  XBT_INFO (" MRA_Reduce task %zu sent %zu Bytes", rid,sum); 
+  //XBT_INFO (" MRA_Reduce task %zu sent %zu Bytes", rid,sum); 
     return sum;
 }
 
@@ -132,10 +132,17 @@ void read_bandwidth(const char* plat)
 
 		 	token = strtok(NULL,"=");
 		 	token = strtok(token,s);
-		 	 sscanf(token, "%lf", &config_mra.mra_bandwidth);	
+		 	sscanf(token, "%lf", &config_mra.mra_bandwidth);	
  		 	break;
 		 }
 	}while(fgetc(xml)!=EOF);
 	fclose(xml);
 //	printf("\n\nBandwidth:%f\n\n",config_mra.mra_bandwidth);
 }
+
+
+
+
+
+
+

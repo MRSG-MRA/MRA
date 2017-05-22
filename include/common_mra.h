@@ -72,8 +72,9 @@ enum mra_task_status_e {
 
 /** @brief  Information about dist_bruta. */
 struct mra_dist_mang_s {
-			 int min_tot_dist; 
-       int max_tot_dist;
+			 int   min_tot_dist; 
+       int   max_tot_dist;
+       int*  total_dist; 
 } mra_dist_manage;
 
 
@@ -97,12 +98,16 @@ struct mra_config_s {
     int            mra_number_of_workers;
     int            mra_slots[2];
     double         mra_perc;
+    double         cpu_required_reduce_mra;
+    double         cpu_required_map_mra;
+    double 				 map_task_cost_mra;
+    double         reduce_task_cost_mra;
     int         	 Fg;
     double				 perc_vc_node;//atributo de configuracao da volatilidade
     double         failure_timeout_conf;
     int            initialized;
     msg_host_t*    workers_mra;
-    double 			mra_bandwidth;
+    double 			   mra_bandwidth;
 } config_mra;
 
 struct mra_job_s {
@@ -114,6 +119,7 @@ struct mra_job_s {
     size_t**      map_output;
     mra_heartbeat_t   mra_heartbeats;
     long double   wid_timestamp;
+    int**  				mra_task_dist[2];
 } job_mra;
 
 /** @brief  Information sent as the task data. */
@@ -151,6 +157,7 @@ struct mra_user_s {
 } user_mra;
 
 
+
 /** 
  * @brief  Send a message/task.
  * @param  str      	The message.
@@ -160,7 +167,7 @@ struct mra_user_s {
  * @param  mailbox  	The destination mailbox alias.
  * @return The MSG status of the operation.
  */
-msg_error_t send (const char* str, double cpu, double net, void* data, const char* mailbox);
+msg_error_t mra_send (const char* str, double cpu, double net, void* data, const char* mailbox);
 
 /** 
  * @brief  Send a short message, of size zero.
@@ -176,7 +183,7 @@ msg_error_t send_mra_sms (const char* str, const char* mailbox);
  * @param  mailbox  The mailbox alias.
  * @return The status of the transfer.
  */
-msg_error_t receive (msg_task_t* msg, const char* mailbox);
+msg_error_t mra_receive (msg_task_t* msg_mra, const char* mailbox);
 
 /** 
  * @brief  Compare the message from a task with a string.
@@ -184,7 +191,7 @@ msg_error_t receive (msg_task_t* msg, const char* mailbox);
  * @param  str  The string to compare with.
  * @return A positive value if matches, zero if doesn't.
  */
-int mra_message_is (msg_task_t msg, const char* str);
+int mra_message_is (msg_task_t msg_mra, const char* str);
 
 /**
  * @brief  Return the maximum of two values.
@@ -195,6 +202,10 @@ size_t map_mra_output_size (size_t mid);
 
 size_t reduce_mra_input_size (size_t rid);
 
-void read_bandwidth(const char* plat);
+/**
+ * @brief  Return the bandwidth.
+ */
+void read_bandwidth (const char* plat);
+
 
 #endif /* !MRA_COMMON_H */

@@ -52,7 +52,7 @@ enum mra_vc_status_e {
     VC_TRANSIENT,
     VC_UP_TRANSIENT,
     OPERATION
-};
+}mra_ftm_vc_status;
 
 enum mra_vc_status_e *behavior;
 
@@ -79,13 +79,15 @@ struct mra_ftsys_s {
     enum mra_task_status_e 	mra_ft_task_status;
     size_t									mra_ft_wid; 
     size_t									mra_ft_task_id;
-    enum mra_vc_status_e		mra_ft_nwid;
+    enum mra_vc_status_e		mra_ft_vcstat;
     size_t 									mra_ft_msg;
     int  										mra_ft_pid[2];
-    enum mra_task_status_e  mra_task_attrib;
-     enum mra_vc_status_e status;
+    enum mra_task_status_e  mra_task_attrib; 
+    int                     dist_bruta;  
+
 } mra_ftsys_f, mra_ftm_done_f;
 
+// enum mra_vc_status_e 		mra_ftm_vc_status;
 struct mra_ftsys_s *mra_task_ftm;
 
 struct mra_ftsys_s *mra_ftm_done_s;
@@ -99,6 +101,8 @@ typedef struct mra_vc_traces
     long double mra_vc_end;
 } VC_TRACE;
 
+/** @brief  Restore affinity after Failure */
+void ftm_mra_affinity_f (int mra_id_task, size_t mra_ftm_vc_wid);
 
 #endif /* !MRACV_H */
 
