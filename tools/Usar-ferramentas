@@ -1,0 +1,11 @@
+Analise dados
+
+Pegar csv e
+
+3D
+python count_elements-new.py tasks_mrsg.csv file.out
+
+python count_elements-alt.py tasks_mrsg.csv file.out
+
+Linha
+python count_elements-line.py tasks_mrsg.csv file.out

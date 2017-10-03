@@ -18,7 +18,7 @@ along with MRSG and MRA++.  If not, see <http://www.gnu.org/licenses/>. */
 #ifndef MRA_COMMON_H
 #define MRA_COMMON_H
 
-#include <msg/msg.h>
+#include <simgrid/msg.h>
 #include <xbt/sysdep.h>
 #include <xbt/log.h>
 #include <xbt/asserts.h>
@@ -58,6 +58,8 @@ double*     avg_task_exec_reduce;
 #define TASKTRACKER_MRA_MAILBOX "%zu:MRATT"
 #define TASK_MRA_MAILBOX "%zu:%d"
 
+#define ON 1
+#define OFF -1
 
 /** @brief  Possible task status. */
 enum mra_task_status_e {
@@ -72,16 +74,16 @@ enum mra_task_status_e {
 
 /** @brief  Information about dist_bruta. */
 struct mra_dist_mang_s {
-			 int   min_tot_dist; 
+			 int   min_tot_dist;
        int   max_tot_dist;
-       int*  total_dist; 
+       int*  total_dist;
 } mra_dist_manage;
 
 
 /** @brief  Information sent by the workers with every heartbeat. */
 struct mra_heartbeat_s {
     int  slots_av[2];
-    long double wid_timestamp; 
+    long double wid_timestamp;
 };
 
 typedef struct mra_heartbeat_s* mra_heartbeat_t;
@@ -134,6 +136,17 @@ struct mra_task_info_s {
     double        shuffle_mra_end;
 };
 
+// MRA process pids
+typedef struct {
+  int * listen;
+  int * data_node;
+  int * worker;
+  int workers_on;
+  int * status;
+}task_pid;
+
+task_pid mra_task_pid;
+
 typedef struct mra_task_info_s* mra_task_info_t;
 
 struct mra_stats_s {
@@ -158,7 +171,7 @@ struct mra_user_s {
 
 
 
-/** 
+/**
  * @brief  Send a message/task.
  * @param  str      	The message.
  * @param  cpu      	The amount of cpu required by the task.
@@ -167,9 +180,9 @@ struct mra_user_s {
  * @param  mailbox  	The destination mailbox alias.
  * @return The MSG status of the operation.
  */
-msg_error_t mra_send (const char* str, double cpu, double net, void* data, const char* mailbox);
+msg_error_t send (const char* str, double cpu, double net, void* data, const char* mailbox);
 
-/** 
+/**
  * @brief  Send a short message, of size zero.
  * @param  str      The message.
  * @param  mailbox  The destination mailbox alias.
@@ -177,21 +190,21 @@ msg_error_t mra_send (const char* str, double cpu, double net, void* data, const
  */
 msg_error_t send_mra_sms (const char* str, const char* mailbox);
 
-/** 
+/**
  * @brief  Receive a message/task from a mailbox.
  * @param  msg      Where to store the received message.
  * @param  mailbox  The mailbox alias.
  * @return The status of the transfer.
  */
-msg_error_t mra_receive (msg_task_t* msg_mra, const char* mailbox);
+msg_error_t receive (msg_task_t* msg, const char* mailbox);
 
-/** 
+/**
  * @brief  Compare the message from a task with a string.
  * @param  msg  The message/task.
  * @param  str  The string to compare with.
  * @return A positive value if matches, zero if doesn't.
  */
-int mra_message_is (msg_task_t msg_mra, const char* str);
+int mra_message_is (msg_task_t msg, const char* str);
 
 /**
  * @brief  Return the maximum of two values.
