@@ -39,8 +39,8 @@ for i in range(len(bandwidth)):
 # Header
 output = open(outFileName, 'w')
 output.write('<?xml version=\'1.0\'?>\n')
-output.write('<!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid.dtd">\n')
-output.write('<platform version="3">\n')
+output.write('<!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid/simgrid.dtd">\n')
+output.write('<platform version="4">\n')
 output.write('  <AS id="AS0" routing="Full">\n')
 
 random.seed()
@@ -51,25 +51,25 @@ random.seed()
 output.write('\n')
 if len(cpu) == 1 and len(numCores) == 1:
 	for i in range(numNodes):
-		output.write('\t<host id="MRA_Host' + str(i) + '" power="' + str(cpu[0]) + '" core="' + str(numCores[0]) + '" />\n')
+		output.write('\t<host id="MRA_Host' + str(i) + '" speed="' + str(cpu[0]) + 'f" core="' + str(numCores[0]) + '" />\n')
 
- 
+
 elif len(numCores) == 1:
 	for i in range(numNodes):
 		rCPU = random.uniform(cpu[0], cpu[1])
-		output.write('\t<host id="MRA_Host' + str(i) + '" power="' + str(rCPU) + '" core="' + str(numCores[0]) + '" />\n')	
+		output.write('\t<host id="MRA_Host' + str(i) + '" speed="' + str(rCPU) + 'f" core="' + str(numCores[0]) + '" />\n')
 
 elif len(cpu) == 1:
 	for i in range(numNodes):
 		rCor = random.randrange(numCores[0], numCores[1],2)
-		output.write('\t<host id="MRA_Host' + str(i) + '" power="' + str(cpu[0]) + '" core="' + str(rCor) + '" />\n')	
+		output.write('\t<host id="MRA_Host' + str(i) + '" speed="' + str(cpu[0]) + 'f" core="' + str(rCor) + '" />\n')
 
 
 else:
 	for i in range(numNodes):
 		rCPU = random.uniform(cpu[0], cpu[1])
 		rCor = random.randrange(numCores[0], numCores[1], 2)
-		output.write('\t<host id="MRA_Host' + str(i) + '" power="' + str(rCPU) + '" core="' + str(rCor) + '" />\n')	
+		output.write('\t<host id="MRA_Host' + str(i) + '" speed="' + str(rCPU) + 'f" core="' + str(rCor) + '" />\n')
 
 
 
@@ -78,33 +78,33 @@ else:
 output.write('\n')
 if len(bandwidth) == 1:
 	for i in range(1,numNodes):
-		output.write('\t<link id="mra_l' + str(i) + '" bandwidth="' + str(bandwidth[0]) + '" latency="' +  str(latency[0]) + '" />\n')
+		output.write('\t<link id="mra_l' + str(i) + '" bandwidth="' + str(bandwidth[0]) + 'Bps" latency="' +  str(latency[0]) + 's" />\n')
 
 elif len(latency) ==1:
 	for i in range(1,numNodes):
 		rBW = random.uniform (bandwidth[0], bandwidth[1])
-		output.write('\t<link id="mra_l' + str(i) + '" bandwidth="' + str(rBW) + '" latency="' + str(latency[0]) + '" />\n')
-		
+		output.write('\t<link id="mra_l' + str(i) + '" bandwidth="' + str(rBW) + 'Bps" latency="' + str(latency[0]) + 's" />\n')
+
 
 elif (len(bandwidth) == 1 and len(latency) ==1):
 	for i in range(1,numNodes):
-		output.write('\t<link id="mra_l' + str(i) + '" bandwidth="' + str(bandwidth[0]) + '" latency="' + str(latency[0]) + '" />\n')
+		output.write('\t<link id="mra_l' + str(i) + '" bandwidth="' + str(bandwidth[0]) + 'Bps" latency="' + str(latency[0]) + 's" />\n')
 
 else:
 	for i in range(1,numNodes):
 		rBW = random.uniform (bandwidth[0], bandwidth[1])
 		rLat = random.uniform (latency[0], latency[1])
-		output.write('\t<link id="mra_l' + str(i) + '" bandwidth="' + str(rBW) + '" latency="' + str(rLat) + '" />\n')
+		output.write('\t<link id="mra_l' + str(i) + '" bandwidth="' + str(rBW) + 'Bps" latency="' + str(rLat) + 's" />\n')
 
 #if else:
 #	for i in range(1,numNodes):
 #		rBW = random.uniform (bandwidth[0], bandwidth[1])
-#		output.write('\t<link id="mra_l' + str(i) + '" bandwidth="' + str(rBW) + '" latency="' + latency + '" />\n')
+#		output.write('\t<link id="mra_l' + str(i) + '" bandwidth="' + str(rBW) + 'Bps" latency="' + latency + '" />\n')
 
 # Topology (paths) definition.
 output.write('\n')
 for src in range(numNodes):
-	for dst in range(numNodes):
+	for dst in range(src+1,numNodes):
 		if src != dst:
 			output.write('\t<route src="MRA_Host' + str(src) + '" dst="MRA_Host' + str(dst) + '">\n')
 			if (src == 0):

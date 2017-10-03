@@ -30,7 +30,7 @@ along with MRSG and MRA++.  If not, see <http://www.gnu.org/licenses/>. */
 XBT_LOG_EXTERNAL_DEFAULT_CATEGORY (msg_test);
 
 static FILE*       tasks_log;
-//static FILE*    	 failure_log;
+static FILE*    	 failure_log;
 static FILE*    	 dist_b_log;
 static void print_mra_config (void);
 static void print_mra_stats (void);
@@ -46,7 +46,7 @@ static void finish_all_mra_task_copies (mra_task_info_t ti);
 static void get_vc_behavior (double control_timestamp, size_t mra_wid, double last_hb_wid_timestamp);
 static void mra_status_ftm (enum mra_phase_e mra_phase, size_t mra_ft_task_id, size_t mra_ft_wid, enum mra_task_status_e mra_ftm_task_status);
 static void mra_ftm_recover (size_t mra_ftm_vc_wid, int total_tasks);
-static void finish_all_pids (void);
+//static void finish_all_pids (void);
 
 //static int adjust_dist_ftm_f (void);
 
@@ -56,9 +56,9 @@ static void finish_all_pids (void);
 int master_mra (int argc, char* argv[])
 {
     mra_heartbeat_t  mra_heartbeat;
-    msg_error_t  	status_mra;
+    msg_error_t  	status;
     msg_host_t   	worker;
-    msg_task_t   	msg_mra = NULL;
+    msg_task_t   	msg = NULL;
     size_t       	mra_wid;
     mra_task_info_t  ti;
     int 					i;
@@ -76,8 +76,8 @@ int master_mra (int argc, char* argv[])
     vc_state_working = xbt_new0(int, (config_mra.mra_number_of_workers * sizeof (int)));
     mra_vc_lhb_fdt= xbt_new0(double, (config_mra.mra_number_of_workers * sizeof (double)));
     worker_reduce_tasks = xbt_new0 (int, (config_mra.mra_number_of_workers * sizeof (int)));
-    
-    
+    //mra_task_dist = xbt_new0 (int, (total_tasks * sizeof (int)));
+
     for (i=0; i < config_mra.mra_number_of_workers; i++ )
     {
         mra_vc_last_hb[i] = 0;
@@ -93,7 +93,7 @@ int master_mra (int argc, char* argv[])
     stats_mra.mra_reduce_recovery	=	0;
     stats_mra.mra_map_recovery		= 0;
 
-    //failure_log = fopen ("failure-mra.csv", "w");
+    failure_log = fopen ("failure-mra.csv", "w");
     print_mra_config ();
     XBT_INFO ("JOB_MRA BEGIN");
     XBT_INFO (" ");
@@ -144,14 +144,14 @@ int master_mra (int argc, char* argv[])
     {
 
         /*Define msg*/
-        msg_mra = NULL;
-        status_mra = mra_receive (&msg_mra, MASTER_MRA_MAILBOX);
+        msg = NULL;
+        status = receive (&msg, MASTER_MRA_MAILBOX);
         /** @brief Control_timestamp is timestamp to failure detection. It is a trigger for the failure detector.  */
         control_timestamp = MSG_get_clock ();
 
-        if (status_mra == MSG_OK)
+        if (status == MSG_OK)
         {
-            worker = MSG_task_get_source (msg_mra);
+            worker = MSG_task_get_source (msg);
             mra_wid = get_mra_worker_id (worker);
             /** @brief Identifies a new Worker */
             //time_ctl = (int) control_timestamp;
@@ -162,7 +162,7 @@ int master_mra (int argc, char* argv[])
             }
 
             //=====
-            if (mra_message_is (msg_mra, SMS_HEARTBEAT_MRA) )
+            if (mra_message_is (msg, SMS_HEARTBEAT_MRA) )
             {
 
 
@@ -188,12 +188,12 @@ int master_mra (int argc, char* argv[])
                             {
                                 mra_vc_lhb_fdt[k] = control_timestamp;
                                 XBT_INFO ("%s, Failure Detected %zd @ %g - %zd \n", MSG_host_get_name (config_mra.workers_mra[mra_vc_wid]),mra_vc_wid, mra_vc_lhb_fdt[k], mra_wid);
-                                mra_ftm_done_s[mra_vc_wid].mra_ft_vcstat = VC_FAILURE;
+                                mra_ftm_done_s[mra_vc_wid].mra_ft_vcstat = VC_FAILURE,
                                 //Adjust of tasks on each group
                                 mra_dfs_dist[mra_vc_wid].prev_exec[MRA_MAP] = 999999999;
                                 mra_ftm_recover( mra_vc_wid, total_tasks);
                                 mra_dfs_dist[mra_vc_wid].dist_bruta = 0;
-                                
+
 
                             }
                         }
@@ -218,7 +218,7 @@ int master_mra (int argc, char* argv[])
             }
             //=====
 
-            if (mra_message_is (msg_mra, SMS_HEARTBEAT_MRA))
+            if (mra_message_is (msg, SMS_HEARTBEAT_MRA))
             {
                /* if(mra_dfs_dist[mra_wid].dist_bruta==0)
              XBT_INFO("DEBBUGING - DIST IS 0. %s",MSG_host_get_name (config_mra.workers_mra[mra_wid])); */
@@ -258,9 +258,9 @@ int master_mra (int argc, char* argv[])
                 }
             }
 
-            else if (mra_message_is (msg_mra, SMS_TASK_MRA_DONE))
+            else if (mra_message_is (msg, SMS_TASK_MRA_DONE))
             {
-                ti = (mra_task_info_t) MSG_task_get_data (msg_mra);
+                ti = (mra_task_info_t) MSG_task_get_data (msg);
 
                 if (job_mra.task_status[ti->mra_phase][ti->mra_tid] != T_STATUS_MRA_DONE)
                 {
@@ -278,18 +278,18 @@ int master_mra (int argc, char* argv[])
 
 
                         /* End Tolerance Failure Mechanism*/
-                    
+
                           if(ti->mra_phase==MRA_MAP && mra_dfs_dist[ti->mra_wid].mra_dist_data[MRA_MAP] > 0)
                           {
-                            mra_dfs_dist[ti->mra_wid].mra_dist_data[MRA_MAP]--;  
-                          }               
-                          
-                          finish_all_mra_task_copies (ti);
-                          job_mra.tasks_pending[ti->mra_phase]--;      
-                                                  
+                            mra_dfs_dist[ti->mra_wid].mra_dist_data[MRA_MAP]--;
+                          }
+
+                           finish_all_mra_task_copies (ti);
+                          job_mra.tasks_pending[ti->mra_phase]--;
+
                         // XBT_INFO ("Work_id %zd @ Phase %s,Task %zd Done - Dist %d - Dist Data %d \n", mra_ftm_done_f.mra_ft_wid, (mra_ftm_done_f.mra_ft_phase==MRA_MAP?"MRA_MAP":"MRA_REDUCE"), mra_ftm_done_f.mra_ft_task_id, mra_dfs_dist[ti->mra_wid].dist_bruta, mra_dfs_dist[ti->mra_wid].mra_dist_data[MRA_MAP]);
-                        
-                       
+
+
     dist_b_log = fopen ("total_dist_new.log", "w");
     for (mra_wid=0; mra_wid < config_mra.mra_number_of_workers; mra_wid++ )
     {
@@ -299,7 +299,9 @@ int master_mra (int argc, char* argv[])
                  (mra_dfs_dist[mra_wid].mra_dist_data[MRA_MAP]+ mra_dfs_dist[mra_wid].mra_dist_fail[MRA_MAP]));
     }
     fclose(dist_b_log);
-                                              
+
+
+
                         //XBT_INFO ("MRA_%s task %zd done", (ti->mra_phase==MRA_MAP?"MRA_MAP":"MRA_REDUCE"),ti->mra_tid );
                         if (job_mra.tasks_pending[ti->mra_phase] <= 0)
                         {
@@ -317,19 +319,24 @@ int master_mra (int argc, char* argv[])
                                 XBT_INFO ("MRA_REDUCE PHASE DONE");
                                 XBT_INFO (" ");
                             }
+
+
                         }
 
                     }
                 }
                 xbt_free_ref (&ti);
             }
-            MSG_task_destroy (msg_mra);
+            MSG_task_destroy (msg);
+
+
+
 
         }
     }
 
     fclose (tasks_log);
-    //fclose (failure_log);
+    fclose (failure_log);
 
 
     job_mra.finished = 1;
@@ -344,8 +351,8 @@ int master_mra (int argc, char* argv[])
     /*
     FIXME SimGrid Error
     finish_all_pids (); */
-    finish_all_pids ();
-         
+    //finish_all_pids ();
+
     return 0;
     //exit(0);
 }
@@ -412,11 +419,11 @@ void send_new_task(int chunk, size_t  owner)
     int aux;
     for (aux = 0; aux < config_mra.mra_number_of_workers; aux++)
     {
-    
+
     mra_ftm_done_s[owner].mra_ft_vcstat = VC_FAILURE;
-    
+
         if( mra_ftm_done_s[aux].mra_ft_vcstat != VC_FAILURE && mra_affinity[chunk] < config_mra.mra_chunk_replicas && (behavior[aux] == VC_NORMAL))
-        
+
         {
             chunk_owner_mra[chunk][aux] = 1;
             mra_affinity_f (chunk);
@@ -433,13 +440,27 @@ void send_new_task(int chunk, size_t  owner)
 */
 static void mra_ftm_recover (size_t mra_ftm_vc_wid, int total_tasks)
 {
-    int			k,kr,aux,cont,i;
+    int			k,kr,aux,cont;
     size_t  owner;
- 
+
+ /*
+ Contem todas informações
+static void mra_status_ftm (enum mra_phase_e mra_phase, size_t mra_ftm_task_id, size_t mra_ft_wid, enum mra_task_status_e  mra_ft_task_status );
+
+job_mra.task_status[mra_phase][tid] = T_STATUS_MRA_TIP;
+
+Especulativas
+job_mra.task_list[mra_phase][tid][i] = mra_task
+
+job_mra.task_instances[mra_phase][tid]++;
+
+Deleta as tasks da tarefa
+finish_all_mra_task_copies (ti); */
+
 
  //  mra_dfs_dist[mra_ftm_vc_wid].dist_bruta = 0;
  //  mra_replica_f (totalOwnedChunks);
- 
+
     for (k=0; k < config_mra.amount_of_tasks_mra[MRA_MAP]; k++)
     {
         if ((mra_task_ftm[k].mra_ft_wid == mra_ftm_vc_wid) && (mra_ftm_done_s[k].mra_ft_task_status == T_STATUS_MRA_DISP))
@@ -449,22 +470,22 @@ static void mra_ftm_recover (size_t mra_ftm_vc_wid, int total_tasks)
 
             if (mra_task_ftm[k].mra_ft_phase == MRA_MAP && job_mra.task_status[MRA_MAP][k] != T_STATUS_MRA_DONE  )
             {
-                
+
                 XBT_INFO ("FTM Recovery -> Map Task : %d", k);
 
                 stats_mra.mra_map_recovery++;
-                MSG_task_destroy (job_mra.task_list[MRA_MAP][k][0]);
+              //  MSG_task_destroy (job_mra.task_list[MRA_MAP][k][0]);
   		    			job_mra.task_list[MRA_MAP][k][0] = NULL;
                 job_mra.task_status[MRA_MAP][k] = T_STATUS_MRA_PENDING;
-                // Zera mra_dfs_dist[owner].dist_bruta             
+                // Zera mra_dfs_dist[owner].dist_bruta
                 cont = 0;
                 // Find a faster owner than vc_worker to receive task. On the other hands, a slower owner than vc_worker
                 for ( owner = 0; owner < config_mra.mra_number_of_workers ; owner++ )
-                { 
+                {
 
                   if ((mra_dfs_dist[mra_ftm_vc_wid].dist_bruta) < (mra_dfs_dist[owner].dist_bruta) && ((mra_dfs_dist[mra_ftm_vc_wid].dist_bruta) < (mra_dfs_het_f.max_dist)) && (mra_dfs_dist[owner].offset_dist < config_mra.mra_slots[MRA_MAP]))
                   	{
-                    	 mra_ftm_done_s[k].mra_ft_task_id = owner;                   	 
+                    	 mra_ftm_done_s[k].mra_ft_task_id = owner;
 	                     mra_dfs_dist[owner].dist_bruta++;
 	                     mra_dfs_dist[owner].mra_dist_data[MRA_MAP]++;
 	                     mra_dfs_dist[owner].offset_dist++;
@@ -484,23 +505,23 @@ static void mra_ftm_recover (size_t mra_ftm_vc_wid, int total_tasks)
 	                     		mra_dfs_dist[owner].offset_dist++;
                      			break;
                   			}
-                  			 
+
                   	  }
-                  }	
+                  }
                }
                 //mra_dfs_dist[mra_ftm_vc_wid].mra_dist_data[MRA_MAP]--;
              //        mra_vc_task_assing ( owner, k);
-             
+
             }
 
       /**
       * @brief Affinity restores lost data.
       */
-    
+
         if (job_mra.mra_task_dist[MRA_MAP][mra_ftm_vc_wid][k] != 0)
          {
             ftm_mra_affinity_f ( k, mra_ftm_vc_wid);
-         }        
+         }
     }
     for (kr=0; kr < config_mra.amount_of_tasks_mra[MRA_REDUCE]; kr++)
     {
@@ -520,21 +541,7 @@ static void mra_ftm_recover (size_t mra_ftm_vc_wid, int total_tasks)
     }
 
 
- /**
- * @brief Move replica from host down.
-   */ 
-    for (i=0; i < config_mra.mra_chunk_count; i++)
-     {
-        if (( i != job_mra.mra_task_dist[MRA_MAP][mra_ftm_vc_wid][i] ) && (chunk_owner_mra[i][mra_ftm_vc_wid] == 1))
-         {
-              mra_affinity[i]--;
-            // XBT_INFO ("FTM Affinity i = %d, mra_ftm_wid = %zd Affinity %d", i, mra_ftm_vc_wid, mra_affinity[i] );
-         }         
-     } 
-    
-    ftm_adjust_replica ();
-   
-   
+
 }
 
 /**
@@ -684,7 +691,7 @@ static void get_vc_behavior (double control_timestamp, size_t mra_wid, double la
       /*  if(behavior[i]==VC_TRANSIENT){
           fprintf(failure_log,"Control_timestamp %.6f, %s, Last_heartb %.6f, Fta %g, Machine State %s, Failure State %s, Status %s, Trigger %zd, Dist: %d,TRANSIENT_ERROR:%.6f ,hb: %d\n",
           control_timestamp, MSG_host_get_name(config_mra.workers_mra[i]), mra_vc_last_hb[i],mra_vc_fail_timeout_period[i], estado_trab, estado_fail, comportamento, mra_wid,mra_dfs_dist[mra_wid].dist_bruta,(control_timestamp - mra_vc_last_hb[i]),config_mra.mra_heartbeat_interval);
-        }else{ 
+        }else{
           fprintf(failure_log,"Control_timestamp %g, %s, Last_heartb %g, Fta %g, Machine State %s, Failure State %s, Status %s, Trigger %zd	Dist: %d \n",
           control_timestamp, MSG_host_get_name(config_mra.workers_mra[i]), mra_vc_last_hb[i],
           mra_vc_fail_timeout_period[i], estado_trab, estado_fail, comportamento, mra_wid,mra_dfs_dist[mra_wid].dist_bruta );
@@ -723,17 +730,17 @@ static void print_mra_config (void)
 /** @brief  Print job statistics. */
 static void print_mra_stats (void)
 {
-    //char nome_arquivo[50];
-    //int num_vol=(int) config_mra.perc_vc_node;
-    //snprintf(nome_arquivo, sizeof(nome_arquivo), "num_volatil_%d_%d.csv", config_mra.mra_number_of_workers,num_vol);
+    char nome_arquivo[50];
+    int num_vol=(int) config_mra.perc_vc_node;
+    snprintf(nome_arquivo, sizeof(nome_arquivo), "num_volatil_%d_%d.csv", config_mra.mra_number_of_workers,num_vol);
 
-    //FILE * stats_log=fopen(nome_arquivo,"a");
-    //fseek(stats_log, 0, SEEK_END);
-    //fprintf(stats_log,"%.0f;%d;%d;-;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%f;%f\n",config_mra.mra_chunk_size/1024/1024,
-    //        config_mra.mra_chunk_count,config_mra.Fg,//config_mra.failure_timeout_conf,
-    //        stats_mra.map_local_mra,stats_mra.mra_map_remote,stats_mra.map_spec_mra_l, stats_mra.map_spec_mra_r,
-    //        stats_mra.mra_map_recovery, stats_mra.mra_map_remote + stats_mra.map_spec_mra_r, stats_mra.map_spec_mra_l + stats_mra.map_spec_mra_r , stats_mra.reduce_mra_normal,
-    //        stats_mra.reduce_mra_spec,stats_mra.mra_reduce_recovery, stats_mra.map_time,stats_mra.reduce_time);
+    FILE * stats_log=fopen(nome_arquivo,"a");
+    fseek(stats_log, 0, SEEK_END);
+    fprintf(stats_log,"%.0f;%d;%d;-;%d;%d;%d;%d;%d;%d;%d;%d;%d;%d;%f;%f\n",config_mra.mra_chunk_size/1024/1024,
+            config_mra.mra_chunk_count,config_mra.Fg,//config_mra.failure_timeout_conf,
+            stats_mra.map_local_mra,stats_mra.mra_map_remote,stats_mra.map_spec_mra_l, stats_mra.map_spec_mra_r,
+            stats_mra.mra_map_recovery, stats_mra.mra_map_remote + stats_mra.map_spec_mra_r, stats_mra.map_spec_mra_l + stats_mra.map_spec_mra_r , stats_mra.reduce_mra_normal,
+            stats_mra.reduce_mra_spec,stats_mra.mra_reduce_recovery, stats_mra.map_time,stats_mra.reduce_time);
 
     XBT_INFO ("MRA_JOB STATISTICS:");
     XBT_INFO ("local maps: %d", stats_mra.map_local_mra);
@@ -748,7 +755,7 @@ static void print_mra_stats (void)
     XBT_INFO ("recovery reduces: %d", stats_mra.mra_reduce_recovery);
     XBT_INFO ("Map Time: %f",stats_mra.map_time);
     XBT_INFO ("Reduce Time: %f",stats_mra.reduce_time);
-    //fclose(stats_log);
+    fclose(stats_log);
 }
 
 /* @brief  Checks if a worker is a straggler.
@@ -769,16 +776,16 @@ static int is_straggler_mra (enum mra_phase_e mra_phase, msg_host_t worker)
     switch (mra_phase)
     {
     case MRA_MAP:
-        if (MSG_get_host_speed (worker) < mra_dfs_dist[mra_wid].avg_task_exec[MRA_MAP] && task_count > 0)
+        if (MSG_host_get_speed (worker) < mra_dfs_dist[mra_wid].avg_task_exec[MRA_MAP] && task_count > 0)
         {
             return 1;
         }
         break;
 
     case MRA_REDUCE:
-        if (MSG_get_host_speed (worker) < mra_dfs_dist[mra_wid].avg_task_exec[MRA_MAP] && task_count > 0)
+        if (MSG_host_get_speed (worker) < mra_dfs_dist[mra_wid].avg_task_exec[MRA_MAP] && task_count > 0)
         {
-            //  if (MSG_get_host_speed (worker) < config_mra.grid_average_speed && task_count > 0){
+            //  if (MSG_host_get_speed (worker) < config_mra.grid_average_speed && task_count > 0){
             return 1;
         }
         break;
@@ -794,11 +801,11 @@ static int is_straggler_mra (enum mra_phase_e mra_phase, msg_host_t worker)
 */
 static int task_time_elapsed_mra (msg_task_t mra_task)
 {
-    mra_task_info_t  ti;
+  mra_task_info_t  ti;
 
-    ti = (mra_task_info_t) MSG_task_get_data (mra_task);
+  ti = (mra_task_info_t) MSG_task_get_data (mra_task);
 
-    return (MSG_task_get_compute_duration (mra_task) - MSG_task_get_remaining_computation (mra_task))/ MSG_get_host_speed (config_mra.workers_mra[ti->mra_wid]);
+  return (MSG_task_get_bytes_amount (mra_task) - MSG_task_get_flops_amount (mra_task))/ MSG_host_get_speed (config_mra.workers_mra[ti->mra_wid]);
 }
 
 /* @brief  Mark the tasks of a straggler as possible speculative tasks.
@@ -870,7 +877,7 @@ static void send_map_to_mra_worker (msg_host_t dest)
     size_t  sid = NONE; // chunk owner
     size_t  tid = NONE;// task id
     size_t  mra_wid;
- 
+
 
     if (job_mra.tasks_pending[MRA_MAP] <= 0)
         return;
@@ -889,6 +896,7 @@ static void send_map_to_mra_worker (msg_host_t dest)
 
             //if (((mra_dfs_dist[mra_wid].mra_dist_data[MRA_MAP] < mra_dfs_dist[mra_wid].dist_bruta ) && (mra_ftm_done_s[mra_wid].mra_ft_vcstat != VC_FAILURE)) || (job_mra.task_status[MRA_MAP][chunk] == T_STATUS_MRA_TIP_SLOW || mra_task_ftm[chunk].mra_task_attrib == T_STATUS_MRA_FAILURE))
             if ((mra_dfs_dist[mra_wid].mra_dist_data[MRA_MAP] < mra_dfs_dist[mra_wid].dist_bruta ) && (mra_ftm_done_s[mra_wid].mra_ft_vcstat != VC_FAILURE))
+
             {
                 if (chunk_owner_mra[chunk][mra_wid] )
                 {
@@ -920,7 +928,7 @@ static void send_map_to_mra_worker (msg_host_t dest)
         }
         else if (job_mra.task_status[MRA_MAP][chunk] == T_STATUS_MRA_TIP_SLOW
                  && task_type > REMOTE
-                 && !job_mra.task_instances[MRA_MAP][chunk] < 2)
+                 && !job_mra.task_instances[MRA_MAP][chunk] )
         {
             if (chunk_owner_mra[chunk][mra_wid])
             {
@@ -1074,7 +1082,7 @@ static void send_mra_task (enum mra_phase_e mra_phase, size_t tid, size_t data_s
     size_t       			mra_wid;
 
     mra_wid = get_mra_worker_id (dest);
-    
+
     cpu_required = user_mra.task_mra_cost_f (mra_phase, tid, mra_wid);
 
 		if ( mra_phase == MRA_REDUCE )
@@ -1137,25 +1145,9 @@ static void finish_all_mra_task_copies (mra_task_info_t ti)
         if (job_mra.task_list[mra_phase][tid][i] != NULL)
         {
             //MSG_task_cancel (job.task_list[phase][tid][i]);
-            MSG_task_destroy (job_mra.task_list[mra_phase][tid][i]);
+          //  MSG_task_destroy (job_mra.task_list[mra_phase][tid][i]);
             job_mra.task_list[mra_phase][tid][i] = NULL;
             fprintf (tasks_log, "%d_%zu_%d,%s,%zu,%.3f,END,%.3f\n", ti->mra_phase, tid, i, (ti->mra_phase==MRA_MAP?"MRA_MAP":"MRA_REDUCE"), ti->mra_wid, MSG_get_clock (), ti->shuffle_mra_end);
         }
     }
 }
-
-/**
-* Kill all PIDs - SIMGRID Problem
-*
-*/
-static void finish_all_pids (void)
-{
-int 	k, ftm_pid;
-
-for (k=0; k < total_tasks; k++)
-{
-ftm_pid = mra_task_ftm[k].mra_ft_pid[MRA_MAP];
-MSG_process_killall (ftm_pid);
-}
-
-} 

@@ -1,8 +1,8 @@
 CC = gcc
 CFLAGS = -Wall -g3
 
-INSTALL_PATH = $$HOME/simgrid-3.11
-INCLUDES = -I../include -I$(INSTALL_PATH)/include 
+INSTALL_PATH = $$HOME/simgrid-3.14.159
+INCLUDES = -I../include -I$(INSTALL_PATH)/include
 DEFS = -L$(INSTALL_PATH)/lib
 LDADD = -lm -lsimgrid
 
@@ -15,6 +15,6 @@ all: $(BIN)
 	$(CC) $(INCLUDES) $(DEFS) -o $@ $^ ../libmra.a $(LDADD)
 
 clean:
-	rm -vf *.bin *.csv *.trace *.plist *.log
+	rm -vf *.bin *.trace *.plist *.log *.csv
 
 .PHONY: clean

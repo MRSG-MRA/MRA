@@ -1,6 +1,6 @@
 /* Copyright (c) 2010-2014. MRA Team. All rights res_mraerved. */
 
-/* This file is part of MRSG and MRA++. 
+/* This file is part of MRSG and MRA++.
 
 MRSG and MRA++ are free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -16,11 +16,11 @@ You should have received a copy of the GNU General Public License
 along with MRSG and MRA++.  If not, see <http://www.gnu.org/licenses/>. */
 
 
-#include <msg/msg.h>
+#include <simgrid/msg.h>
 #include <xbt/sysdep.h>
 #include <xbt/log.h>
 #include <xbt/asserts.h>
-#include <stdio.h> 
+#include <stdio.h>
 #include <stdlib.h>
 #include "common_mra.h"
 #include "worker_mra.h"
@@ -75,9 +75,9 @@ int MRA_main (const char* plat, const char* depl, const char* conf, const char* 
     check_config_mra ();
 
     MSG_init (&argc, argv);
-        
+
     res_mra = run_mra_simulation (plat, depl, conf, trace_vc);
-        
+
     if (res_mra == MSG_OK)
 	return 0;
     else
@@ -109,9 +109,9 @@ static msg_error_t run_mra_simulation (const char* platform_file, const char* de
     read_mra_config_file (mra_config_file);
 
     MSG_create_environment (platform_file);
-    
+
     read_bandwidth (platform_file);
-    
+
     init_mra_vc (vc_file_name);
 
     // for tracing purposes..
@@ -144,31 +144,31 @@ static void init_mr_mra_config (const char* mra_config_file)
     distribute_data_mra ();
 }
 
-/** 
- * @brief Initialize the Volunteer Computing Traces. 
+/**
+ * @brief Initialize the Volunteer Computing Traces.
  * @param vc_file_name
- * 
+ *
  */
 
 static void init_mra_vc (const char* vc_file_name){
-     
+
     int n_line;
     n_line = mra_vc_prep_traces (vc_file_name);
-    read_mra_vc_config_file (vc_file_name, n_line);    
+    read_mra_vc_config_file (vc_file_name, n_line);
 }
 
 /*
-* @brief Reads config file and creates a vector to each node with the availability type, and start and end times. 
+* @brief Reads config file and creates a vector to each node with the availability type, and start and end times.
 */
 static int read_mra_vc_config_file (const char* vc_file_name, int n_line)
-{	
+{
     int   i;
-    /* Allocate memory for the volunteer computing matrix. */     
+    /* Allocate memory for the volunteer computing matrix. */
    	vc_node = xbt_new(int*, (n_line * sizeof (int)));
    	vc_type = xbt_new(int*, (n_line * sizeof (int)));
    	vc_start = xbt_new(long double*, (n_line * sizeof (long double)));
    	vc_end = xbt_new(long double*, (n_line * sizeof (long double)));
-   	/* Allocate memory for the elements of volunteer computing matrix. */   
+   	/* Allocate memory for the elements of volunteer computing matrix. */
     for (i = 0; i < (n_line + 1); i++)
     {
      		vc_node[i] = xbt_new(int, (sizeof (int)));
@@ -176,28 +176,28 @@ static int read_mra_vc_config_file (const char* vc_file_name, int n_line)
      		vc_start[i] = xbt_new(long double, (sizeof (long double)));
      		vc_end[i] = xbt_new(long double, (sizeof (long double)));
     }
-     
+
     VC_TRACE *ptr_one;
     FILE* vc_file;
-       
-    ptr_one = (VC_TRACE *) malloc(n_line * sizeof(VC_TRACE)); 
+
+    ptr_one = (VC_TRACE *) malloc(n_line * sizeof(VC_TRACE));
     vc_file = fopen (vc_file_name, "r");
- 
+
     i=0;
     while(!feof(vc_file))
     {
         fscanf(vc_file, "%d,%d,%Lf,%Lf", &ptr_one->mra_vc_node_id, &ptr_one->mra_vc_status_type,
                                   &ptr_one->mra_vc_start, &ptr_one->mra_vc_end);
-                                 
+
         vc_node[i][0] = ptr_one->mra_vc_node_id;
         vc_type[i][0] = ptr_one->mra_vc_status_type;
         vc_start[i][0] = ptr_one->mra_vc_start;
-        vc_end[i][0]= ptr_one->mra_vc_end;        
-    		i++; 		
+        vc_end[i][0]= ptr_one->mra_vc_end;
+    		i++;
     }
 
     return 0;
-       
+
     fclose(vc_file);
 }
 
@@ -208,15 +208,15 @@ static int read_mra_vc_config_file (const char* vc_file_name, int n_line)
 static int mra_vc_prep_traces (const char* vc_file_name)
 {
 
-    int n_line = 0;  
-    char c;  
-    FILE* file;  
+    int n_line = 0;
+    char c;
+    FILE* file;
     /* Read the user configuration file. */
     file = fopen (vc_file_name, "r");
- 
+
     // Extract characters from file and store in character n_line
     for (c = getc(file); c != EOF; c = getc(file)){
-        if (c == '\n') 
+        if (c == '\n')
             n_line++;
   			}
         fclose(file);
@@ -363,7 +363,7 @@ static void init_mra_config (void)
 	    wi->mra_wid = mra_wid;
 	    MSG_host_set_data (host, (void*)wi);
 	    /* Add the worker's cpu power to the grid total. */
-	    config_mra.grid_cpu_power += MSG_get_host_speed (host);
+	    config_mra.grid_cpu_power += MSG_host_get_speed (host);
 	    mra_wid++;
 	}
     }
@@ -385,11 +385,20 @@ static void init_job_mra (void)
 
     job_mra.finished = 0;
     job_mra.mra_heartbeats = xbt_new (struct mra_heartbeat_s, config_mra.mra_number_of_workers);
+
+//Workrs PID info
+    mra_task_pid.listen = xbt_new(int,config_mra.mra_number_of_workers);
+    mra_task_pid.data_node = xbt_new(int,config_mra.mra_number_of_workers);
+    mra_task_pid.worker = xbt_new(int,config_mra.mra_number_of_workers);
+    mra_task_pid.workers_on = config_mra.mra_number_of_workers;
+    mra_task_pid.status = xbt_new(int,config_mra.mra_number_of_workers);
+
     for (mra_wid = 0; mra_wid < config_mra.mra_number_of_workers; mra_wid++)
     {
 			job_mra.mra_heartbeats[mra_wid].slots_av[MRA_MAP] = config_mra.mra_slots[MRA_MAP];
 			job_mra.mra_heartbeats[mra_wid].slots_av[MRA_REDUCE] = config_mra.mra_slots[MRA_REDUCE];
 			job_mra.mra_heartbeats[mra_wid].wid_timestamp = sizeof(long double);
+      mra_task_pid.status[mra_wid] = ON;
     }
 
     /* Initialize map information. */
@@ -404,20 +413,20 @@ static void init_job_mra (void)
     }
     for (i = 0; i < config_mra.mra_number_of_workers; i++)
     {
-    job_mra.mra_task_dist[MRA_MAP][i] = xbt_new0 (int, (config_mra.mra_number_of_workers * config_mra.amount_of_tasks_mra[MRA_MAP]) * (sizeof (int)));	  
+    job_mra.mra_task_dist[MRA_MAP][i] = xbt_new0 (int, (config_mra.mra_number_of_workers * config_mra.amount_of_tasks_mra[MRA_MAP]) * (sizeof (int)));
     }
-    // Configuracao dos Reduces Inicia aqui 
+    // Configuracao dos Reduces Inicia aqui
      if (config_mra.Fg > 1)
  			{
    			config_mra.amount_of_tasks_mra[MRA_REDUCE] = config_mra.Fg * config_mra.mra_number_of_workers;
    		//	config_mra.cpu_required_reduce_mra *= ((config_mra.mra_chunk_size*config_mra.mra_perc/100)/config_mra.amount_of_tasks_mra[MRA_REDUCE]);
  			}
-    
+
     job_mra.map_output = xbt_new (size_t*, config_mra.mra_number_of_workers);
     for (i = 0; i < config_mra.mra_number_of_workers; i++)
 	  job_mra.map_output[i] = xbt_new0 (size_t, config_mra.amount_of_tasks_mra[MRA_REDUCE]);
 
-    // Initialize reduce information. 
+    // Initialize reduce information.
 
     job_mra.tasks_pending[MRA_REDUCE] = config_mra.amount_of_tasks_mra[MRA_REDUCE];
     job_mra.task_status[MRA_REDUCE] = xbt_new0 (int, config_mra.amount_of_tasks_mra[MRA_REDUCE]);
@@ -432,8 +441,6 @@ static void init_job_mra (void)
     {
 	  job_mra.mra_task_dist[MRA_REDUCE][i] = xbt_new0 (int, (config_mra.mra_number_of_workers * config_mra.amount_of_tasks_mra[MRA_REDUCE]) * (sizeof (int)));
 	  }
-	  
-	  
 	 // Configuracao dos Reduces Termina aqui */
 
 }
@@ -483,5 +490,7 @@ static void free_mra_global_mem (void)
       xbt_free_ref (&job_mra.mra_task_dist[MRA_REDUCE][i]);
       xbt_free_ref (&job_mra.mra_task_dist[MRA_MAP][i]);
     }
+    xbt_free_ref(&mra_task_pid.worker);
+    xbt_free_ref(&mra_task_pid.data_node);
+    xbt_free_ref(&mra_task_pid.listen);
 }
-

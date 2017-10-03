@@ -142,7 +142,19 @@ int main (int argc, char* argv[])
   /* Initialize volatility traces */
  // MRA_init_mra_cv ("parse-boinc.txt");
   /* Run the simulation. */
-    MRA_main ("mra-plat15-10M.xml", "d-mra-plat15-10M.xml", "mra15.conf","parser-boinc.txt"); 
+   // MRA_main ("mra-plat32-10M.xml", "d-mra-plat32-10M.xml", "mra32.conf","parser-boinc-180.txt");
+   //MRA_main ("aula-32.xml", "d-aula-32.xml", "aula-8.conf","parser-boinc-030.txt");
+   //MRA_main ("plat64.xml", "d-plat64.xml", "mra64.conf","parser-boinc-180.txt");
+   //MRA_main ("mra-plat128-1G.xml", "d-mra-plat128-1G.xml", "mra128.conf","parser-boinc-180.txt");
+  //  MRA_main ("mra-plat256-10M.xml", "d-mra-plat256-10M.xml", "mra256.conf","parse-boinc.txt");
+  //  MRA_main ("mra-plat256-76M.xml", "d-mra-plat256-10M.xml", "mra256.conf","parse-boinc.txt"); 
+  // MRA_main ("plat-2k.xml", "d-plat-2k.xml", "mra-2k.conf","parser-boinc-1500.txt"); 
+    MRA_main ("plat64.xml", "d-plat64.xml", "plat64.conf","parser-boinc-padrao.txt"); 
      
+  //  MRA_main ("cc-e.xml", "d-cc-e.xml", "cc-e.conf","parse-boinc.txt");     
+	
+//	MRA_main("mra-plat256-logn.xml","d-mra-plat256-10M.xml", "mra256.conf","parse-boinc.txt");
+  //MRA_main ("mrbitdew-sophia-50.xml", "d-mrbitdew-sophia-50.xml", "mrbitdew-50.conf", "parse-boinc.txt");
+     //   MRA_main ("mra-plat-45.xml", "d-mra-plat-45.xml", "mra45.conf","parse-boinc.txt");
   return 0;
 }

@@ -6,7 +6,7 @@ On September 2016 was concluded the update of MRA++ to the volatile environment,
 
 To run the example, follow these steps:
 
-1) Make sure you have installed SimGrid (3.11  recommended).
+1) Make sure you have installed SimGrid (3.14.159  recommended).
    (http://simgrid.gforge.inria.fr/)
 
 2) Inside MRA's root and examples directories, edit the Makefiles and change

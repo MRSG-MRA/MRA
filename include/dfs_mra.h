@@ -90,12 +90,7 @@ size_t find_random_mra_chunk_owner (int cid);
  */
 int data_node_mra (int argc, char *argv[]);
 
-/**
- * @brief  Adjust Replica function.
- *
- * Replica increment in the fault case.
- */
-void ftm_adjust_replica ();
+
 
 
 
