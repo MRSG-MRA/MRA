@@ -1,14 +1,14 @@
-CC = gcc
+CC = g++ -std=c++11
 CFLAGS = -Wall -g3
 #CFLAGS = -Wall -g3 -O3
 
-INSTALL_PATH = $$HOME/simgrid-3.14.159
+INSTALL_PATH = $$HOME/Simgrid-3.23.2
 INCLUDES = -Iinclude -I$(INSTALL_PATH)/include
 DEFS = -L$(INSTALL_PATH)/lib
 LDADD = -lm -lsimgrid
 
 BIN = libmra.a
-OBJ = common_mra.o simcore_mra.o dfs_mra.o master_mra.o worker_mra.o user_mra.o
+OBJ = common_mra.o simcore_mra.o dfs_mra.o master_mra.o worker_mra.o user_mra.o task_mra.o
 
 all: $(BIN)
 
@@ -16,7 +16,7 @@ $(BIN): $(OBJ)
 	ar rcs $(BIN) $(OBJ)
 #	$(CC) $(INCLUDES) $(DEFS) $(CFLAGS) $(LDADD) -o $@ $^
 
-%.o: src/%.c include/*.h
+%.o: src/%.cpp  include/*.hpp
 	$(CC) $(INCLUDES) $(DEFS) $(CFLAGS) -c -o $@ $<
 
 verbose: clean

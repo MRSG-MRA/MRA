@@ -1,0 +1,11 @@
+Use the following command to compile and run your MRSG simulation:
+
+./compile_run <platform.xml> <deployplatform.xml> <yourconfig.conf> <volatile.xml> <logs>
+
+<logs> == 0 means no files log files will be printed
+
+Example: 
+
+./compile_run.sh platforms/mra-plat128.xml platforms/d-mra-plat128.xml mra128.conf volatiles/parse-boinc_new.txt 0
+
+You may define the map output in the config file with mra_map_output <value>, the default value is calculated with the other data provided on the config file.

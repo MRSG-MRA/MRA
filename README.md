@@ -6,18 +6,16 @@ On September 2016 was concluded the update of MRA++ to the volatile environment,
 
 To run the example, follow these steps:
 
-1) Make sure you have installed SimGrid (3.14.159  recommended).
+1) Make sure you have installed SimGrid (3.22 or higher  recommended).
    (http://simgrid.gforge.inria.fr/)
 
 2) Inside MRA's root and examples directories, edit the Makefiles and change
    the INSTALL_PATH variable to match your SimGrid installation path
    (e.g. /usr).
 
-3) Compile MRA with 'make' in the command line, and then do the same for the example.
+3) Execute the example (./compile_run.sh platforms/mra-plat128.xml platforms/d-mra-plat128.xml mra128.conf volatiles/parse-boinc_new.txt 0).
 
-4) Execute the example (./run.sh).
-
-
+4)
 Into examples folder, has platform samples. Install the python before for running,  in order to create another platforms.
 
 Syntax: platform_file.xml num_workers cores_per_node_min[:numCores_max] cpu_min[:cpu_max] latency_min[:latency_max] bw_min[:bw_max]'
@@ -32,7 +30,9 @@ Syntax: platform_file.xml num_workers cores_per_node_min[:numCores_max] cpu_min[
 
   ./create-mra-depoly.py platform_file.xml
   
-   
- After you need to change user functions on hello.c
+5) You can change the functions for map_task_cost, reduce_task_cost or map_output inside the hello_mrsg code, or
+specify the final cost on the config file.
+
+6) More explanation can be found on the how_to_use.txt and how_create_plat.txt files
 
 

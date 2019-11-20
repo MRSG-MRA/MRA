@@ -1,0 +1,30 @@
+	* Added an API function to model the data skew in the shuffle phase
+
+2014-08-13  version 3.11
+
+	FEATURES
+
+	Basic Behavior
+	* Map and Reduce phases (no explicit Combine)
+	* Single job simulation
+	* Speculative execution mechanism (backup tasks)
+	* Algorithms Heterogeneous
+
+	Distributed File System
+	* Data locality
+	* Chunk replicas
+
+	API
+	* User function to set task costs
+	* User function to distribute chunks and replicas
+
+	Configuration Options
+	* Chunk size (MB)
+	* Job input size (in chunks)
+	* Number of chunk replicas
+	* Number of reduce tasks
+	* Number of execution slots
+	* Factor of Partition Reduce for Granularity Control
+	* Intermediates Data output percentage
+
+

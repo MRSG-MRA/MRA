@@ -1,0 +1,161 @@
+#############################31 JULHO 2018######################################################
+
+@examples/hello_mra.cpp:
+Em "main()", inserida inicialização da classe "Engine" do S4U e separação entre argumentos do 
+SimGrid e do MRA.
+
+@src/simcore_mra.cpp:
+Incluídas declarações de estruturas para volatilidade.
+Em "MRA_main()", inicialização do SimGrid movida para "main()" em "hello_mra.cpp";
+Em "run_mra_simulation()", alteração das funções de começar a simulação e realizar a leitura 
+dos arquivos de plataforma e deploy, do MSG para o S4U. O retorno da função também foi alterado
+de "int" para "void";
+Em "init_mra_config()", troca do uso das estruturas de "msg_host_t" e "msg_process_t" para o 
+uso de classes "simgrid::s4u::Host*", "simgrid::s4u::ActorPtr" e seus métodos. Alteração no uso 
+de uma lista única de processos para múltiplas listas de actors em cada host mais uma lista 
+única de hosts.
+
+@src/common_mra.cpp:
+Incluídas declarações de estruturas gerais para a simulação.
+
+@src/master_mra.cpp:
+Em "master_mra()", trocados valores de inicialização nas estruturas "mra_ft_phase" e "mra_ft_task_status"
+visto que são do tipo "enum".
+
+@src/worker_mra.cpp:
+Incluídas declarações de estruturas referentes aos workers para a simulação.
+Em "worker_mra()", trocado valor de inicialização na estrutura "mra_work_status" por se tratar de um
+"enum".
+
+@src/dfs_mra.cpp:
+Incluídas declarações de estruturas referentes ao dfs para a simulação.
+
+
+#############################6 AGOSTO 2018######################################################
+
+@include/common_mra.hpp:
+Algumas estruturas declaradas como "extern".
+Em "struct mra_config_s", atributo "workers_mra" agora é do tipo "simgrid::s4u::Host**" ao invés de
+"msg_host_t*";
+Em "struct mra_job_s", atributo "task_list[2]" agora é do tipo "mra_task_t**" ao invés de
+"msg_task_t**";
+Em "struct mra_task_info_s", atributo "mra_task" agora é do tipo "Task_MRA*" ao invés de
+"msg_task_t".
+
+@include/dfs_mra.hpp:
+Algumas estruturas declaradas como "extern".
+
+@include/mra_cv.hpp:
+Algumas estruturas declaradas como "extern".
+
+@src/common_mra.cpp:
+Em "send()", alterado o envio da task por "MSG_task_send()" para o uso de "simgrid::s4u::MailboxPtr"
+e o método "put()". Como "put()" não retorna um "msg_error_t", a função "send()" mudou para "void";
+Em "send_mra_sms()", é agora "void" devido as alterações em "send()";
+Em "receive()",  alterado o recebimento de uma task através de "MSG_task_receive()" para o uso de 
+"simgrid::s4u::MailboxPtr" e o método "get()".  Como "get()" não retorna um "msg_error_t", o tipo
+da função "receive()" mudou para "mra_task_t";
+
+
+#############################8 AGOSTO 2018######################################################
+
+@src/task_mra.hpp:
+Criada classe "Task_MRA".
+
+@src/task_mra.cpp:
+Criada classe "Task_MRA".
+
+@src/common_mra.cpp:
+Em "mra_message_is()", tipo do argumento "msg" alterado de "msg_task_t" para "mra_task_t". A comparação
+agora é feira com o método "compare()" da classe "string". A mensagem é obtida através do método 
+"getName()" da classe "Task_MRA".
+
+@src/master_mra.cpp:
+Em "master_mra()", trocada a verificação se a task foi recebida corretamente de (status == MSG_OK)
+para (task_recebida) devido as alterações em "receive()". Trocado o uso das funções "MSG_task_get_data()"
+e "MSG_task_destroy()" pelo uso dos métodos "getData()" e "destroy()" da classe "Task_MRA";
+Em "task_time_elapsed()", tipo do argumento "mra_task" alterado de "msg_task_t" para "mra_task_t".
+Trocado o uso das funções "MSG_task_get_data()", "MSG_task_get_bytes_amount()" e "MSG_task_get_flops_amount()"
+pelo uso dos métodos "getData()", "getBytesAmount()" e "getFlopsAmount()" da classe "Task_MRA";
+Em "set_mra_speculative_task()", alterado o uso da função "MSG_task_get_data()" para o método
+"getData()" da classe "Task_MRA";
+Em "send_mra_task()",  alterado também o envio da task por "MSG_task_send()" para o uso de 
+"simgrid::s4u::MailboxPtr" e o método "put()". Adicionada a criação de uma instância da classe
+"Task_MRA" para substituir o usa da função "MSG_task_create()". Também foram adicionados o uso dos 
+métodos "setSender()", "setSource()" e "setData()" para inicializar dados sobre a tarefa;
+Em "finish_all_mra_task_copies()", trocado uso da função "MSG_task_destroy()" pelo método "destroy()"
+da classe "Task_MRA". 
+
+@src/worker_mra.cpp;
+Em "listen_mra()", trocada a verificação se a task foi recebida corretamente de (status == MSG_OK)
+para (task_recebida) devido as alterações em "receive()". Alterado a função para criar um
+novo processo de "MSG_process_create()" para "create()" da classe "Actor". Trocado também uso da 
+função "MSG_task_destroy()" pelo método "destroy()" da classe "Task_MRA";
+Em "compute_mra()", subtituído o uso das funções "MSG_task_get_data()" e "MSG_task_execute()" por
+"getData()" e "execute()" da classe "Task_MRA";
+Em "get_mra_chunk()", trocada a verificação se a task foi recebida corretamente de (status == MSG_OK)
+para (task_recebida) devido as alterações em "receive()". Uso do método "Task_MRA::destroy()";
+Em "get_mra_map_output()", removida verificação do status do envio devido as alterações em "send()".
+Trocada a verificação se a task foi recebida corretamente de (status == MSG_OK) para (task_recebida) 
+devido as alterações em "receive()". Substituídas as funções "MSG_task_get_bytes_amount()" e 
+"MSG_task_destroy()" por "getBytesAmount()" e "destroy()" da classe "Task_MRA".
+
+@src/dfs_mra.cpp:
+Em "data_node_mra()", trocada a verificação se a task foi recebida corretamente de (status == MSG_OK)
+para (task_recebida) devido as alterações em "receive()". Trocado uso da função "MSG_task_destroy()" pelo método "destroy()"
+da classe "Task_MRA";
+Em "send_mra_data()", tipo do argumento "msg" alterado de "msg_task_t" para "mra_task_t". Trocado o
+uso das funções "MSG_task_get_source()", "MSG_process_get_PID()", "MSG_task_get_sender()", 
+"MSG_task_get_data()" e "MSG_task_destroy()" pelos métodos "getSource()", "get_pid()", "getSender()"
+"getData()" e "destroy()".
+
+
+#############################8 SETEMBRO 2019####################################################
+
+
+@src/master_mra.cpp:
+Devido à volatilidade do ambiente, havia casos onde se perdia todas as réplicas de um mesmo chunk.
+Então para impossibilitar ainda mais a ocorrência desses casos, foi adicionado em "mra_tfm_recover()",
+um loop para recuperação dos chunks que não tinham sido executados até o momento da falha, em adição
+as tasks em execução.
+
+
+#############################9 SETEMBRO 2019####################################################
+
+
+@include/dfs_mra.hpp:
+Alterado o cabeçalho da função "data_node_mra()".
+
+@src/worker_mra.cpp:
+Em "worker_mra()", foi trocada a chamada da função "MSG_process_create()" pelo método 
+"create()" da classe "Actor";
+Em "listen_mra()", alterado o cabeçalho da função.
+
+@src/dfs_mra.cpp:
+Em "data_node_mra()", alterado o cabeçalho da função.
+
+
+#############################12 SETEMBRO 2019####################################################
+
+@src/worker_mra.cpp:
+Em todas as funções as quais se aplica, trocado uso de "msg_host_t" por "simgrid::s4u::Host*",
+de "MSG_get_clock()" por "simgrid::s4u::Engine::get_clock()" e de "MSG_host_self()" por 
+"simgrid::s4u::Host::current()";
+Em "get_mrsg_worker_id()", a obtenção do WID agora é através do método "get_property()" da classe
+"Host", ao invés de "MSG_host_get_data()".
+
+@src/master_mra.cpp:
+Em todas as funções as quais se aplica, trocado uso de "msg_host_t" por "simgrid::s4u::Host*",
+de "MSG_get_clock()" por "simgrid::s4u::Engine::get_clock()", "MSG_host_get_name()" por "get_cname()"
+e "MSG_host_get_speed()" por "get_speed()" da classe "Host".
+
+@src/simcore_mra:
+Em "init_mrsg_config()", foi alterado o modo de passar o WID ao seu respectivo host, ao invés de
+se utilizar "MSG_host_set_data()", agora é utilizado o método "set_property()" da classe "Host",
+onde na propriedade "WID" é salvo o valor de WID em forma de strig.
+
+@src/dfs_mra:
+Em todas as funções as quais se aplica, trocado uso de "MSG_host_self()" por "simgrid::s4u::Host::current()",
+"MSG_host_get_name()" por "get_cname()" e "MSG_host_get_speed()" por "get_speed()" da classe "Host".
+
+################################################################################################
